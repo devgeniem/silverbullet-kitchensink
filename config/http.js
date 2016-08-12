@@ -8,22 +8,36 @@
  * For more information on configuration, check out:
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.http.html
  */
- require('babel-core/register')();
+
+require('babel-core/register')();
 var babelify = require('babelify');
 var browserify = require('browserify-middleware');
 var React = require('react');
 var ReactDOMServer = require('react-dom/server');
 var reactApp = React.createFactory(require('../jsx/app.js'));
+var addResView = require('sails/lib/hooks/views/res.view');
 
-function reactView (req,res,next) {
+function reactView (req, res, next) {
   console.log('REACT VIEW PATH->',req.path);
   var reactHtml = ReactDOMServer.renderToString(reactApp({req:req, session:req.session}));
   //TODO some smarter way to find if there react route?
   if (reactHtml.indexOf('react-empty:') === -1) {
-    console.log('REACH HTML->',reactHtml);
+    console.log('REACT HTML->',reactHtml);
     //TODO render some template
     var sessionJSON = JSON.stringify(req.session);
-    res.send('<html><body><div id="app">'+reactHtml+'</div><script type="text/javascript">window.session='+sessionJSON+';</script><script src="/jsx/app.js"></script></body></html>');
+    var viewData = {
+      title: 'Silverbullet test app',
+      body: reactHtml,
+      session: sessionJSON
+    };
+    if (!res.view) {
+      if (!req.options) req.options = {}; // add options to req otherwise addResView fails
+      addResView(req, res, () => {
+        res.view('layout', viewData);
+      });
+    } else {
+      res.view('layout', viewData);
+    }
   } else {
     next();
   }
@@ -65,8 +79,8 @@ module.exports.http = {
         'session',
         'myRequestLogger',
         '$custom',
-        'router',
         'reactView',
+        'router',
         'www',
         'favicon',
         '404',
