@@ -34,9 +34,7 @@
   </head>
 
   <body>
-    <div id="app"><%- body %></div>
-
-
+    <%- body %>
     <!--
         Client-side Templates
         ========================
@@ -89,10 +87,6 @@
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
     <!--SCRIPTS END-->
-
-    <script type="text/javascript"><%-typeof session == 'undefined' ? '' : 'window.session='+session%></script>
-    <script type="text/javascript" src="/jsx/app.js"></script>
-
 
   </body>
 </html>

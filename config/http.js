@@ -22,21 +22,16 @@ function reactView (req, res, next) {
   var reactHtml = ReactDOMServer.renderToString(reactApp({req:req, session:req.session}));
   //TODO some smarter way to find if there react route?
   if (reactHtml.indexOf('react-empty:') === -1) {
-    console.log('REACT HTML->',reactHtml);
     //TODO render some template
     var sessionJSON = JSON.stringify(req.session);
     var viewData = {
       title: 'Silverbullet test app',
-      body: reactHtml,
+      reactHtml: reactHtml,
       session: sessionJSON
     };
     if (!res.view) {
       if (!req.options) req.options = {}; // add options to req otherwise addResView fails
       addResView(req, res, () => {
-
-        console.log('viewdata->',viewData);
-
-
         res.view('react', viewData);
       });
     } else {
@@ -83,10 +78,10 @@ module.exports.http = {
         'session',
         'myRequestLogger',
         '$custom',
-        'reactView',
         'router',
         'www',
         'favicon',
+        'reactView',
         '404',
         '500'
     ],
