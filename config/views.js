@@ -77,6 +77,9 @@ module.exports.views = {
 
   layout: 'layout',
 
+  /* special view for react app */
+  react: 'react',
+
   /****************************************************************************
   *                                                                           *
   * Partials are simply top-level snippets you can leverage to reuse template *

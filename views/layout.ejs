@@ -36,6 +36,7 @@
   <body>
     <div id="app"><%- body %></div>
 
+
     <!--
         Client-side Templates
         ========================
@@ -84,10 +85,14 @@
           + Use a different preprocessor, like TypeScript
 
     -->
-    <script type="text/javascript"><%=typeof session == 'undefined' ? '' : 'window.session='+session%></script>
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
     <!--SCRIPTS END-->
+
+    <script type="text/javascript"><%-typeof session == 'undefined' ? '' : 'window.session='+session%></script>
+    <script type="text/javascript" src="/jsx/app.js"></script>
+
+
   </body>
 </html>

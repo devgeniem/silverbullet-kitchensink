@@ -33,10 +33,14 @@ function reactView (req, res, next) {
     if (!res.view) {
       if (!req.options) req.options = {}; // add options to req otherwise addResView fails
       addResView(req, res, () => {
-        res.view('layout', viewData);
+
+        console.log('viewdata->',viewData);
+
+
+        res.view('react', viewData);
       });
     } else {
-      res.view('layout', viewData);
+      res.view('react', viewData);
     }
   } else {
     next();
