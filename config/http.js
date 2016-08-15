@@ -16,18 +16,20 @@ var React = require('react');
 var ReactDOMServer = require('react-dom/server');
 var reactApp = React.createFactory(require('../jsx/app.js'));
 var addResView = require('sails/lib/hooks/views/res.view');
+var Iso = require('iso').default;
 
 function reactView (req, res, next) {
   console.log('REACT VIEW PATH->',req.path);
   var reactHtml = ReactDOMServer.renderToString(reactApp({req:req, session:req.session}));
   //TODO some smarter way to find if there react route?
   if (reactHtml.indexOf('react-empty:') === -1) {
-    //TODO render some template
-    var sessionJSON = JSON.stringify(req.session);
-    var viewData = {
+    var viewData;
+    var state = (req.session && req.session.state) ? req.session.state : {};
+    var iso = new Iso();
+    iso.add(reactHtml, state);
+    viewData = {
       title: 'Silverbullet test app',
-      reactHtml: reactHtml,
-      session: sessionJSON
+      reactHtml: iso.render()
     };
     if (!res.view) {
       if (!req.options) req.options = {}; // add options to req otherwise addResView fails

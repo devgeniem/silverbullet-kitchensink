@@ -34,7 +34,9 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+
+  'POST /api/session': 'SessionController.session',
 
   /***************************************************************************
   *                                                                          *
