@@ -2,7 +2,7 @@
 
 {<content}
   <!-- REACT -->
-  <div id="app">{reactHtml}</div>
+  <div id="app">{reactHtml|s}</div>
   <script type="text/javascript" src="/jsx/app.js"></script>
   <!-- REACT END -->
 {/content}
