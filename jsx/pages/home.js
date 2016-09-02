@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Button } from 'react-bootstrap';
 import { addNotification } from '../actions/notificationActions';
 
 class Home extends React.Component {
@@ -13,8 +14,12 @@ class Home extends React.Component {
       <div>
         <h1>React Demo App</h1>
         <form>
-          <input type="text" name="demo" />
-          <button type="button" onClick={() => this.props.addNotification('success', 'Button pressed')}>Set</button>
+          <Button bsStyle="danger" onClick={() => this.props.addNotification('danger', 'This it the Error message!')}>
+            Fail
+          </Button>
+          <Button bsStyle="success" type="button" onClick={() => this.props.addNotification('success', 'This is the Success message!')}>
+            Succeed
+          </Button>
         </form>
       </div>
     );

@@ -18,6 +18,7 @@
     "babel-preset-react": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
     "babelify": "^7.3.0",
+    "bootstrap-sass": "^3.3.7",
     "browserify-middleware": "^7.0.0",
     "dustjs-linkedin": "^2.7.3",
     "ejs": "2.3.4",
