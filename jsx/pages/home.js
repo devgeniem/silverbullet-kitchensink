@@ -14,7 +14,7 @@ class Home extends React.Component {
         <h1>React Demo App</h1>
         <form>
           <input type="text" name="demo" />
-          <button type="button" onClick={this.props.addNotification('success', 'Button pressed')}>Set</button>
+          <button type="button" onClick={() => this.props.addNotification('success', 'Button pressed')}>Set</button>
         </form>
       </div>
     );
