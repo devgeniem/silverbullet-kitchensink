@@ -18,31 +18,28 @@ var reactApp = React.createFactory(require('../jsx/app.js'));
 var addResView = require('sails/lib/hooks/views/res.view');
 var Iso = require('iso').default;
 
-function reactView (req, res, next) {
-  console.log('REACT VIEW PATH->',req.path);
-  var reactHtml = ReactDOMServer.renderToString(reactApp({req:req, session:req.session}));
-  //TODO some smarter way to find if there react route?
-  if (reactHtml.indexOf('react-empty:') === -1) {
+function reactView(req, res, next) {
     var viewData;
+    var iso;
     var state = (req.session && req.session.state) ? req.session.state : {};
-    var iso = new Iso();
+    var reactHtml = ReactDOMServer.renderToString(reactApp({ req: req, state: state }));
+    //TODO some smarter way to find if there react route?
+    iso = new Iso();
     iso.add(reactHtml, state);
     viewData = {
-      title: 'Silverbullet test app',
-      reactHtml: iso.render()
+        title: 'Dashboard',
+        reactHtml: iso.render(),
     };
     if (!res.view) {
-      if (!req.options) req.options = {}; // add options to req otherwise addResView fails
-      addResView(req, res, () => {
-        res.view('react', viewData);
-      });
+        if (!req.options) req.options = {}; // add options to req otherwise addResView fails
+        addResView(req, res, () => {
+            res.view('react', viewData);
+        });
     } else {
-      res.view('react', viewData);
+        res.view('react', viewData);
     }
-  } else {
-    next();
-  }
 }
+
 
 module.exports.http = {
 
