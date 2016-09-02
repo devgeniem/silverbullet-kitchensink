@@ -1,7 +1,8 @@
 import React from 'react'
 import { Route, IndexRoute, Link } from 'react-router'
+import Home from "./pages/home";
 
-const App = ({ children }) => (
+const Layout = ({ children }) => (
   <div>
     <header>
       Links:
@@ -18,12 +19,11 @@ const App = ({ children }) => (
   </div>
 )
 
-const Home = () => (<div>REACT APP Home!</div>)
-const Foo = () => (<div>Foo!</div>)
-const Bar = () => (<div>Bar!</div>)
+const Foo = () => (<div>Foo! router test</div>)
+const Bar = () => (<div>Bar! router test</div>)
 
 const routes = (
-  <Route path="/reactDemo" component={App}>
+  <Route path="/reactDemo" component={Layout}>
     <IndexRoute component={Home}/>
     <Route path="/foo" component={Foo}/>
     <Route path="/bar" component={Bar}/>

@@ -56,8 +56,13 @@ module.exports.http = {
   * `customMiddleware` config option.                                         *
   *                                                                           *
   ****************************************************************************/
+
+    /*
+    * SB custonMiddleware to add browserify middleware(s)
+    * to certain paths.
+    */
     customMiddleware: function(app) {
-        //server browserified "jsx" from jsx folder
+        //serve browserified "jsx" from jsx folder
         app.use('/jsx', browserify(__dirname +'/../jsx', {
             transform: [babelify.configure({})]
         }));
@@ -79,11 +84,11 @@ module.exports.http = {
         'cookieParser',
         'session',
         'myRequestLogger',
-        '$custom',
+        '$custom',   //add browserify path(s)
         'router',
         'www',
         'favicon',
-        'reactView',
+        'reactView',  //run reactView last
         '404',
         '500'
     ],

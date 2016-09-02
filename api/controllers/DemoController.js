@@ -6,8 +6,11 @@
  */
 
 module.exports = {
-	test(req,res) {
+  test(req,res) {
     res.json({ok:'toimii'});
+  },
+  test2(req,res) {
+    res.msgPack({"testing":"Toimiiko"});
   }
 };
 
