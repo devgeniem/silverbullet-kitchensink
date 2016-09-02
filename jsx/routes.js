@@ -1,6 +1,7 @@
-import React from 'react'
-import { Route, IndexRoute, Link } from 'react-router'
-import Home from "./pages/home";
+import React from 'react';
+import { Route, IndexRoute, Link } from 'react-router';
+import Home from './pages/home';
+import Notification from './components/notification';
 
 const Layout = ({ children }) => (
   <div>
@@ -15,19 +16,20 @@ const Layout = ({ children }) => (
       {' '}
       <Link to="/bar">Bar (react)</Link>
     </header>
+    <Notification />
     {children}
   </div>
-)
+);
 
-const Foo = () => (<div>Foo! router test</div>)
-const Bar = () => (<div>Bar! router test</div>)
+const Foo = () => (<div>Foo! router test</div>);
+const Bar = () => (<div>Bar! router test</div>);
 
 const routes = (
   <Route path="/reactDemo" component={Layout}>
-    <IndexRoute component={Home}/>
-    <Route path="/foo" component={Foo}/>
-    <Route path="/bar" component={Bar}/>
+    <IndexRoute component={Home} />
+    <Route path="/foo" component={Foo} />
+    <Route path="/bar" component={Bar} />
   </Route>
-)
+);
 
-export default routes
+export default routes;

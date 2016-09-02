@@ -1,1 +1,1 @@
-export { default as demo }  from "./DemoReducer";
+export { default as notification } from './notificationReducer';
