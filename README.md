@@ -34,4 +34,16 @@ how to connect and use it.
 the order in which react router and sails router are run can be adjusted from
 confing/http.js
 
+## Recommended Sublime Text configuration
 
+- Make sure you have latest eslint installed globally `npm install -g eslint`
+- Install these packages from Sublime Text Package Control (https://packagecontrol.io/installation)
+  - EditorConfig (to support .editorconfig settings)
+  - Babel (Syntax definitions for ES6 with React JSX extensions)
+  - SublimeLinter (version 3)
+  - SublimeLinter-contrib-eslint
+  - SublimeLinter-csslint
+  - SublimeLinter-json
+  - Sass
+  - DustBuster (support Dust.js templating if using Dust.js templates)
+- Remove all jshint & jsxhint etc conficting javascript linters
