@@ -20,6 +20,7 @@
     "babelify": "^7.3.0",
     "bootstrap-sass": "^3.3.7",
     "browserify-middleware": "^7.0.0",
+    "connect-redis": "^3.1.0",
     "dustjs-linkedin": "^2.7.3",
     "ejs": "2.3.4",
     "grunt": "1.0.1",
@@ -77,6 +78,7 @@
     "eslint-config-airbnb": "^10.0.1",
     "eslint-plugin-import": "^1.14.0",
     "eslint-plugin-jsx-a11y": "^2.2.1",
-    "eslint-plugin-react": "^6.2.0"
+    "eslint-plugin-react": "^6.2.0",
+    "grunt-contrib-sass": "^1.0.0"
   }
 }
