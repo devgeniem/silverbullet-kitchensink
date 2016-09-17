@@ -3,6 +3,6 @@
 {<content}
   <!-- REACT -->
   <div id="app">{reactHtml|s}</div>
-  <script type="text/javascript" src="/dev/app.js"></script>
+  <script type="text/javascript" src="/dist/app.js"></script>
   <!-- REACT END -->
 {/content}

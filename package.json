@@ -81,6 +81,6 @@
     "eslint-plugin-import": "^1.14.0",
     "eslint-plugin-jsx-a11y": "^2.2.1",
     "eslint-plugin-react": "^6.2.0",
-    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-sass": "^1.0.0"
   }
 }

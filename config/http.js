@@ -58,6 +58,11 @@ module.exports.http = {
 
     reactView: reactView,
 
+    customMiddleware: function(app) {
+      //serve browserified "jsx" from jsx folder
+      app.get('/dist/app.js');
+    },
+
     /***************************************************************************
     *                                                                          *
     * The order in which middleware should be run for HTTP request. (the Sails *
@@ -69,6 +74,7 @@ module.exports.http = {
       'cookieParser',
       'session',
       'myRequestLogger',
+      '$custom',
       'router',
       'www',
       'favicon',
