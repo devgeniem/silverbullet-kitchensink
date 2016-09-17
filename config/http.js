@@ -14,7 +14,7 @@ var babelify = require('babelify');
 var browserify = require('browserify-middleware');
 var React = require('react');
 var ReactDOMServer = require('react-dom/server');
-var reactApp = React.createFactory(require('../jsx/app.js'));
+var reactApp = React.createFactory(require('../src/app.js'));
 var addResView = require('sails/lib/hooks/views/res.view');
 var Iso = require('iso').default;
 
@@ -40,7 +40,6 @@ function reactView(req, res, next) {
   }
 }
 
-
 module.exports.http = {
 
 
@@ -53,17 +52,6 @@ module.exports.http = {
   * `customMiddleware` config option.                                         *
   *                                                                           *
   ****************************************************************************/
-
-    /*
-    * SB custonMiddleware to add browserify middleware(s)
-    * to certain paths.
-    */
-  customMiddleware: function(app) {
-    //serve browserified "jsx" from jsx folder
-    app.use('/jsx', browserify(__dirname +'/../jsx', {
-      transform: [babelify.configure({})]
-    }));
-  },
 
 
   middleware: {
@@ -81,7 +69,6 @@ module.exports.http = {
       'cookieParser',
       'session',
       'myRequestLogger',
-      '$custom',   //add browserify path(s)
       'router',
       'www',
       'favicon',

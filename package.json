@@ -58,7 +58,8 @@
     "sails.io.js": "^0.13.8",
     "socket.io-client": "^1.4.8",
     "superagent": "^2.1.0",
-    "validator": "^5.5.0"
+    "validator": "^5.5.0",
+    "webpack": "^1.13.2"
   },
   "scripts": {
     "debug": "node debug app.js",
@@ -74,11 +75,12 @@
   "license": "",
   "devDependencies": {
     "babel-eslint": "^6.1.2",
+    "clean-webpack-plugin": "^0.1.10",
     "eslint": "^3.4.0",
     "eslint-config-airbnb": "^10.0.1",
     "eslint-plugin-import": "^1.14.0",
     "eslint-plugin-jsx-a11y": "^2.2.1",
     "eslint-plugin-react": "^6.2.0",
-    "grunt-contrib-sass": "^1.0.0"
+    "grunt-contrib-sass": "^1.0.0",
   }
 }
