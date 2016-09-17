@@ -4,13 +4,11 @@ import Bar from './components/Bar';
 import Layout from './components/Layout';
 
 export default {
-  childRoutes: [{
-    path: '/',
-    component: Layout,
-    indexRoute: Home,
-    childRoutes: [
-      { path: 'foo', component: Foo },
-      { path: 'bar', component: Bar },
-    ],
-  }],
+  component: Layout,
+  indexRoute: Home,
+  childRoutes: [
+    { path: 'foo', component: Foo },
+    { path: 'bar', component: Bar },
+  ],
+
 };

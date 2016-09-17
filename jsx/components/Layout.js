@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
+import Notification from './notification';
 
-export const Layout = ({ children }) => (
+export default ({ children }) => (
   <Grid>
     <Row>
       <Col xs={12}>
