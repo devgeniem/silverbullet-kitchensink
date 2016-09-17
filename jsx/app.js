@@ -7,7 +7,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import { routes } from './routes';
+import routes from './routes';
 import * as reducers from './reducers';
 import socketIOClient from 'socket.io-client';
 import sailsIOClient from 'sails.io.js';
