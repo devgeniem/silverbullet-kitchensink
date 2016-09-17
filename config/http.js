@@ -13,10 +13,12 @@ require('babel-core/register')();
 var babelify = require('babelify');
 var browserify = require('browserify-middleware');
 var React = require('react');
+var express = require('express');
 var ReactDOMServer = require('react-dom/server');
 var reactApp = React.createFactory(require('../src/app.js'));
 var addResView = require('sails/lib/hooks/views/res.view');
 var Iso = require('iso').default;
+var path = require('path');
 
 function reactView(req, res, next) {
   var viewData;
@@ -59,8 +61,7 @@ module.exports.http = {
     reactView: reactView,
 
     customMiddleware: function(app) {
-      //serve browserified "jsx" from jsx folder
-      app.get('/dist/app.js');
+      app.use(express.static(path.join(__dirname, 'dist')));
     },
 
     /***************************************************************************
