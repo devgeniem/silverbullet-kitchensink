@@ -64,7 +64,9 @@
   "scripts": {
     "debug": "node debug app.js",
     "start": "node app.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "pm2-start": "pm2 start app.js -i 1 --name silverbullet",
+    "pm2-stop": "pm2 stop all; pm2 delete all"
   },
   "main": "app.js",
   "repository": {
