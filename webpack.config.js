@@ -3,7 +3,7 @@ const path = require('path');
 
 const PATHS = {
   //Output directory of the built files.
-  build: path.join(__dirname, '.tmp', 'public'),
+  build: path.join(__dirname, 'dist'),
   //Name of the main chunk file.
   fileName: '[name].js',
   //Location of the webpack entry point file.

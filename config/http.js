@@ -54,15 +54,17 @@ module.exports.http = {
   * `customMiddleware` config option.                                         *
   *                                                                           *
   ****************************************************************************/
-
+  customMiddleware: function (app) {
+    if (process.env.NODE_ENV === 'development') {
+      app.use('/', express.static(path.join(__dirname, '/../dev/')));
+    } else {
+      app.use('/', express.static(path.join(__dirname, '/../dist/')));
+    }
+  },
 
   middleware: {
 
     reactView: reactView,
-
-    customMiddleware: function(app) {
-      app.use(express.static(path.join(__dirname, 'dist')));
-    },
 
     /***************************************************************************
     *                                                                          *
