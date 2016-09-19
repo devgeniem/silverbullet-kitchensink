@@ -1,6 +1,3 @@
-import Home from './pages/home';
-
-import Bar from './components/Bar';
 import Layout from './components/Layout';
 import Lists from './pages/Lists';
 
@@ -8,13 +5,8 @@ import Lists from './pages/Lists';
 export default {
   path: '/reactDemo',
   component: Layout,
-  indexRoute: {component: Home},
+  indexRoute: {component: Lists},
   childRoutes: [{
-    path: 'lists',
-    component: Lists
-  }, {
-    path: 'bar',
-    component: Bar
-  },
-  ],
+
+  }]
 }
