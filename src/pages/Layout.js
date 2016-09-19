@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Nav, NavItem} from 'react-bootstrap';
+import {Nav, NavItem, Col} from 'react-bootstrap';
 
 class Layout extends React.Component {
 
@@ -12,12 +12,16 @@ class Layout extends React.Component {
     return (
       <div className="todo-wrapper">
         <header>
-          <Nav bsStyle="pills" activeKey={1}>
-            <NavItem href="/todo" eventKey={1}>Rock</NavItem>
-            <NavItem eventKey={2}>On</NavItem>
-          </Nav>
+          <Col xs={12}>
+            <Nav bsStyle="pills" activeKey={1}>
+              <NavItem href="/todo" eventKey={1}>Rock</NavItem>
+              <NavItem eventKey={2}>On</NavItem>
+            </Nav>
+          </Col>
+
         </header>
         <article>
+
           {children}
         </article>
       </div>
