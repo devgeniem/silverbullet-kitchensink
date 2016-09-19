@@ -63,8 +63,12 @@
   },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "node app.js",
-    "lint": "eslint ."
+    "start": "NODE_ENV=development; npm-run-all --parallel start:dev webpack:watch",
+    "start:dev": "node app.js",
+    "webpack:watch": "webpack --watch",
+    "lint": "eslint .",
+    "pm2-start": "NODE_ENV=production; webpack; pm2 start app.js -i 1 --name silverbullet",
+    "pm2-stop": "pm2 stop all; pm2 delete all"
   },
   "main": "app.js",
   "repository": {
