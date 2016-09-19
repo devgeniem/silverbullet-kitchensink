@@ -8,7 +8,7 @@ export default ({ children }) => (
     <Row>
       <Col xs={12}>
         <header>
-          Links:
+          Links asdasdasd:
           {' '}
           <a href="/">Back to sails (non react page)</a>
           {' '}

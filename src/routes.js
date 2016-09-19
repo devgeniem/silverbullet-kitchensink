@@ -3,6 +3,9 @@ import Foo from './components/Foo';
 import Bar from './components/Bar';
 import Layout from './components/Layout';
 
+/*
+  This is base
+*/
 
 export default {
   path: '/reactDemo',
