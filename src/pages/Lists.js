@@ -7,7 +7,7 @@ class Lists extends React.Component {
 
   render() {
 
-    var AddNewButton = (<Button><Glyphicon glyph="plus"/> Add a new list</Button>);
+    var AddNewButton = (<Button href="./create-list"><Glyphicon glyph="plus"/> Add a new list</Button>);
     var {lists} = this.props;
 
     if (lists && lists.map) {

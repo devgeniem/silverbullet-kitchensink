@@ -2,13 +2,7 @@ import uuid from 'node-uuid';
 import {removeItemByPropVal} from '../services/utils';
 
 const initialState = {
-  lists: [{
-    id:'1',
-    name: 'Lista 1'
-  }, {
-    id: '2',
-    name: 'Lista 2'
-  }],
+  lists: [],
 };
 
 export default function notificationReducer(state = initialState, action) {
