@@ -1,0 +1,7 @@
+{> "./layout" /}
+
+{<content}
+
+<h1> 500 server error </h1>
+
+{/content}

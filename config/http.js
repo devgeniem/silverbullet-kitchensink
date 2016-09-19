@@ -1,13 +1,13 @@
 /**
- * HTTP Server Settings
- * (sails.config.http)
- *
- * Configuration for the underlying HTTP server in Sails.
- * Only applies to HTTP requests (not WebSockets)
- *
- * For more information on configuration, check out:
- * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.http.html
- */
+* HTTP Server Settings
+* (sails.config.http)
+*
+* Configuration for the underlying HTTP server in Sails.
+* Only applies to HTTP requests (not WebSockets)
+*
+* For more information on configuration, check out:
+* http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.http.html
+*/
 
 require('babel-core/register')();
 var babelify = require('babelify');
@@ -18,26 +18,47 @@ var reactApp = React.createFactory(require('../jsx/app.js'));
 var addResView = require('sails/lib/hooks/views/res.view');
 var Iso = require('iso').default;
 
+var reactRoutes = require('../jsx/routes.js')
+var reactRouter = require('react-router');
+var match = reactRouter.match;
+var routerContext = reactRouter.RouterContext
+
+
 function reactView(req, res, next) {
   var viewData;
   var iso;
   var state = (req.session && req.session.state) ? req.session.state : {};
-  var reactHtml = ReactDOMServer.renderToString(reactApp({ req: req, state: state }));
-  //TODO some smarter way to find if there react route?
-  iso = new Iso();
-  iso.add(reactHtml, state);
-  viewData = {
-    title: 'Silverbullet',
-    reactHtml: iso.render(),
-  };
-  if (!res.view) {
-    if (!req.options) req.options = {}; // add options to req otherwise addResView fails
-    addResView(req, res, () => {
-      res.view('react', viewData);
-    });
-  } else {
-    res.view('react', viewData);
-  }
+  var routes = reactRoutes
+
+  match( {routes, location: req.url }, function (error, redirectLocation, renderProps ) {
+    // couldnt match request url to react path
+    if ( error ) {
+      // 500
+    }
+
+    // 200
+    else  if ( renderProps){
+      var reactHtml = ReactDOMServer.renderToString(reactApp({ req: req, state: state }));
+      //TODO some smarter way to find if there react route?
+      iso = new Iso();
+      iso.add(reactHtml, state);
+      viewData = {
+        title: 'Silverbullet',
+        reactHtml: iso.render(),
+      };
+      if (!res.view) {
+        if (!req.options) req.options = {}; // add options to req otherwise addResView fails
+        addResView(req, res, () => {
+          res.view('react', viewData);
+        });
+      } else {
+        res.view('react', viewData);
+      }
+    } // end of 200
+    else {
+      return next()
+    }
+  });
 }
 
 
@@ -54,10 +75,10 @@ module.exports.http = {
   *                                                                           *
   ****************************************************************************/
 
-    /*
-    * SB custonMiddleware to add browserify middleware(s)
-    * to certain paths.
-    */
+  /*
+  * SB custonMiddleware to add browserify middleware(s)
+  * to certain paths.
+  */
   customMiddleware: function(app) {
     //serve browserified "jsx" from jsx folder
     app.use('/jsx', browserify(__dirname +'/../jsx', {

@@ -64,7 +64,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    console.log("asdasd", routes)
     return (
             <Provider store={this.store}>
                 <Router history={this.history} routes={routes} />
