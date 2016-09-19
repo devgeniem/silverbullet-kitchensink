@@ -2,7 +2,7 @@
 {<content}
 <!-- Default home page -->
 <div>
-  <p> TODO: informative front page </p>
-  <a href="/foo"> React app </a>
+  <p> TODO: informative front page  </p>
+  <a href="/reactDemo"> React app </a>
 </div>
 {/content}
