@@ -10,6 +10,7 @@ class Home extends React.Component {
   };
 
   render() {
+    console.log("asdasd");
     return (
       <div>
         <h1>React Demo App</h1>
