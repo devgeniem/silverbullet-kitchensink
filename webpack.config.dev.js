@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   debug: true,
@@ -14,7 +15,11 @@ module.exports = {
     filename: '[name].js',
   },
   plugins: [
-    //new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.bundle.[hash].js'),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('development'),
+      },
+    }),
   ],
   module: {
     loaders: [
