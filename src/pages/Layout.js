@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+
 import {Nav, NavItem, Col} from 'react-bootstrap';
 
 class Layout extends React.Component {
@@ -21,8 +22,6 @@ class Layout extends React.Component {
 
         </header>
         <article>
-
-          {children}
         </article>
       </div>
     );
