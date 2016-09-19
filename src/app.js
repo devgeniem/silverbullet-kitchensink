@@ -1,3 +1,5 @@
+/* small testing app to make react router work with sails*/
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, browserHistory, createMemoryHistory } from 'react-router';
@@ -5,11 +7,11 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
+import routes from './routes';
+import * as reducers from './reducers';
 import socketIOClient from 'socket.io-client';
 import sailsIOClient from 'sails.io.js';
 import Iso from 'iso';
-import routes from './routes';
-import * as reducers from './reducers';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -22,21 +24,21 @@ export default class App extends React.Component {
   }
 
   initStoreClientSide() {
-    Iso.bootstrap((state) => {
+    Iso.bootstrap((state, node) => {
       const io = sailsIOClient(socketIOClient);
 
       this.store = createStore(
-        combineReducers({ ...reducers, routing: routerReducer }),
-        state,
-        compose(
-          applyMiddleware(thunk),
-          window.devToolsExtension ? window.devToolsExtension() : f => f
-        )
-      );
+                combineReducers({ ...reducers, routing: routerReducer }),
+                state,
+                compose(
+                  applyMiddleware(thunk),
+                  window.devToolsExtension ? window.devToolsExtension() : f => f
+                )
+            );
 
       this.history = syncHistoryWithStore(browserHistory, this.store);
 
-      //keep server session in sync with store
+            //keep server session in sync with store
       this.store.subscribe(() => {
         const storeState = this.store.getState();
         if (storeState) {
@@ -54,27 +56,27 @@ export default class App extends React.Component {
   initStoreServerSide() {
     const memoryHistory = createMemoryHistory(this.props.req.url);
     this.store = createStore(
-      combineReducers({...reducers, routing: routerReducer}),
-      this.props.state,
-      applyMiddleware(thunk)
-    );
-    this.history = syncHistoryWithStore(memoryHistory, this.store)
+            combineReducers({ ...reducers, routing: routerReducer }),
+            this.props.state,
+            applyMiddleware(thunk)
+        );
+    this.history = syncHistoryWithStore(memoryHistory, this.store);
   }
 
   render() {
     return (
-      <Provider store={this.store}>
-        <Router history={this.history} routes={routes} />
-      </Provider>
-    );
+            <Provider store={this.store}>
+                <Router history={this.history} routes={routes} />
+            </Provider>
+        );
   }
 }
 
 if (process.browser) {
   ReactDOM.render(
-    <App />,
-    document.getElementById('app')
-  );
+      <App />,
+      document.getElementById('app')
+    );
 } else {
   module.exports = App;
 }
