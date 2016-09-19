@@ -67,7 +67,7 @@
     "start": "npm-run-all --parallel start:dev webpack:watch-dev",
     "start:dev": "node app.js",
     "webpack:watch-dev": "webpack --watch --config webpack.development.config",
-    "lint": "eslint ."
+    "lint": "eslint .",
     "pm2-start": "webpack --config webpack.development.config; pm2 start app.js -i 1 --name silverbullet",
     "pm2-stop": "pm2 stop all; pm2 delete all"
   },
