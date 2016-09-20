@@ -2,7 +2,7 @@
 import Hashids from "hashids";
 import bcrypt from "bcrypt-nodejs";
 
-var hashids = new Hashids("DASHBOARD", 6, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+var hashids = new Hashids("TODO", 6, "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
 export default {
     schema: true,
