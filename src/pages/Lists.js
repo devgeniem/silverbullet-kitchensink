@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Button, Glyphicon, Row, Col, Grid, ListGroup} from 'react-bootstrap';
-import List from './List';
+import TodoListItem from './TodoListItem';
 
-class Lists extends React.Component {
+class TodoListItems extends React.Component {
 
   render() {
 
@@ -17,8 +17,8 @@ class Lists extends React.Component {
             <Col xs={12}>
               <ListGroup>
                 {lists.map(list => {
-                    return (<List id={list.id}
-                                  key={list.id}>{list.name}</List>)
+                    return (<TodoListItem id={list.id}
+                                          key={list.id}>{list.name}</TodoListItem>)
                   }
                 )}
               </ListGroup>
@@ -46,8 +46,8 @@ class Lists extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    lists: state.list ? state.list.lists : [],
+    lists: state.Lists ? state.Lists.lists : [],
   };
 }
 
-export default connect(mapStateToProps, {})(Lists);
+export default connect(mapStateToProps, {})(TodoListItems);

@@ -2,14 +2,15 @@ import uuid from 'node-uuid';
 import {removeItemByPropVal} from '../services/utils';
 
 const initialState = {
-  items: []
+  items: [],
 };
 
-export default function createListReducer(state = initialState, action) {
+export default function todoListItemReducer(state = initialState, action) {
   switch (action.type) {
-    case 'ITEM_SAVE':
+    case 'TODO_LIST_ITEM_ADD':
       return Object.assign({}, {items: [...state.items, {id: uuid.v1(), name: action.name}]});
-    case 'ITEM_REMOVE':
+    case 'TODO_LIST_ITEM_REMOVE':
+      console.log(state.items);
       return Object.assign({}, {items: removeItemByPropVal(state.items, 'id', action.id)});
     default:
       return state;

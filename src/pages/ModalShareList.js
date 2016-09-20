@@ -10,11 +10,11 @@ class ModalShareList extends React.Component {
     this.state = {};
   }
 
-  closeModal() {
+  close() {
     this.setState({showModal: false});
   }
 
-  openModal() {
+  open() {
     console.log('OPENING MODAL');
     this.setState({showModal: true});
   }
@@ -23,12 +23,11 @@ class ModalShareList extends React.Component {
 
     return (
       <div>
-        <Button bsStyle="default">
-          <Glyphicon
-            onClick={() => this.openModal()}
-            glyph="share"/> Share list</Button>
+        <Button bsStyle="default"
+                onClick={() => this.open()}>
+          <Glyphicon glyph="share"/> Share list</Button>
 
-        <Modal show={this.state.showModal} onHide={this.closeModal}>
+        <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
             <Modal.Title>Share List</Modal.Title>
           </Modal.Header>
@@ -36,7 +35,7 @@ class ModalShareList extends React.Component {
             adasdsa
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={() => this.closeModal()}>Close</Button>
+            <Button onClick={() => this.close()}>Close</Button>
           </Modal.Footer>
         </Modal>
       </div>

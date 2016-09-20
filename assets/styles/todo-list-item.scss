@@ -1,0 +1,13 @@
+.todo-list-item {
+
+  position: relative;
+  padding: 0 15px;
+
+  .todo-list-item-remove-item {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -5px;
+  }
+
+}

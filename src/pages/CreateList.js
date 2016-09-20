@@ -1,13 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Form, Grid, FormControl, ControlLabel, Button, Glyphicon, Row, Col, Well} from 'react-bootstrap';
-import {saveItem} from '../actions/createListActions';
+import {saveItem, removeItem} from '../actions/createListActions';
+
 import ModalShareList from './ModalShareList';
+import TodoListItem from './TodoListItem';
 
 class CreateList extends React.Component {
 
   static propTypes = {
     saveItem: React.PropTypes.func.isRequired,
+    removeItem: React.PropTypes.func.isRequired
   };
 
   constructor(props) {
@@ -23,9 +26,13 @@ class CreateList extends React.Component {
     this.setState({inputVal: ''});
   }
 
-  render() {
+  handleItemRemoval(id) {
+    this.props.removeItem(id);
+  }
 
-    var {inputs} = this.props;
+
+  render() {
+    var {items} = this.props;
 
     return (
       <div>
@@ -46,9 +53,11 @@ class CreateList extends React.Component {
 
             <Well>
               <ControlLabel>Items</ControlLabel>
-              {inputs.map(input => {
+              {items.map(item => {
                   return (
-                    <Row key={input.id}></Row>
+                    <TodoListItem key={item.id}
+                                  removeFn={(e) => this.handleItemRemoval(item.id)}
+                                  id={item.id}>{item.name}</TodoListItem>
                   );
                 }
               )}
@@ -62,9 +71,9 @@ class CreateList extends React.Component {
                 </Col>
 
                 <Col xs={1}>
-                  <Button bsStyle="primary">
-                    <Glyphicon onClick={() => this.handleSaveButton(this.state.inputVal)}
-                               glyph="plus"/>
+                  <Button bsStyle="primary"
+                          onClick={() => this.handleSaveButton(this.state.inputVal)}>
+                    <Glyphicon glyph="plus"/>
                   </Button>
                 </Col>
               </Row>
@@ -92,10 +101,10 @@ class CreateList extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    inputs: state.createList ? state.createList.inputs : [],
+    items: state.createList ? state.createList.items : [],
   };
 }
 
 export default connect(mapStateToProps, {
-  saveItem
+  saveItem, removeItem
 })(CreateList);
