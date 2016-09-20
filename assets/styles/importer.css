@@ -5807,17 +5807,17 @@ button.close {
   .hidden-print {
     display: none !important; } }
 .todo-button {
-  background: #bb512e;
+  background: #ed4747;
   border: none;
   color: #fff; }
   .todo-button:hover {
     color: #fff;
-    background: #a74829; }
+    background: #eb3030; }
 
 .todo-wrapper input[type=text].form-control {
   border: none;
   box-shadow: none;
-  border-bottom: 1px solid #bb512e;
+  border-bottom: 1px solid #ed4747;
   border-radius: 0;
   padding: 0; }
 
@@ -5832,7 +5832,7 @@ button.close {
       flex: 1; }
     .todo-wrapper .todo-list-item span:last-of-type {
       color: #fff;
-      background: #bb512e;
+      background: #ed4747;
       height: 50px;
       display: flex;
       align-items: center;
@@ -5843,13 +5843,13 @@ button.close {
       border: none; }
       .todo-wrapper .todo-list-item span:last-of-type:hover, .todo-wrapper .todo-list-item span:last-of-type:active {
         color: #fff;
-        background: #a74829; }
+        background: #eb3030; }
 
 .todo-create-list-container .todo-create-list-add-item-container > div {
   display: flex; }
 .todo-create-list-container .todo-create-list-add-item-container .todo-create-list-add-item-button {
   color: #fff;
-  background: #bb512e;
+  background: #ed4747;
   height: 50px;
   display: flex;
   align-items: center;
@@ -5860,7 +5860,7 @@ button.close {
   border: none; }
   .todo-create-list-container .todo-create-list-add-item-container .todo-create-list-add-item-button:hover, .todo-create-list-container .todo-create-list-add-item-container .todo-create-list-add-item-button:active {
     color: #fff;
-    background: #a74829; }
+    background: #eb3030; }
 .todo-create-list-container .todo-create-list-items-container {
   background: #f7f7f7;
   padding: 15px;
@@ -5871,7 +5871,7 @@ button.close {
   margin-top: 15px; }
 
 .todo-wrapper .todo-header-bar {
-  background: #bb512e;
+  background: #ed4747;
   padding: 5px;
   border-bottom: 1px solid #ddd; }
   .todo-wrapper .todo-header-bar h3 {

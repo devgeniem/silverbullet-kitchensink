@@ -12,15 +12,13 @@ export default ({children}) => (
             <h3>Todo</h3>
           </Col>
           <Col xs={11}>
-            <Nav bsStyle="pills" activeKey={1}>
 
-              <Link href="/lists"
-                    eventKey={1}>Lists</Link>
+            <Link to="/"
+                  eventKey={1}>Lists</Link>
 
-              <Link href="/profile"
-                    eventKey={2}>Profile</Link>
+            <Link to="/profile"
+                  eventKey={2}>Profile</Link>
 
-            </Nav>
           </Col>
         </Row>
       </Grid>
