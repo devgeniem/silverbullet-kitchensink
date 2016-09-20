@@ -6,8 +6,10 @@ import TodoListItem from './TodoListItem';
 class TodoListItems extends React.Component {
 
   render() {
+console.log(this.state);
 
-    var AddNewButton = (<Button href="./create-list"><Glyphicon glyph="plus"/> Add a new list</Button>);
+    // FIXME: fix the href
+    var AddNewButton = (<Button href="reactDemo/create-list"><Glyphicon glyph="plus"/> Add a new list</Button>);
     var {lists} = this.props;
 
     if (lists && lists.map) {

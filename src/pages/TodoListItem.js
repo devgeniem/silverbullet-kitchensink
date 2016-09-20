@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 // BOOTSTRAP
-import {ListGroupItem, Glyphicon} from 'react-bootstrap';
+import {ListGroupItem, Glyphicon, Button} from 'react-bootstrap';
 
 
 class TodoListItem extends React.Component {
@@ -24,7 +24,7 @@ class TodoListItem extends React.Component {
     return (
       <ListGroupItem className="todo-list-item">
         <h4>{children}</h4>
-        <Glyphicon glyph="remove-sign"
+        <Glyphicon glyph="remove"
                    className="todo-list-item-remove-item"
                    onClick={() => this.handleRemove()}/>
       </ListGroupItem>
