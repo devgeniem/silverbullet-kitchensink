@@ -41,13 +41,9 @@ export default {
      * @apiName create user
      * @apiGroup User
      *
-     * @apiParam {String} role Role (admin/manager)
-     * @apiParam {String} firstname Firstname
-     * @apiParam {String} lastname Lastname
-     * @apiParam {String} title Title
+     * @apiParam {String} role Role (admin/user)
+     * @apiParam {String} name Name
      * @apiParam {String} email Email
-     * @apiParam {String} photo Profile photo as base64 encoded string
-     * @apiParam {String} organization Organization ID
      *
      * @apiSuccess {Object} User
      *
@@ -78,10 +74,9 @@ export default {
      * @apiGroup User
      *
      * @apiParam {String} id User ID
-     * @apiParam {String} role Role (admin/manager)
+     * @apiParam {String} role Role (admin/user)
      * @apiParam {String} email Email
      * @apiParam {String} name Name
-     * @apiParam {String} photo Profile photo as base64 encoded string
      *
      * @apiSuccess {Object} Updated user
      *
