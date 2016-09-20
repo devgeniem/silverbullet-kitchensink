@@ -31,9 +31,6 @@ class List extends React.Component {
 }
 
 function mapStateToProps(state) {
-
-  console.log(state);
-
   return {
     lists: state.list ? state.list.lists : [],
   };

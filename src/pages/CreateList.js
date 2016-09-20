@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Form, Grid, FormControl, ControlLabel, Button, Glyphicon, Row, Col, Well} from 'react-bootstrap';
 import {saveItem} from '../actions/createListActions';
+import ModalShareList from './ModalShareList';
 
 class CreateList extends React.Component {
 
@@ -10,6 +11,7 @@ class CreateList extends React.Component {
   };
 
   constructor(props) {
+
     super(props);
     this.state = {
       inputVal: ''
@@ -17,7 +19,6 @@ class CreateList extends React.Component {
   }
 
   handleSaveButton(name) {
-    console.log('handleState', name);
     this.props.saveItem(name);
     this.setState({inputVal: ''});
   }
@@ -67,18 +68,23 @@ class CreateList extends React.Component {
                   </Button>
                 </Col>
               </Row>
-
             </Well>
 
+
             <Row>
-              <Col xs={12}>
+              <Col xs={1}>
                 <Button bsStyle="success">
                   <Glyphicon glyph="save"/> Save</Button>
+              </Col>
+              <Col xs={1}>
+                <ModalShareList></ModalShareList>
               </Col>
             </Row>
           </Form>
 
         </Grid>
+
+
       </div>
     );
   }

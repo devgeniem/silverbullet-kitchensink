@@ -1,15 +1,16 @@
-export function saveItem(name) {
+export function addUser(name) {
+
   return (dispatch) =>
     dispatch({
-      type: 'ITEM_SAVE',
+      type: 'USER_ADD',
       name
     });
 }
 
-export function removeItem(id) {
+export function removeUser(id) {
   return (dispatch) =>
     dispatch({
-      type: 'ITEM_REMOVE',
+      type: 'USER_REMOVE',
       id,
     });
 }
