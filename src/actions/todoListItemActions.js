@@ -1,6 +1,6 @@
 import api from '../services/api';
 
-/*export function addTodoListItem(name) {
+export function addTodoListItem(name) {
   return (dispatch) =>
     api.post('/list-item', name)
       .then(savedItem =>
@@ -19,7 +19,7 @@ import api from '../services/api';
 
 export function removeTodoListItem(id) {
   return (dispatch) =>
-    api.del('/order/'+id)
+    api.del('/list-item/'+id)
       .then(() =>
         dispatch({
           type: 'TODO_LIST_ITEM_REMOVE',
@@ -33,8 +33,8 @@ export function removeTodoListItem(id) {
         })
       );
 }
-*/
 
+/*
 export function addTodoListItem(name) {
   return (dispatch) =>
     dispatch({
@@ -50,3 +50,4 @@ export function removeTodoListItem(id) {
       id,
     });
 }
+*/
