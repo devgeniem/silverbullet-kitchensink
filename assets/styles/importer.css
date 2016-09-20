@@ -5806,23 +5806,61 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
-.todo-list-item {
-  position: relative;
-  padding: 0 15px; }
-  .todo-list-item span {
-    padding: 10px 0;
-    display: block; }
-  .todo-list-item .todo-list-item-remove-item {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    display: block;
-    border: 1px solid #ddd;
-    padding: 8px;
-    margin-top: -16px;
-    border-radius: 18px;
-    cursor: pointer; }
+.todo-button {
+  background: #bb512e;
+  border: none;
+  color: #fff; }
+  .todo-button:hover {
+    color: #fff;
+    background: #a74829; }
 
+.todo-wrapper input[type=text].form-control {
+  border: none;
+  box-shadow: none;
+  border-bottom: 1px solid #bb512e;
+  border-radius: 0;
+  padding: 0; }
+
+.todo-wrapper .todo-list-item {
+  position: relative;
+  padding: 5px 15px;
+  display: flex;
+  align-items: center; }
+  .todo-wrapper .todo-list-item span {
+    padding: 10px 0; }
+    .todo-wrapper .todo-list-item span:first-of-type {
+      flex: 1; }
+    .todo-wrapper .todo-list-item span:last-of-type {
+      color: #fff;
+      background: #bb512e;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      width: 50px;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none; }
+      .todo-wrapper .todo-list-item span:last-of-type:hover, .todo-wrapper .todo-list-item span:last-of-type:active {
+        color: #fff;
+        background: #a74829; }
+
+.todo-create-list-container .todo-create-list-add-item-container > div {
+  display: flex; }
+.todo-create-list-container .todo-create-list-add-item-container .todo-create-list-add-item-button {
+  color: #fff;
+  background: #bb512e;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  width: 50px;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none; }
+  .todo-create-list-container .todo-create-list-add-item-container .todo-create-list-add-item-button:hover, .todo-create-list-container .todo-create-list-add-item-container .todo-create-list-add-item-button:active {
+    color: #fff;
+    background: #a74829; }
 .todo-create-list-container .todo-create-list-items-container {
   background: #f7f7f7;
   padding: 15px;
@@ -5833,10 +5871,12 @@ button.close {
   margin-top: 15px; }
 
 .todo-wrapper .todo-header-bar {
-  background: #f7f7f7;
+  background: #bb512e;
   padding: 5px;
   border-bottom: 1px solid #ddd; }
   .todo-wrapper .todo-header-bar h3 {
     margin: 0; }
+.todo-wrapper .todo-main-content {
+  margin-top: 15px; }
 
 /*# sourceMappingURL=importer.css.map */

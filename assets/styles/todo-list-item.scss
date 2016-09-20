@@ -1,23 +1,26 @@
-.todo-list-item {
+.todo-wrapper {
+  .todo-list-item {
 
-  position: relative;
-  padding: 0 15px;
+    position: relative;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
 
-  span {
-    padding: 10px 0;
-    display: block;
-  }
+    span {
 
-  .todo-list-item-remove-item {
-    position: absolute;
-    right: 5px;
-    top: 50%;
-    display: block;
-    border: 1px solid #ddd;
-    padding: 8px;
-    margin-top: -16px;
-    border-radius: 18px;
-    cursor: pointer;
+      padding: 10px 0;
+
+      &:first-of-type {
+        flex: 1;
+      }
+
+      // remove button
+      &:last-of-type {
+        @include roundButton($red, $white);
+      }
+
+    }
+
   }
 
 }

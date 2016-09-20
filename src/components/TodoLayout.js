@@ -1,5 +1,6 @@
 import React from 'react';
-import {Nav, NavItem, Grid, Row, Col} from 'react-bootstrap';
+import {Grid, Row, Col} from 'react-bootstrap';
+import {Link} from 'react-router';
 
 export default ({children}) => (
   <div className="todo-wrapper">
@@ -13,11 +14,11 @@ export default ({children}) => (
           <Col xs={11}>
             <Nav bsStyle="pills" activeKey={1}>
 
-              <NavItem href="/lists"
-                       eventKey={1}>Lists</NavItem>
+              <Link href="/lists"
+                    eventKey={1}>Lists</Link>
 
-              <NavItem href="/profile"
-                       eventKey={2}>Profile</NavItem>
+              <Link href="/profile"
+                    eventKey={2}>Profile</Link>
 
             </Nav>
           </Col>

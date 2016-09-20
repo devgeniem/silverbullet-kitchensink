@@ -1,0 +1,11 @@
+.todo-wrapper {
+  input[type=text] {
+    &.form-control {
+      border: none;
+      box-shadow: none;
+      border-bottom: 1px solid $red;
+      border-radius: 0;
+      padding: 0;
+    }
+  }
+}

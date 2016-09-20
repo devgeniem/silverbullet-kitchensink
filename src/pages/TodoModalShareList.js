@@ -23,7 +23,7 @@ class TodoModalShareList extends React.Component {
 
     return (
       <div>
-        <Button bsStyle="default"
+        <Button className="todo-button"
                 onClick={() => this.open()}>
           <Glyphicon glyph="share"/> Share list</Button>
 
