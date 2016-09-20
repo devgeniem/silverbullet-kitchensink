@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Button, Glyphicon, Row, Col, Grid, ListGroup} from 'react-bootstrap';
 import TodoListItem from './TodoListItem';
 
-class TodoListItems extends React.Component {
+class TodoMain extends React.Component {
 
   render() {
 console.log(this.state);
@@ -52,4 +52,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {})(TodoListItems);
+export default connect(mapStateToProps, {})(TodoMain);

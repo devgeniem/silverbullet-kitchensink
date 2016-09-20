@@ -3,10 +3,10 @@ import {connect} from 'react-redux';
 import {Form, Grid, FormControl, ControlLabel, Button, Glyphicon, Row, Col, Well, FormGroup} from 'react-bootstrap';
 import {saveItem, removeItem} from '../actions/createListActions';
 
-import ModalShareList from './ModalShareList';
 import TodoListItem from './TodoListItem';
+import TodoModalShareList from './TodoModalShareList';
 
-class CreateList extends React.Component {
+class TodoCreateList extends React.Component {
 
   static propTypes = {
     saveItem: React.PropTypes.func.isRequired,
@@ -112,7 +112,7 @@ class CreateList extends React.Component {
                     <Glyphicon glyph="save"/> Save</Button>
                 </Col>
                 <Col xs={1}>
-                  <ModalShareList></ModalShareList>
+                  <TodoModalShareList></TodoModalShareList>
                 </Col>
               </Row>
             </FormGroup>
@@ -134,4 +134,4 @@ function mapStateToProps(state) {
 
 export default connect(mapStateToProps, {
   saveItem, removeItem
-})(CreateList);
+})(TodoCreateList);
