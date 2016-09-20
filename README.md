@@ -2,21 +2,35 @@
 
 A [Sails](http://sailsjs.org) application
 
-Features:
-- Isomorphic react redux application in sails environment
+## About
+
+This is a starter boilerplate app using [Sails](http://sailsjs.org) and [React](https://facebook.github.io/react/).
+
+## Goals
+- Universal (isomorphic) react redux application in sails environment
 - Sails remains usable for API and static pages
-- redux store
-- react router
-- webpack
+- Proper development and production builds
+- Use Redux and React Router along with Sails routing
+
+## Technologies used
+- Sails
+- React
+- Redux
+- React Router
+- Webpack
+
+## Added funtionality
+- Sass support
+- DustJs support
 
 ## Running the application
-- run `npm install on your machine`
-- for development, `npm start` will start the sails server and webpack watcher,
+- Run `npm install`
+- `npm start` will start the sails server and webpack watcher,
   after this the react application can be developed without restarting the sails server
-- nodemon is also available, via `npm run-script nodemon`, restarting the sails
-  server as  files are changed while also rebuilding jsx resources in src folder,
-  using the dev configuration.
-
+- Nodemon is also available, via `npm run-script nodemon`, restarting the sails
+  server as files are changed while also rebuilding jsx resources in src folder,using the dev configuration.
+- Production build is started with `npm run pm2-start` which runs the app with pm2. Stop the server with `npm run pm2-stop`.
+- Build uses `NODE_ENV` environment variable to choose how to build the application. Use `development` for dev build and `production` for build optimized for production.
 
 ## Views
 
@@ -25,12 +39,11 @@ We are currently using dust templates, for more options and information, read [t
 
 ## Serverside redux store (socket.io)
 
-redux store is completely syncend to serverside session. see example react application
-how to connect and use it.
+Redux store is completely syncend to serverside session. see example react application how to connect and use it.
 
 ## Sails routes and views still work as expected
 
-the order in which react router and sails router are run can be adjusted from
+The order in which react router and sails router are run can be adjusted from
 confing/http.js
 
 ## Recommended Sublime Text configuration
