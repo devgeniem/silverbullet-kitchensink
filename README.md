@@ -1,37 +1,47 @@
 # Silver bullet boilerplate
 a [Sails](http://sailsjs.org) application
 
-## sails.js, react, react-redux, s
+## About
 
-Koska  Sails react boilerplatet olivat "susia", teimme uuden.
+This is a starter boilerplate app using [Sails](http://sailsjs.org) and [React](https://facebook.github.io/react/).
 
-Tavoitteet:
-- aidosti isomorfinen React redux ympästö joka ei muuta sails projektin rakennetta
-- Sails toimii kuten ennenkin
-- redux store
-- redux react router
-- keep it simple with browserify (no oligatory webpack)
+## Goal
 
-## handle react routes via http.config no new node_modules
+- Universal (isomorphic) sails app with react support
+- Keep all Sails features working
+- Proper development and production builds
+- Use Redux and React Router along with Sails routing
+
+## Technologies used
+
+- Sails
+- React
+- Redux
+- React Router
+- Webpack
+
+## Added funtionality
+
+- Sass support
+- DustJs support
+
+## Handle react routes via http.config no new node_modules
 
 Most changes reside in config/http.js
 
+A simpler way to render react with in sails, same source in the server side and client side.
 
-a simpler way to render react with in sails, using browserify-middleware to babelify clientside
-from same source as serverside.
+## Views
 
-## views
+See .dust and .ejs examples how react application is embedded within view
 
-see .dust and .ejs examples how react application is embedded within view
+## Serverside redux store (socket.io)
 
-## serverside redux store (socket.io)
+Redux store is completely synced to serverside session. See example react application how to connect and use it.
 
-redux store is completely syncend to serverside session. see example react application
-how to connect and use it.
+## Sails routes and views still work as expected
 
-## sails routes and views still work as expected
-
-the order in which react router and sails router are run can be adjusted from
+The order in which react router and sails router are run can be adjusted from
 confing/http.js
 
 ## Recommended Sublime Text configuration
