@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Modal, Button, Glyphicon} from 'react-bootstrap';
 import {saveItem} from '../actions/modalShareListActions';
 
-class ModalShareList extends React.Component {
+class TodoModalShareList extends React.Component {
 
   constructor(props) {
     super(props);
@@ -48,4 +48,4 @@ function mapStateToProps(state) {
   return {};
 }
 
-export default connect(mapStateToProps, {})(ModalShareList);
+export default connect(mapStateToProps, {})(TodoModalShareList);

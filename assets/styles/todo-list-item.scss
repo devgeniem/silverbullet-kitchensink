@@ -3,9 +3,14 @@
   position: relative;
   padding: 0 15px;
 
+  span {
+    padding: 10px 0;
+    display: block;
+  }
+
   .todo-list-item-remove-item {
     position: absolute;
-    right: 10px;
+    right: 5px;
     top: 50%;
     display: block;
     border: 1px solid #ddd;
