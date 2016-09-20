@@ -22,8 +22,8 @@ class CreateList extends React.Component {
   }
 
   saveDisabled() {
-    if (this.state.listTitle) return false;
-    return true;
+    return !(this.state.listTitle &&
+    this.props.items.length > 0);
   }
 
   handleSaveButton() {
@@ -68,8 +68,29 @@ class CreateList extends React.Component {
               </Row>
 
               <br />
+              <ControlLabel>Add item</ControlLabel>
 
-              <Well>
+
+              <Row className="todo-create-list-add-item-container">
+
+                <Col xs={11}>
+
+                  <FormControl value={this.state.itemTitle}
+                               type="text"
+                               placeholder="Item title"
+                               onChange={(e) => this.setState({itemTitle: e.target.value})}/>
+                </Col>
+
+                <Col xs={1}>
+                  <Button bsStyle="primary"
+                          disabled={!this.state.itemTitle}
+                          onClick={() => this.handleAddItemButton(this.state.itemTitle)}>
+                    <Glyphicon glyph="plus"/>
+                  </Button>
+                </Col>
+              </Row>
+
+              {items.length > 0 ? <div className="todo-create-list-items-container">
                 <ControlLabel>Items</ControlLabel>
                 {items.map(item => {
                     return (
@@ -79,28 +100,10 @@ class CreateList extends React.Component {
                     );
                   }
                 )}
-
-                <Row className="todo-create-list-add-item-container">
-
-                  <Col xs={11}>
-                    <FormControl value={this.state.itemTitle}
-                                 type="text"
-                                 placeholder="Item title"
-                                 onChange={(e) => this.setState({itemTitle: e.target.value})}/>
-                  </Col>
-
-                  <Col xs={1}>
-                    <Button bsStyle="primary"
-                            disabled={!this.state.itemTitle}
-                            onClick={() => this.handleAddItemButton(this.state.itemTitle)}>
-                      <Glyphicon glyph="plus"/>
-                    </Button>
-                  </Col>
-                </Row>
-              </Well>
+              </div> : null }
 
 
-              <Row>
+              <Row className="todo-create-list-control-buttons">
                 <Col xs={1}>
                   <Button bsStyle="success"
                           onClick={() => this.handleSaveButton()}

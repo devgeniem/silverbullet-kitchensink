@@ -1,5 +1,15 @@
 .todo-create-list-container {
   .todo-create-list-add-item-container {
+
+  }
+  .todo-create-list-items-container {
+    background: #f7f7f7;
+    padding: 15px;
+    margin-top: 15px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+  }
+  .todo-create-list-control-buttons {
     margin-top: 15px;
   }
 }
