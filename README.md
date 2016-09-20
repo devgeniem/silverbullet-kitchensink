@@ -1,8 +1,6 @@
 # Silver bullet boilerplate
+
 A [Sails](http://sailsjs.org) application
-
-## sails.js, react, react-redux, s
-
 
 Features:
 - Isomorphic react redux application in sails environment
@@ -12,25 +10,25 @@ Features:
 - webpack
 
 ## Running the application
-- run npm install on your machine
-- for development, npm start will start the sails server and webpack watcher,
-  after this the react application can be developed without restarting the sails
-  server
-- nodemon is also available, restarting the sails server as files are changed
-  while also rebuilding jsx resources in src folder using the dev configuration.
+- run `npm install on your machine`
+- for development, `npm start` will start the sails server and webpack watcher,
+  after this the react application can be developed without restarting the sails server
+- nodemon is also available, via `npm run-script nodemon`, restarting the sails
+  server as  files are changed while also rebuilding jsx resources in src folder,
+  using the dev configuration.
 
 
-## views
+## Views
 
 Sails - views are still enabled and will take precedence over the react routing.
 We are currently using dust templates, for more options and information, read [the sails documentation on views](http://sailsjs.org/documentation/concepts/views)
 
-## serverside redux store (socket.io)
+## Serverside redux store (socket.io)
 
 redux store is completely syncend to serverside session. see example react application
 how to connect and use it.
 
-## sails routes and views still work as expected
+## Sails routes and views still work as expected
 
 the order in which react router and sails router are run can be adjusted from
 confing/http.js
