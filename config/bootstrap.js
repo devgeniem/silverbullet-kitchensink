@@ -12,8 +12,7 @@
 var users = [{
   email: 'super@example.com',
   role: 'admin',
-  firstname: 'Super',
-  lastname: 'Admin',
+  name: 'SuperAdmin',
   password: 'super',
 },
 ];
@@ -30,11 +29,10 @@ function ensureUser(user) {
         User.create(user)
         .then((created) => {
           created.newPassword = password;
-          created.active = true;
           return created.save();
         })
         .then(saved => {
-          sails.log.info(`User ${user.firstname} ${user.lastname} <${user.email}> created`);
+          sails.log.info(`User ${user.name} <${user.email}> created`);
           resolve();
         })
         .catch(err => {
