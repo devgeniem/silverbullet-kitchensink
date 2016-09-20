@@ -16,11 +16,12 @@
         //main title
         &:first-of-type {
           font-weight: 600;
+          font-size: $med-font-size;
         }
         // subtitle
         &:last-of-type {
           color: $grey-font-color;
-          font-size: 0.95em;
+          font-size: $small-font-size;
         }
       }
 

@@ -1,3 +1,7 @@
+$med-font-size: 1.2em;
+$small-font-size: 0.95em;
+$large-font-size: 1.5em;
+
 @mixin roundButton($bg: red, $color: white) {
 
   color: $color;
@@ -23,6 +27,17 @@
 
 .todo-button {
 
+  @mixin hoverColors() {
+    &:hover, &:active, &:focus {
+      color: $white;
+      outline: none;
+      background: $dark-red;
+      .glyphicon {
+        background: darken($dark-red, 5%);
+      }
+    }
+  }
+
   align-content: center;
   display: flex;
   background: $red;
@@ -33,7 +48,9 @@
   align-items: center;
   font-size: 1.2em;
   font-weight: 600;
+  min-width: 150px;
   transition: all 150ms linear;
+  margin-right: 5px;
 
   .glyphicon {
     margin-right: 5px;
@@ -48,13 +65,9 @@
     top: 0;
   }
 
-  &:hover, &:active, &:focus {
-    color: $white;
-    outline: none;
-    background: $dark-red;
-    .glyphicon {
-      background: darken($dark-red, 5%);
-    }
+  @include hoverColors();
+  &[disabled] {
+    @include hoverColors();
   }
 
 }

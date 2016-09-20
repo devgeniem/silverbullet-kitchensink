@@ -59,17 +59,14 @@ class TodoCreateList extends React.Component {
             <FormGroup>
               <Row>
                 <Col xs={12}>
-                  <ControlLabel>Title</ControlLabel>
                   <FormControl value={this.state.listTitle}
                                type="text"
-                               placeholder="Enter title"
+                               placeholder="List title"
                                onChange={(e) => this.setState({listTitle: e.target.value})}/>
                 </Col>
               </Row>
 
               <br />
-              <ControlLabel>Add item</ControlLabel>
-
 
               <Row className="todo-create-list-add-item-container">
 
@@ -77,7 +74,7 @@ class TodoCreateList extends React.Component {
 
                   <FormControl value={this.state.itemTitle}
                                type="text"
-                               placeholder="Item title"
+                               placeholder="Item"
                                onChange={(e) => this.setState({itemTitle: e.target.value})}/>
 
                   <Button className="todo-create-list-add-item-button"
@@ -90,7 +87,6 @@ class TodoCreateList extends React.Component {
               </Row>
 
               {items.length > 0 ? <div className="todo-create-list-items-container">
-                <ControlLabel>Items</ControlLabel>
                 {items.map(item => {
                     return (
                       <TodoListItem key={item.id}
@@ -103,14 +99,12 @@ class TodoCreateList extends React.Component {
 
 
               <Row className="todo-create-list-control-buttons">
-                <Col xs={1}>
+                <Col xs={12}>
                   <Button className="todo-button"
                           onClick={() => this.handleSaveButton()}
                           disabled={this.saveDisabled()}>
 
                     <Glyphicon glyph="save"/> Save</Button>
-                </Col>
-                <Col xs={1}>
                   <TodoModalShareList></TodoModalShareList>
                 </Col>
               </Row>

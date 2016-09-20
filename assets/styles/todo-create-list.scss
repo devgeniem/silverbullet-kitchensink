@@ -18,6 +18,9 @@
   }
   .todo-create-list-control-buttons {
     margin-top: 15px;
+    > div {
+      display: flex;
+    }
   }
 
 }
