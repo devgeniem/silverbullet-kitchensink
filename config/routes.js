@@ -35,6 +35,8 @@ module.exports.routes = {
     view: 'homepage'
   },
   'POST /api/session': 'SessionController.session',
+  'POST /api/auth/user': 'AuthController.user',
+
 
   /***************************************************************************
   *                                                                          *
