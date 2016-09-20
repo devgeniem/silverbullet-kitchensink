@@ -6,8 +6,8 @@ import { removeNotification } from '../actions/notificationActions';
 class Notification extends React.Component {
 
   static propTypes = {
-    removeNotification: React.PropTypes.function.isRequired,
-    notifications: React.PropTypes.arr.isRequired,
+    removeNotification: React.PropTypes.func.isRequired,
+    notifications: React.PropTypes.array.isRequired,
   };
 
   render() {
