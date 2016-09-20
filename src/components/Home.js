@@ -1,10 +1,3 @@
 import React from 'react';
 
-export default class Foo extends React.Component {
-  console.log("sadasd");
-  render() {
-    return (
-      <div>home</div>
-    );
-  }
-}
+export default () => <h1>Home</h1>;
