@@ -1,4 +1,4 @@
-# Silver bullet boilerplate
+# Silver bullet - The ultimate Sails/React boilerplate
 
 A [Sails](http://sailsjs.org) application
 
