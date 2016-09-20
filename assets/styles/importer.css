@@ -5807,12 +5807,34 @@ button.close {
   .hidden-print {
     display: none !important; } }
 .todo-button {
+  align-content: center;
+  display: flex;
   background: #ed4747;
   border: none;
-  color: #fff; }
-  .todo-button:hover {
+  color: #fff;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition: all 150ms linear; }
+  .todo-button .glyphicon {
+    margin-right: 5px;
+    display: flex;
+    background: #a93d3d;
+    height: 30px;
+    width: 30px;
+    transition: all 150ms linear;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    top: 0; }
+  .todo-button:hover, .todo-button:active, .todo-button:focus {
     color: #fff;
-    background: #eb3030; }
+    outline: none;
+    background: #a93d3d; }
+    .todo-button:hover .glyphicon, .todo-button:active .glyphicon, .todo-button:focus .glyphicon {
+      background: #963636; }
 
 .todo-wrapper input[type=text].form-control {
   border: none;
@@ -5826,24 +5848,31 @@ button.close {
   padding: 5px 15px;
   display: flex;
   align-items: center; }
-  .todo-wrapper .todo-list-item span {
-    padding: 10px 0; }
-    .todo-wrapper .todo-list-item span:first-of-type {
-      flex: 1; }
-    .todo-wrapper .todo-list-item span:last-of-type {
+  .todo-wrapper .todo-list-item > div {
+    flex: 1;
+    flex-direction: column;
+    display: flex; }
+    .todo-wrapper .todo-list-item > div > span:first-of-type {
+      font-weight: 600; }
+    .todo-wrapper .todo-list-item > div > span:last-of-type {
+      color: #888;
+      font-size: 0.95em; }
+  .todo-wrapper .todo-list-item .glyphicon {
+    color: #fff;
+    background: #ed4747;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    width: 50px;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: all 150ms linear; }
+    .todo-wrapper .todo-list-item .glyphicon:hover, .todo-wrapper .todo-list-item .glyphicon:active {
       color: #fff;
-      background: #ed4747;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      width: 50px;
-      justify-content: center;
-      border-radius: 50%;
-      cursor: pointer;
-      border: none; }
-      .todo-wrapper .todo-list-item span:last-of-type:hover, .todo-wrapper .todo-list-item span:last-of-type:active {
-        color: #fff;
-        background: #eb3030; }
+      background: #a93d3d; }
 
 .todo-create-list-container .todo-create-list-add-item-container > div {
   display: flex; }
@@ -5857,10 +5886,12 @@ button.close {
   justify-content: center;
   border-radius: 50%;
   cursor: pointer;
-  border: none; }
+  border: none;
+  outline: none;
+  transition: all 150ms linear; }
   .todo-create-list-container .todo-create-list-add-item-container .todo-create-list-add-item-button:hover, .todo-create-list-container .todo-create-list-add-item-container .todo-create-list-add-item-button:active {
     color: #fff;
-    background: #eb3030; }
+    background: #a93d3d; }
 .todo-create-list-container .todo-create-list-items-container {
   background: #f7f7f7;
   padding: 15px;
@@ -5872,6 +5903,7 @@ button.close {
 
 .todo-wrapper .todo-header-bar {
   background: #ed4747;
+  border-bottom: 1px solid #a93d3d;
   height: 50px;
   display: flex;
   align-items: center; }

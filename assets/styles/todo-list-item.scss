@@ -6,21 +6,29 @@
     display: flex;
     align-items: center;
 
-    span {
+    > div {
 
-      padding: 10px 0;
+      flex: 1;
+      flex-direction: column;
+      display: flex;
 
-      &:first-of-type {
-        flex: 1;
-      }
-
-      // remove button
-      &:last-of-type {
-        @include roundButton($red, $white);
+      > span {
+        //main title
+        &:first-of-type {
+          font-weight: 600;
+        }
+        // subtitle
+        &:last-of-type {
+          color: $grey-font-color;
+          font-size: 0.95em;
+        }
       }
 
     }
 
+    // Da removah buttonah
+    .glyphicon {
+      @include roundButton($red, $white);
+    }
   }
-
 }

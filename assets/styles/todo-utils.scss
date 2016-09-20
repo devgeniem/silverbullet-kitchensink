@@ -1,4 +1,5 @@
-@mixin roundButton($bg, $color) {
+@mixin roundButton($bg: red, $color: white) {
+
   color: $color;
   background: $bg;
   height: 50px;
@@ -9,23 +10,51 @@
   border-radius: 50%;
   cursor: pointer;
   border: none;
+  outline: none;
+  transition: all 150ms linear;
 
   &:hover, &:active {
     color: $white;
-    background: darken($red, 5%);
+    background: $dark-red;
+
   }
 
 }
 
 .todo-button {
 
+  align-content: center;
+  display: flex;
   background: $red;
   border: none;
   color: $white;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition: all 150ms linear;
 
-  &:hover {
+  .glyphicon {
+    margin-right: 5px;
+    display: flex;
+    background: $dark-red;
+    height: 30px;
+    width: 30px;
+    transition: all 150ms linear;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    top: 0;
+  }
+
+  &:hover, &:active, &:focus {
     color: $white;
-    background: darken($red, 5%);
+    outline: none;
+    background: $dark-red;
+    .glyphicon {
+      background: darken($dark-red, 5%);
+    }
   }
 
 }

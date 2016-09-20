@@ -2,6 +2,7 @@
   .todo-header-bar {
 
     background: $red;
+    border-bottom: 1px solid $dark-red;
     height: 50px;
     display: flex;
     align-items: center;
@@ -14,6 +15,7 @@
     img {
       max-width: 90px;
     }
+
     a {
       color: $white;
       font-size: 1.5rem;

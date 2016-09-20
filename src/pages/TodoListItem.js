@@ -19,10 +19,14 @@ class TodoListItem extends React.Component {
   render() {
 
     var {children} = this.props;
+    console.log(this.props);
 
     return (
       <ListGroupItem className="todo-list-item">
-        <span>{children}</span>
+        <div className="todo-list-item-title">
+          <span>{children}</span>
+          <span>Mock date</span>
+        </div>
         <Glyphicon glyph="remove"
                    className="todo-list-item-remove-item"
                    onClick={() => this.handleRemove()}/>

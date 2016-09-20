@@ -9,17 +9,12 @@ export default ({children}) => (
       <Grid>
         <Row>
           <Col xs={1}>
-            <Link to="/"
-                  eventKey={1}><img src="../images/logo.svg"
-                                    alt=""/></Link>
+            <Link to="/"><img src="../images/logo.svg"
+                              alt=""/></Link>
           </Col>
           <Col xs={11}
                className="todo-header-nav-items">
-
-
-            <Link to="/profile"
-                  eventKey={2}>Profile</Link>
-
+            <Link to="/profile">Profile</Link>
           </Col>
         </Row>
       </Grid>
