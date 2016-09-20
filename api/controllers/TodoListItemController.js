@@ -18,7 +18,7 @@ module.exports = {
    */
   find: function (req, res) {
     var params = req.params.all();
-    TodoListItem.find(criterias).sort('createdAt DESC')
+    TodoListItem.find({}).sort('createdAt DESC')
       .then(res.ok)
       .catch(res.serverError);
   },
