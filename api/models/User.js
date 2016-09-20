@@ -33,6 +33,11 @@ export default {
             return obj;
         }
     },
+    beforeCreate: function(user, next) {
+        // Encrypt new password
+        user.encryptedPassword = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
+        next();
+    },
     beforeUpdate: function(newUserData, next) {
         //user id has to be in update request body, see policies.js
 
