@@ -1,35 +1,34 @@
 # Silver bullet boilerplate
-a [Sails](http://sailsjs.org) application
 
-## sails.js, react, react-redux, s
+A [Sails](http://sailsjs.org) application
 
-Koska  Sails react boilerplatet olivat "susia", teimme uuden.
-
-Tavoitteet:
-- aidosti isomorfinen React redux ympästö joka ei muuta sails projektin rakennetta
-- Sails toimii kuten ennenkin
+Features:
+- Isomorphic react redux application in sails environment
+- Sails remains usable for API and static pages
 - redux store
-- redux react router
-- keep it simple with browserify (no oligatory webpack)
+- react router
+- webpack
 
-## handle react routes via http.config no new node_modules
+## Running the application
+- run `npm install on your machine`
+- for development, `npm start` will start the sails server and webpack watcher,
+  after this the react application can be developed without restarting the sails server
+- nodemon is also available, via `npm run-script nodemon`, restarting the sails
+  server as  files are changed while also rebuilding jsx resources in src folder,
+  using the dev configuration.
 
-Most changes reside in config/http.js
 
+## Views
 
-a simpler way to render react with in sails, using browserify-middleware to babelify clientside
-from same source as serverside.
+Sails - views are still enabled and will take precedence over the react routing.
+We are currently using dust templates, for more options and information, read [the sails documentation on views](http://sailsjs.org/documentation/concepts/views)
 
-## views
-
-see .dust and .ejs examples how react application is embedded within view
-
-## serverside redux store (socket.io)
+## Serverside redux store (socket.io)
 
 redux store is completely syncend to serverside session. see example react application
 how to connect and use it.
 
-## sails routes and views still work as expected
+## Sails routes and views still work as expected
 
 the order in which react router and sails router are run can be adjusted from
 confing/http.js

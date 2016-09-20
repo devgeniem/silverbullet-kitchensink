@@ -67,6 +67,7 @@
     "start": "npm-run-all --parallel start:app webpack:watch",
     "start:app": "node app.js",
     "webpack:watch": "webpack --watch",
+    "nodemon": "nodemon ./nodemonWrapper.js --ignore 'dev/*' --ignore README",
     "lint": "eslint .",
     "pm2-start": "webpack; pm2 start app.js -i 1 --name silverbullet",
     "pm2-stop": "pm2 stop all; pm2 delete all"
@@ -86,6 +87,7 @@
     "eslint-plugin-import": "^1.15.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.2.2",
-    "grunt-contrib-sass": "^1.0.0"
+    "grunt-contrib-sass": "^1.0.0",
+    "nodemon": "^1.10.2"
   }
 }
