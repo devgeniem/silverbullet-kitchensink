@@ -20,6 +20,7 @@ import Iso from 'iso';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    console.log(reducers);
     if (process.browser) {
       this.initStoreClientSide();
     } else {

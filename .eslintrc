@@ -31,15 +31,7 @@
   "globals": {
     "_": true,
     "sails": true,
-    "ContactPerson": true,
-    "Customer": true,
-    "Insourcing": true,
-    "Maintenance": true,
-    "Order": true,
-    "Organization": true,
-    "Project": true,
-    "ProjectStatus": true,
-    "Settings": true,
+    "TodoListItem": true,
     "User": true,
   },
 }

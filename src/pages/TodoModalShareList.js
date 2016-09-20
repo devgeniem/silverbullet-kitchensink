@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {Modal, Button, Glyphicon} from 'react-bootstrap';
 //import {saveItem} from '../actions/modalShareListActions';
 
-class ModalShareList extends React.Component {
+class TodoModalShareList extends React.Component {
 
   constructor(props) {
     super(props);
@@ -23,7 +23,7 @@ class ModalShareList extends React.Component {
 
     return (
       <div>
-        <Button bsStyle="default"
+        <Button className="todo-button"
                 onClick={() => this.open()}>
           <Glyphicon glyph="share"/> Share list</Button>
 
@@ -48,4 +48,4 @@ function mapStateToProps(state) {
   return {};
 }
 
-export default connect(mapStateToProps, {})(ModalShareList);
+export default connect(mapStateToProps, {})(TodoModalShareList);

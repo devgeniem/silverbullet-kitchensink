@@ -2,6 +2,7 @@ import { createReducer } from 'reduxsauce';
 import Immutable from 'seamless-immutable';
 import R from 'ramda';
 import Types from '../Actions/Types';
+import uuid from 'node-uuid';
 
 // helperfunctions
 const handleListModification = (modifyId, newData, original) => {
@@ -12,10 +13,28 @@ const handleListModification = (modifyId, newData, original) => {
   return clone;
 };
 
+const listMock = [{
+  name: 'Mock lista nummer uno',
+  id: uuid.v1(),
+  modified: new Date(),
+  items: [{
+    id: uuid.v1(),
+    name: 'Osta tyynyjä'
+  }]
+}, {
+  name: 'Mocklista 2',
+  modified: new Date(),
+  id: uuid.v1(),
+  items: [{
+    id: uuid.v1(),
+    name: 'Osta matto'
+  }]
+}];
+
 // state management funtions
 
 export const INITIAL_STATE = Immutable({
-  lists: [],
+  lists: listMock,
 });
 
 const refreshLists = (state, action) =>

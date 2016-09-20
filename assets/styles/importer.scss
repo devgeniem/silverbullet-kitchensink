@@ -1,4 +1,10 @@
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// COMMON
+@import "todo-colors";
+@import "todo-utils";
+@import "todo-elements";
+// COMPONENTS ETC.
 @import "todo-list-item";
 @import "todo-create-list";
 @import "todo-layout";
+
