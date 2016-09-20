@@ -5872,10 +5872,22 @@ button.close {
 
 .todo-wrapper .todo-header-bar {
   background: #ed4747;
-  padding: 5px;
-  border-bottom: 1px solid #ddd; }
-  .todo-wrapper .todo-header-bar h3 {
-    margin: 0; }
+  height: 50px;
+  display: flex;
+  align-items: center; }
+  .todo-wrapper .todo-header-bar .row {
+    display: flex;
+    align-items: center; }
+  .todo-wrapper .todo-header-bar img {
+    max-width: 90px; }
+  .todo-wrapper .todo-header-bar a {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-right: 15px; }
+  .todo-wrapper .todo-header-bar .todo-header-nav-items {
+    display: flex;
+    align-items: center;
+    margin-left: 15px; }
 .todo-wrapper .todo-main-content {
   margin-top: 15px; }
 

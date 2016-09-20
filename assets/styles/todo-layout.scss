@@ -2,12 +2,30 @@
   .todo-header-bar {
 
     background: $red;
-    padding: 5px;
-    border-bottom: 1px solid #ddd;
+    height: 50px;
+    display: flex;
+    align-items: center;
 
-    h3 {
-      margin: 0;
+    .row {
+      display: flex;
+      align-items: center;
     }
+
+    img {
+      max-width: 90px;
+    }
+    a {
+      color: $white;
+      font-size: 1.5rem;
+      margin-right: 15px;
+    }
+
+    .todo-header-nav-items {
+      display: flex;
+      align-items: center;
+      margin-left: 15px;
+    }
+
   }
   .todo-main-content {
     margin-top: 15px;
