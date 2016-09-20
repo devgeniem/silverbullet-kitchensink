@@ -1,4 +1,8 @@
-/* small testing app to make react router work with sails*/
+/*
+  Here is the main react application used in react-based views.
+  This is used in urls defined by routes.js and initialized in
+  config/http.js middleware.  
+*/
 
 import React from 'react';
 import ReactDOM from 'react-dom';
