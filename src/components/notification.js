@@ -4,6 +4,12 @@ import { connect } from 'react-redux';
 import { removeNotification } from '../actions/notificationActions';
 
 class Notification extends React.Component {
+
+  static propTypes = {
+    removeNotification: React.PropTypes.function.isRequired,
+    notifications: React.PropTypes.arr.isRequired,
+  };
+
   render() {
     var { notifications } = this.props;
     if (notifications && notifications.map) {

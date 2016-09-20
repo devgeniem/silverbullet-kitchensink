@@ -1,9 +1,3 @@
 import React from 'react';
 
-export default class Foo extends React.Component {
-  render() {
-    return (
-      <div>asds</div>
-    );
-  }
-}
+export default () => <h1>Bar</h1>;
