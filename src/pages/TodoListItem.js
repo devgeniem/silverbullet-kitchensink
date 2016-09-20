@@ -27,6 +27,8 @@ class TodoListItem extends React.Component {
                    className="todo-list-item-remove-item"
                    onClick={() => this.handleRemove()}/>
       </ListGroupItem>
+
+
     );
   }
 }

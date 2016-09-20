@@ -1,0 +1,31 @@
+@mixin roundButton($bg, $color) {
+  color: $color;
+  background: $bg;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  width: 50px;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+
+  &:hover, &:active {
+    color: $white;
+    background: darken($red, 5%);
+  }
+
+}
+
+.todo-button {
+
+  background: $red;
+  border: none;
+  color: $white;
+
+  &:hover {
+    color: $white;
+    background: darken($red, 5%);
+  }
+
+}

@@ -3,14 +3,37 @@ import {connect} from 'react-redux';
 import {Button, Glyphicon, Row, Col, Grid, ListGroup} from 'react-bootstrap';
 import TodoListItem from './TodoListItem';
 
+// FIXME: only for mocking purposes
+import uuid from 'node-uuid';
+
 class TodoMain extends React.Component {
 
   render() {
-console.log(this.state);
+
 
     // FIXME: fix the href
-    var AddNewButton = (<Button href="reactDemo/create-list"><Glyphicon glyph="plus"/> Add a new list</Button>);
-    var {lists} = this.props;
+    var AddNewButton = (<Button href="create-list"
+                                className="todo-button"><Glyphicon glyph="plus"/> Add a new list</Button>);
+
+    var listMock = [{
+      name: 'Mock lista nummer uno',
+      id: uuid.v1(),
+      modified: new Date(),
+      items: [{
+        id: uuid.v1(),
+        name: 'Osta tyynyjä'
+      }]
+    }, {
+      name: 'Mocklista 2',
+      modified: new Date(),
+      id: uuid.v1(),
+      items: [{
+        id: uuid.v1(),
+        name: 'Osta matto'
+      }]
+    }];
+
+    var lists = listMock;
 
     if (lists && lists.map) {
       return (
@@ -19,8 +42,10 @@ console.log(this.state);
             <Col xs={12}>
               <ListGroup>
                 {lists.map(list => {
-                    return (<TodoListItem id={list.id}
-                                          key={list.id}>{list.name}</TodoListItem>)
+                    return (
+                      <TodoListItem id={list.id}
+                                    key={list.id}>{list.name}</TodoListItem>
+                    );
                   }
                 )}
               </ListGroup>
@@ -47,9 +72,8 @@ console.log(this.state);
 }
 
 function mapStateToProps(state) {
-  return {
-    lists: state.Lists ? state.Lists.lists : [],
-  };
+  console.log(state);
+  return {};
 }
 
 export default connect(mapStateToProps, {})(TodoMain);

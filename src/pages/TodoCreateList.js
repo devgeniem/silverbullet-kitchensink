@@ -73,20 +73,19 @@ class TodoCreateList extends React.Component {
 
               <Row className="todo-create-list-add-item-container">
 
-                <Col xs={11}>
+                <Col xs={12}>
 
                   <FormControl value={this.state.itemTitle}
                                type="text"
                                placeholder="Item title"
                                onChange={(e) => this.setState({itemTitle: e.target.value})}/>
-                </Col>
 
-                <Col xs={1}>
-                  <Button bsStyle="primary"
+                  <Button className="todo-create-list-add-item-button"
                           disabled={!this.state.itemTitle}
                           onClick={() => this.handleAddItemButton(this.state.itemTitle)}>
                     <Glyphicon glyph="plus"/>
                   </Button>
+
                 </Col>
               </Row>
 
@@ -105,7 +104,7 @@ class TodoCreateList extends React.Component {
 
               <Row className="todo-create-list-control-buttons">
                 <Col xs={1}>
-                  <Button bsStyle="success"
+                  <Button className="todo-button"
                           onClick={() => this.handleSaveButton()}
                           disabled={this.saveDisabled()}>
 

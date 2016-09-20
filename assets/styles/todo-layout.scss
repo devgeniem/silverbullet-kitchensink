@@ -1,12 +1,15 @@
 .todo-wrapper {
   .todo-header-bar {
 
-    background: #f7f7f7;
+    background: $red;
     padding: 5px;
     border-bottom: 1px solid #ddd;
 
     h3 {
       margin: 0;
     }
+  }
+  .todo-main-content {
+    margin-top: 15px;
   }
 }
