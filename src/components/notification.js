@@ -1,7 +1,6 @@
 import React from 'react';
 import { Alert } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { removeNotification } from '../actions/notificationActions';
 
 class Notification extends React.Component {
   render() {
@@ -28,5 +27,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-  removeNotification,
+
 })(Notification);

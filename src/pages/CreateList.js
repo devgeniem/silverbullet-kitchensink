@@ -1,17 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Form, Grid, FormControl, ControlLabel, Button, Glyphicon, Row, Col, Well, FormGroup} from 'react-bootstrap';
-import {saveItem, removeItem} from '../actions/createListActions';
+
 
 import ModalShareList from './ModalShareList';
 import TodoListItem from './TodoListItem';
 
 class CreateList extends React.Component {
 
-  static propTypes = {
-    saveItem: React.PropTypes.func.isRequired,
-    removeItem: React.PropTypes.func.isRequired
-  };
 
   constructor(props) {
 
@@ -36,13 +32,13 @@ class CreateList extends React.Component {
 
   handleAddItemButton(name) {
     if (!!name) {
-      this.props.saveItem(name);
+      //save
       this.setState({itemTitle: ''});
     }
   }
 
   handleItemRemoval(id) {
-    this.props.removeItem(id);
+//    this.props.removeItem(id);
   }
 
 
@@ -130,5 +126,5 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, {
-  saveItem, removeItem
+
 })(CreateList);

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Modal, Button, Glyphicon} from 'react-bootstrap';
-import {saveItem} from '../actions/modalShareListActions';
+//import {saveItem} from '../actions/modalShareListActions';
 
 class ModalShareList extends React.Component {
 
