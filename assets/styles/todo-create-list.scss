@@ -4,7 +4,7 @@
       display: flex;
     }
     .todo-create-list-add-item-button {
-      @include roundButton($red, $white);
+      @include roundButton($red, $white, true);
     }
 
   }

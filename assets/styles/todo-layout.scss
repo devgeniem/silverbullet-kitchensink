@@ -1,31 +1,44 @@
 .todo-wrapper {
   .todo-header-bar {
 
-    background: $red;
-    border-bottom: 1px solid $dark-red;
-    height: 50px;
-    display: flex;
-    align-items: center;
-
-    .row {
-      display: flex;
-      align-items: center;
+    .todo-header-bar-user-icon  {
+      @include roundButton($darker-red, $white);
     }
+
+    background: $red;
+    border-bottom: 1px solid $darker-red;
+    height: 50px;
+    align-items: center;
+    padding: 0 15px;
+    display: flex;
 
     img {
       max-width: 90px;
     }
 
+    > div {
+      // Logo
+      &:first-of-type {
+        flex: 1;
+      }
+      // Profile button container
+      &:last-of-type {
+        a {
+          @include roundButton($darker-red, $white, true);
+        }
+      }
+
+    }
+
     a {
+
       color: $white;
       font-size: $large-font-size;
       margin-right: 15px;
-    }
+      &:hover {
+        text-decoration: none;
+      }
 
-    .todo-header-nav-items {
-      display: flex;
-      align-items: center;
-      margin-left: 15px;
     }
 
   }

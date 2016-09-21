@@ -2,7 +2,7 @@ $med-font-size: 1.2em;
 $small-font-size: 0.95em;
 $large-font-size: 1.5em;
 
-@mixin roundButton($bg: red, $color: white) {
+@mixin roundButton($bg: $red, $color: $white, $small: false) {
 
   color: $color;
   background: $bg;
@@ -17,9 +17,14 @@ $large-font-size: 1.5em;
   outline: none;
   transition: all 150ms linear;
 
+  @if ($small == true) {
+    height: 40px;
+    width: 40px;
+  }
+
   &:hover, &:active {
     color: $white;
-    background: $dark-red;
+    background: $darker-red;
 
   }
 
@@ -31,13 +36,14 @@ $large-font-size: 1.5em;
     &:hover, &:active, &:focus {
       color: $white;
       outline: none;
-      background: $dark-red;
+      background: $darker-red;
       .glyphicon {
-        background: darken($dark-red, 5%);
+        background: darken($darker-red, 5%);
       }
     }
   }
 
+  box-shadow: 0 3px 0 0 $darker-red;
   align-content: center;
   display: flex;
   background: $red;
@@ -55,7 +61,7 @@ $large-font-size: 1.5em;
   .glyphicon {
     margin-right: 5px;
     display: flex;
-    background: $dark-red;
+    background: $darker-red;
     height: 30px;
     width: 30px;
     transition: all 150ms linear;

@@ -1,5 +1,6 @@
 .todo-wrapper {
   input[type=text] {
+
     &.form-control {
       border: none;
       box-shadow: none;
@@ -7,10 +8,18 @@
       border-radius: 0;
       padding: 0;
       font-size: $med-font-size;
+      height: 45px;
     }
   }
 
   label {
     font-size: $small-font-size;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+  h1, h2, h3, h4, h5 {
+    margin-bottom: 20px;
   }
 }
