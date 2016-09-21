@@ -33,7 +33,7 @@ $large-font-size: 1.5em;
 .todo-button {
 
   @mixin hoverColors() {
-    &:hover, &:active, &:focus {
+    &:hover, &:active, &:focus, &:active:hover {
       color: $white;
       outline: none;
       background: $darker-red;

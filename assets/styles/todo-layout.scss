@@ -1,4 +1,6 @@
 .todo-wrapper {
+
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   .todo-header-bar {
 
     .todo-header-bar-user-icon  {
@@ -7,7 +9,7 @@
 
     background: $red;
     border-bottom: 1px solid $darker-red;
-    height: 50px;
+    height: 60px;
     align-items: center;
     padding: 0 15px;
     display: flex;
