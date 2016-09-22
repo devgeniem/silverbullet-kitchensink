@@ -36,7 +36,7 @@ class TodoMain extends React.Component {
 
   handleListRemoval(id) {
     const { dispatch } = this.props;
-    Actions(dispatch).deleteList(id);
+    Actions(dispatch).deleteList(id).then(Actions(dispatch).refreshLists);
   }
 
   render() {

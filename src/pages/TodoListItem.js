@@ -40,7 +40,14 @@ class TodoListItem extends React.Component {
     return null;
   }
 
+  handleRemove(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.removeFn ? this.props.removeFn() : console.warn('TodoListItem: Callback function has not been set');
+  }
+
   render() {
+
     var { children } = this.props;
 
     return (
@@ -62,7 +69,7 @@ class TodoListItem extends React.Component {
         <Glyphicon
           glyph="remove"
           className="todo-list-item-remove-item"
-          onClick={()=>this.props.removeFn()}
+          onClick={(e) => this.handleRemove(e)}
         />
       </ListGroupItem>
     );
