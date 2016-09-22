@@ -1,0 +1,13 @@
+.todo-main-container {
+  .list-group {
+    > button {
+      &:first-of-type {
+        border-radius: 0;
+      }
+    }
+  }
+  .todo-button.list-header {
+    box-shadow: none;
+    border-radius: 4px 4px 0 0;
+  }
+}

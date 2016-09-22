@@ -1,10 +1,18 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Button, Glyphicon, Row, Col, Grid, ListGroup} from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { Button, Glyphicon, Row, Col, Grid, ListGroup } from 'react-bootstrap';
 import TodoListItem from '../pages/TodoListItem';
 import Actions from '../actions/Creators';
 
 class TodoMain extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      lists: props.lists,
+    };
+  }
+
 
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
@@ -16,7 +24,7 @@ class TodoMain extends React.Component {
   };
 
   componentWillMount() {
-    const {dispatch} = this.props;
+    const { dispatch } = this.props;
     Actions(dispatch).refreshLists();
   }
 
@@ -26,23 +34,34 @@ class TodoMain extends React.Component {
     this.context.router.push(url);
   }
 
-  render() {
+  handleListRemoval(id) {
+    const { dispatch } = this.props;
+    Actions(dispatch).deleteList(id).then(Actions(dispatch).refreshLists);
+  }
 
-    const {lists} = this.props;
+  render() {
+    const { lists } = this.props;
     const listPath = '/reactDemo/create-list';
 
+    var headerClass = (lists.length > 0) ? 'todo-button list-header' : 'todo-button';
+
     var AddNewButton = (
+
+
       <Button
         href={listPath}
-        className="todo-button"
+        className={headerClass}
         onClick={e => this.navigateTo(e, listPath)}
       >
-        <Glyphicon glyph="plus"/> Add a new list
+        <Glyphicon glyph="plus" /> Add a new list
       </Button>
     );
 
     return (
-      <Grid>
+      <Grid className="todo-main-container">
+        <Row>
+          <Col xs={12}> { AddNewButton }</Col>
+        </Row>
         <Row>
           <Col xs={12}>
             <ListGroup>
@@ -54,9 +73,7 @@ class TodoMain extends React.Component {
             </ListGroup>
           </Col>
         </Row>
-        <Row>
-          <Col xs={12}> { AddNewButton }</Col>
-        </Row>
+
       </Grid>
     );
   }
@@ -66,8 +83,10 @@ class TodoMain extends React.Component {
     return (
       <TodoListItem
         key={list.id}
+        href={listPath + list.id}
         date={list.updatedAt}
-        href={listPath + list.id}>
+        removeFn={()=>this.handleListRemoval(list.id)}
+      >
         {list.title}
       </TodoListItem>
     );
