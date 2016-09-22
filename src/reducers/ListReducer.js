@@ -36,7 +36,7 @@ const listMock = [{
 // state management funtions
 
 export const INITIAL_STATE = Immutable({
-  lists: listMock,
+  lists: [],
 });
 
 const refreshLists = (state, action) =>
@@ -56,7 +56,7 @@ state.merge({
 
 const createList = (state, action) =>
 state.merge({
-  lists: R.append(action.data, state.lists)
+  lists: R.append(action.data, state.lists),
 });
 
 
