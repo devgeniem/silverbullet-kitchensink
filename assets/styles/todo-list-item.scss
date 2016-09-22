@@ -1,26 +1,43 @@
 .todo-wrapper {
   .todo-list-item {
 
+    user-select: none;
+    -ms-user-select: none;
+    cursor: pointer;
     position: relative;
     padding: 5px 15px;
     display: flex;
     align-items: center;
+    transition: background 150ms linear;
 
-    span {
+    &:hover {
+      background: darken($white, 2%);
+    }
 
-      padding: 10px 0;
+    > div {
 
-      &:first-of-type {
-        flex: 1;
-      }
+      flex: 1;
+      flex-direction: column;
+      display: flex;
 
-      // remove button
-      &:last-of-type {
-        @include roundButton($red, $white);
+      > span {
+        //main title
+        &:first-of-type {
+          font-weight: 600;
+          font-size: $med-font-size;
+        }
+        // subtitle
+        &:last-of-type {
+          color: $grey-font-color;
+          font-size: $small-font-size;
+        }
       }
 
     }
 
+    // Da removah buttonah
+    .glyphicon {
+      @include roundButton($red, $white);
+    }
   }
-
 }

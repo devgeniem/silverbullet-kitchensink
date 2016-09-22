@@ -1,29 +1,42 @@
 import React from 'react';
-import {Grid, Row, Col} from 'react-bootstrap';
+import TodoHeaderMenu from '../pages/TodoHeaderMenu';
 import {Link} from 'react-router';
 
-export default ({children}) => (
-  <div className="todo-wrapper">
 
-    <header className="todo-header-bar">
-      <Grid>
-        <Row>
-          <Col xs={1}>
-            <h3>Todo</h3>
-          </Col>
-          <Col xs={11}>
+export default class TodoMain extends React.Component {
 
-            <Link to="/"
-                  eventKey={1}>Lists</Link>
+  constructor(props) {
+    super(props);
 
-            <Link to="/profile"
-                  eventKey={2}>Profile</Link>
+    this.menuItems = [{
+      title: 'Rairai'
+    }, {
+      title: 'Logout',
+      glyphicon: 'log-out',
+      callback: function () {
+        console.log('Logging out');
+      }
+    }];
+  }
 
-          </Col>
-        </Row>
-      </Grid>
-    </header>
+  render() {
 
-    <div className="todo-main-content">{ children }</div>
-  </div>
-);
+    var {children} = this.props;
+
+    return (<div className="todo-wrapper">
+
+      <header className="todo-header-bar">
+        <div>
+          <Link to="/">
+            <img src="../images/logo.svg"
+                 alt=""/></Link>
+        </div>
+        <div>
+          <TodoHeaderMenu items={this.menuItems}></TodoHeaderMenu>
+        </div>
+
+      </header>
+      <div className="todo-main-content">{children}</div>
+    </div>);
+  }
+}

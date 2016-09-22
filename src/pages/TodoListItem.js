@@ -1,8 +1,8 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 // BOOTSTRAP
-import {ListGroupItem, Glyphicon, Button} from 'react-bootstrap';
+import { ListGroupItem, Glyphicon } from 'react-bootstrap';
 
 
 class TodoListItem extends React.Component {
@@ -17,18 +17,19 @@ class TodoListItem extends React.Component {
   }
 
   render() {
-
-    var {children} = this.props;
+    var { children } = this.props;
 
     return (
       <ListGroupItem className="todo-list-item">
-        <span>
-          {children}
-        </span>
+        <div className="todo-list-item-title">
+          <span>{children}</span>
+          <span>Mock date</span>
+        </div>
         <Glyphicon
           glyph="remove"
           className="todo-list-item-remove-item"
-          onClick={() => this.handleRemove()}/>
+          onClick={() => this.handleRemove()}
+        />
       </ListGroupItem>
     );
   }

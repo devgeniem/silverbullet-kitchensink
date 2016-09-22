@@ -1,3 +1,9 @@
 $red: #ed4747;
+$dark-red: #333;
+$darker-red: #b31414;
 $white: #fff;
-$gray: #f7f7f7;
+$grey-bg: #f7f7f7;
+$grey-font-color: #888;
+$header-orange: #f45c43;
+
+$header-gradient: linear-gradient(90deg, $red 10%, $header-orange 100%);

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { connect } from 'react-redux';
 import { Form, Grid, FormControl, ControlLabel, Button, Glyphicon, Row, Col, Well, FormGroup } from 'react-bootstrap';
 import R from 'ramda';
@@ -76,18 +77,16 @@ class TodoCreateList extends React.Component {
             <FormGroup>
               <Row>
                 <Col xs={12}>
-                  <ControlLabel>Title</ControlLabel>
                   <FormControl value={this.state.listTitle}
                     type="text"
                     placeholder="Enter title"
                     onChange={e => this.setState({ listTitle: e.target.value })}
                   />
+
                 </Col>
               </Row>
 
               <br />
-              <ControlLabel>Add item</ControlLabel>
-
 
               <Row className="todo-create-list-add-item-container">
 
@@ -110,6 +109,7 @@ class TodoCreateList extends React.Component {
               </Row>
 
               {items.length > 0 ? <div className="todo-create-list-items-container">
+
                 <ControlLabel>Items</ControlLabel>
                 {items.map((item) => {
                   return (
@@ -123,12 +123,11 @@ class TodoCreateList extends React.Component {
               </div> : null }
 
               <Row className="todo-create-list-control-buttons">
-                <Col xs={1}>
+                <Col xs={12}>
                   <Button className="todo-button"
                     onClick={() => this.handleSaveButton()}
                     disabled={this.saveDisabled()}
                   >
-
                     <Glyphicon glyph="save" /> Save</Button>
                 </Col>
                 <Col xs={1}>

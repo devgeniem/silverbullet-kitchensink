@@ -1,15 +1,47 @@
 .todo-wrapper {
+
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   .todo-header-bar {
 
-    background: $red;
-    padding: 5px;
-    border-bottom: 1px solid #ddd;
-
-    h3 {
-      margin: 0;
+    .todo-header-bar-user-icon  {
+      @include roundButton($darker-red, $white);
     }
+
+    background: $header-gradient;
+    border-bottom: 1px solid $darker-red;
+    height: 75px;
+    align-items: center;
+    padding: 0 15px;
+    display: flex;
+
+    img {
+      max-width: 90px;
+    }
+
+    > div {
+      // Logo
+      &:first-of-type {
+        flex: 1;
+      }
+      // Profile button container
+      &:last-of-type {
+
+      }
+
+    }
+
+    .todo-header-bar-menu-button {
+      @include roundButton($white, $red);
+    }
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
   }
+
   .todo-main-content {
-    margin-top: 15px;
+    padding: 15px 0;
   }
 }
