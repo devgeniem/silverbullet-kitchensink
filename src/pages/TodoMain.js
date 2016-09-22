@@ -1,66 +1,77 @@
 import React from 'react';
-import {connect} from 'react-redux';
-
-import {Button, Glyphicon, Row, Col, Grid, ListGroup} from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { Button, Glyphicon, Row, Col, Grid, ListGroup } from 'react-bootstrap';
 import TodoListItem from '../pages/TodoListItem';
+import Actions from '../actions/Creators';
 
 class TodoMain extends React.Component {
 
+  static propTypes = {
+    dispatch: React.PropTypes.func.isRequired,
+    lists: React.PropTypes.array,
+  }
+
+  static contextTypes = {
+    router: React.PropTypes.object,
+  };
+
+  componentWillMount() {
+    const { dispatch } = this.props;
+    Actions(dispatch).refreshLists();
+  }
+
+  navigateTo(e, url) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.context.router.push(url);
+  }
+
   render() {
-    console.log("props", this.props.lists);
-    var lists = this.props.lists;
-    const listPath = "/reactDemo/list/";
+    const { lists } = this.props;
     var AddNewButton = (
       <Button
         href="/reactDemo/create-list"
         className="todo-button"
       >
-        <Glyphicon glyph="plus"/> Add a new list
+        <Glyphicon glyph="plus" /> Add a new list
       </Button>
     );
 
-    if (lists && lists.map) {
-      return (
-        <Grid>
-          <Row>
-            <Col xs={12}>
-              <ListGroup>
-                {lists.map((list) => {
-                    console.log(list);
-                    return (
-                      <TodoListItem id={list.id}
-                                    date={list.modified}
-                                    key={list.id}
-                                    href={listPath + list.id}>
-                        {list.name}
-                      </TodoListItem>
-                    );
-                  }
-                )}
-              </ListGroup>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={12}> { AddNewButton }</Col>
-          </Row>
-        </Grid>
-      );
-    } else {
-      return (
-        <Grid>
-          <Row>
-            <Col xs={12}>You haven't got any lists, man</Col>
-          </Row>
-          <Row>
-            <Col xs={12}>{ AddNewButton }</Col>
-          </Row>
-        </Grid>);
-    }
+    return (
+      <Grid>
+        <Row>
+          <Col xs={12}>
+            <ListGroup>
+              {
+                lists && lists.map ?
+                lists.map(list => this.renderTodoListItem(list)) :
+                "You haven't got any lists, man"
+              }
+            </ListGroup>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}> { AddNewButton }</Col>
+        </Row>
+      </Grid>
+    );
+  }
+
+  renderTodoListItem(list) {
+    const listPath = '/reactDemo/list/';
+    return (
+      <TodoListItem
+        key={list.id}
+        href={listPath + list.id}
+        onClick={e => this.navigateTo(e, listPath)}
+      >
+        {list.title}
+      </TodoListItem>
+    );
   }
 }
 
 function mapStateToProps(state) {
-  console.log('maptStateToProps', state);
   return {
     lists: state.todo.lists,
   };

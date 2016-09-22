@@ -31,7 +31,7 @@ This is a starter boilerplate app using [Sails](http://sailsjs.org) and [React](
 - `npm start` will start the sails server and webpack watcher,
   after this the react application can be developed without restarting the sails server
 - Nodemon is also available, via `npm run-script nodemon`, restarting the sails
-  server as files are changed while also rebuilding jsx resources in src folder,using the dev configuration.
+  server as files are changed while also rebuilding jsx resources in src folder using the dev configuration.
 - Production build is started with `npm run pm2-start` which runs the app with pm2. Stop the server with `npm run pm2-stop`.
 - Build uses `NODE_ENV` environment variable to choose how to build the application. Use `development` for dev build and `production` for build optimized for production.
 
@@ -42,7 +42,7 @@ We are currently using dust templates, for more options and information, read [t
 
 ## Serverside redux store (socket.io)
 
-Redux store is completely syncend to serverside session. see example react application how to connect and use it.
+Redux store is completely synced to serverside session. See example react application how to connect and use it.
 
 ## Sails routes and views still work as expected
 
