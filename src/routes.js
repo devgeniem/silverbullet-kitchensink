@@ -1,6 +1,9 @@
 import Layout from './components/TodoLayout';
 import TodoMain from './pages/TodoMain';
-import CreateList from './pages/TodoCreateList';
+import TodoCreateList from './pages/TodoCreateList';
+
+import TodoLogin from './pages/TodoLogin';
+import TodoRegistration from './pages/TodoRegistration';
 
 /*
  This is the router configuration file for the
@@ -25,6 +28,12 @@ export default {
   },
   childRoutes: [{
     path: 'create-list',
-    component: CreateList
+    component: TodoCreateList
+  }, {
+    path: 'login',
+    component: TodoLogin
+  }, {
+    path: 'register',
+    component: TodoRegistration
   }]
 }
