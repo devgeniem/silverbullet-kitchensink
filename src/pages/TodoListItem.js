@@ -34,11 +34,10 @@ class TodoListItem extends React.Component {
   }
 
   handleRemove(e) {
-
     e.preventDefault();
     e.stopPropagation();
 
-    !!this.props.removeFn ? this.props.removeFn() : console.warn('TodoListItem: Callback function has not been set');
+    this.props.removeFn ? this.props.removeFn() : console.warn('TodoListItem: Callback function has not been set');
   }
 
   render() {

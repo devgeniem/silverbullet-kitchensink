@@ -6,6 +6,14 @@ import Actions from '../actions/Creators';
 
 class TodoMain extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      lists: props.lists,
+    };
+  }
+
+
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     lists: React.PropTypes.array,
@@ -27,8 +35,7 @@ class TodoMain extends React.Component {
   }
 
   render() {
-
-    const {lists} = this.props;
+    const lists = this.state.lists;
     const listPath = '/reactDemo/create-list';
 
     var headerClass = (lists.length > 0) ? 'todo-button list-header' : 'todo-button';
@@ -65,12 +72,21 @@ class TodoMain extends React.Component {
     );
   }
 
+  handleListRemoval(list) {
+    var tempLists = this.state.lists;
+    _.remove(tempLists, tempList => tempList.id === list.id);
+    this.setState({
+      lists: tempLists
+    });
+  }
+
   renderTodoListItem(list) {
     const listPath = '/reactDemo/list/';
     return (
       <TodoListItem
         key={list.id}
         date={list.updatedAt}
+        removeFn={e => this.handleListRemoval(list)}
         href={listPath + list.id}>
         {list.title}
       </TodoListItem>
