@@ -1,39 +1,22 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {Button, Glyphicon, Row, Col, Grid, ListGroup} from 'react-bootstrap';
-import TodoListItem from './TodoListItem';
+import { connect } from 'react-redux';
 
-// FIXME: only for mocking purposes
-import uuid from 'node-uuid';
+import { Button, Glyphicon, Row, Col, Grid, ListGroup } from 'react-bootstrap';
+import TodoListItem from './TodoListItem';
 
 class TodoMain extends React.Component {
 
   render() {
-
-
+    var lists = this.props.lists;
     // FIXME: fix the href
-    var AddNewButton = (<Button href="create-list"
-                                className="todo-button"><Glyphicon glyph="plus"/> Add a new list</Button>);
-
-    var listMock = [{
-      name: 'Mock lista nummer uno',
-      id: uuid.v1(),
-      modified: new Date(),
-      items: [{
-        id: uuid.v1(),
-        name: 'Osta tyynyjä'
-      }]
-    }, {
-      name: 'Mocklista 2',
-      modified: new Date(),
-      id: uuid.v1(),
-      items: [{
-        id: uuid.v1(),
-        name: 'Osta matto'
-      }]
-    }];
-
-    var lists = listMock;
+    var AddNewButton = (
+      <Button
+        href="/reactDemo/create-list"
+        className="todo-button"
+        >
+        <Glyphicon glyph="plus" /> Add a new list
+        </Button>
+      );
 
     if (lists && lists.map) {
       return (
@@ -41,12 +24,13 @@ class TodoMain extends React.Component {
           <Row>
             <Col xs={12}>
               <ListGroup>
-                {lists.map(list => {
-                    return (
+                {lists.map((list) => {
+                  return (
                       <TodoListItem id={list.id}
-                                    key={list.id}>{list.name}</TodoListItem>
+                        key={list.id}
+                      >{list.name}</TodoListItem>
                     );
-                  }
+                }
                 )}
               </ListGroup>
             </Col>
@@ -56,7 +40,6 @@ class TodoMain extends React.Component {
           </Row>
         </Grid>
       );
-
     } else {
       return (
         <Grid>
@@ -72,7 +55,10 @@ class TodoMain extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return {};
+  console.log('maptStateToProps', state);
+  return {
+    lists: state.todo.lists,
+  };
 }
 
-export default connect(mapStateToProps, {})(TodoMain);
+export default connect(mapStateToProps)(TodoMain);

@@ -1,7 +1,7 @@
 /*
   Here is the main react application used in react-based views.
   This is used in urls defined by routes.js and initialized in
-  config/http.js middleware.  
+  config/http.js middleware.
 */
 
 import React from 'react';
@@ -12,7 +12,7 @@ import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import routes from './routes';
-import * as reducers from './reducers';
+import reducers from './reducers';
 import socketIOClient from 'socket.io-client';
 import sailsIOClient from 'sails.io.js';
 import Iso from 'iso';
@@ -20,6 +20,7 @@ import Iso from 'iso';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    console.log(reducers);
     if (process.browser) {
       this.initStoreClientSide();
     } else {

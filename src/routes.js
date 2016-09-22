@@ -24,9 +24,12 @@ export default {
   path: '/reactDemo',
   component: Layout,
   indexRoute: {
-    component: TodoMain
-  },
+    component: TodoMain,
+  },git
   childRoutes: [{
+    path: 'create-list/:listId',
+    component: CreateList,
+  }, {
     path: 'create-list',
     component: TodoCreateList
   }, {
