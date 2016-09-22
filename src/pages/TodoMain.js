@@ -26,8 +26,10 @@ class TodoMain extends React.Component {
             <Col xs={12}>
               <ListGroup>
                 {lists.map((list) => {
+                    console.log(list);
                     return (
                       <TodoListItem id={list.id}
+                                    date={list.modified}
                                     key={list.id}
                                     href={listPath + list.id}>
                         {list.name}

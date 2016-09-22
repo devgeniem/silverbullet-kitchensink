@@ -19,7 +19,6 @@ class TodoCreateList extends React.Component {
       itemTitle: '',
       items: [],
     };
-
   }
 
   saveDisabled() {
@@ -34,17 +33,17 @@ class TodoCreateList extends React.Component {
   }
 
   handleSaveButton() {
+
     var items = this.state.items;
     var title = this.state.listTitle;
-
     var {dispatch} =  this.props;
 
-    var data = {name: title, items: items, id: uuid.v1()};
-    console.log("data"
-  :
-    data
-  )
-    ;
+    var data = {
+      name: title,
+      id: uuid.v1(),
+      modified: new Date(),
+      items
+    };
 
     Actions(dispatch).createList(data);
   }
@@ -149,8 +148,8 @@ class TodoCreateList extends React.Component {
                           key={item.id}
                           removeFn={e => this.handleItemRemoval(item)}
                           id={item.id}
-                          date={item.date}
-                        >
+                          date={item.date}>
+
                           {item.name}
                         </TodoListItem>
                       );
