@@ -57,11 +57,11 @@ class TodoCreateList extends React.Component {
     this.setState({itemTitle: ''});
   }
 
-  handleItemRemoval(id) {
 
+  handleItemRemoval(item) {
     var tempItems = this.state.items;
 
-    _.remove(tempItems, item => item.id === id);
+    _.remove(tempItems, tempItem => tempItem.id === item.id);
 
     this.setState({
       items: tempItems
@@ -111,6 +111,7 @@ class TodoCreateList extends React.Component {
               </Row>
 
               <br />
+
 
               <Row className="todo-create-list-add-item-container">
 

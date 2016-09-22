@@ -11,11 +11,16 @@
   }
 
   .todo-create-list-items-container {
-    background: $grey-bg;
+
+    background: $gradient;
     padding: $default-margin;
     margin-top: $default-margin;
-    border: 1px solid $grey-border;
     border-radius: 3px;
+
+    .todo-list-item {
+      border: none;
+      margin-bottom: 1px;
+    }
   }
 
   .todo-create-list-control-buttons {
