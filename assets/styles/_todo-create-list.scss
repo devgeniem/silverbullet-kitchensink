@@ -1,4 +1,5 @@
 .todo-create-list-container {
+
   .todo-create-list-add-item-container {
     > div {
       display: flex;
@@ -8,14 +9,15 @@
     }
 
   }
+
   .todo-create-list-items-container {
     background: $grey-bg;
-    padding: 15px;
-    margin-top: 15px;
+    padding: $default-margin;
+    margin-top: $default-margin;
     border: 1px solid $grey-border;
     border-radius: 3px;
-
   }
+
   .todo-create-list-control-buttons {
     button {
       margin-right: $default-margin;
