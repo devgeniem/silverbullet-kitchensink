@@ -27,7 +27,7 @@ export default {
     component: TodoMain,
   },
   childRoutes: [{
-    path: 'create-list/:listId',
+    path: 'list/:listId',
     component: TodoCreateList,
   }, {
     path: 'create-list',

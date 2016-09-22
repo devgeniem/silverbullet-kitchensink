@@ -20,6 +20,7 @@ const listMock = [{
   items: [{
     id: uuid.v1(),
     name: 'Osta tyynyjä',
+    date: new Date(),
   }],
 }, {
   name: 'Mocklista 2',
@@ -28,13 +29,14 @@ const listMock = [{
   items: [{
     id: uuid.v1(),
     name: 'Osta matto',
+    date: new Date(),
   }],
 }];
 
 // state management funtions
 
 export const INITIAL_STATE = Immutable({
-  lists: listMock,
+  lists: [],
 });
 
 const refreshLists = (state, action) =>
@@ -52,10 +54,11 @@ state.merge({
   lists: R.filter(id => id === action.id, state.lists),
 });
 
-const createList = (state, action) =>
-state.merge({
-  lists: R.append(action.data, state.list),
-});
+const createList = (state, action) => {
+  var newState = Object.assign({}, state);
+  newState.lists = R.append(action.data, newState.lists);
+  return newState;
+};
 
 // map our types to our handlers
 const ACTION_HANDLERS = {

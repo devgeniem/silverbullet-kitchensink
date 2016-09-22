@@ -91,6 +91,7 @@ module.exports.http = {
 
     order: [
       'cookieParser',
+      'bodyParser',
       'session',
       'myRequestLogger',
       '$custom',

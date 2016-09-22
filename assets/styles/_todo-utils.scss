@@ -1,6 +1,7 @@
-$med-font-size: 1.2em;
-$small-font-size: 0.95em;
+$med-font-size: 1.3em;
+$small-font-size: 0.85em;
 $large-font-size: 1.5em;
+$default-margin: 15px;
 
 @mixin roundButton($bg: $red, $color: $white, $small: false) {
 
@@ -56,7 +57,6 @@ $large-font-size: 1.5em;
   font-weight: 600;
   min-width: 150px;
   transition: all 150ms linear;
-  margin-right: 5px;
 
   .glyphicon {
     margin-right: 5px;
@@ -74,6 +74,8 @@ $large-font-size: 1.5em;
   @include hoverColors();
   &[disabled] {
     @include hoverColors();
+    box-shadow: 0 3px 0 0 $darker-red;
+
   }
 
 }
