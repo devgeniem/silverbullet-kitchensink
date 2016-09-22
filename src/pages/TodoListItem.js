@@ -34,6 +34,7 @@ class TodoListItem extends React.Component {
   render() {
 
     var {children} = this.props;
+
     return (
       <ListGroupItem href={this.props.href} className="todo-list-item">
         <div className="todo-list-item-title">

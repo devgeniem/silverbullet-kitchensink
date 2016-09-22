@@ -144,7 +144,7 @@ class TodoCreateList extends React.Component {
                           id={item.id}
                           date={item.date}>
 
-                          {item.name}
+                          {item.title}
                         </TodoListItem>
                       );
                     }
