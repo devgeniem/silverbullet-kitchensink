@@ -40,7 +40,11 @@ class TodoCreateList extends React.Component {
     var {dispatch} =  this.props;
 
     var data = {name: title, items: items, id: uuid.v1()};
-    console.log("data":data);
+    console.log("data"
+  :
+    data
+  )
+    ;
 
     Actions(dispatch).createList(data);
   }
@@ -80,11 +84,12 @@ class TodoCreateList extends React.Component {
     var items = this.state.items;
     var existingItem;
     //TODO: this should probably be in didReceiveNewProps or smhitng
+    var itemId = null;
+
     if (!!this.props.params) {
-      var itemId = this.props.params.listId;
+      itemId = this.props.params.listId;
 
-
-      for ( var i = 0; i < todos.length; ++i ) {
+      for (var i = 0; i < todos.length; ++i) {
 
       }
 
@@ -94,12 +99,13 @@ class TodoCreateList extends React.Component {
       }
     }
 
+    var pageTitle = (!!itemId) ? 'Edit list ' + (this.state.listTitle || '') : 'Create a new list';
 
     return (
       <div className="todo-create-list-container">
         <Grid>
 
-          <h1>Create a new list</h1>
+          <h1>{pageTitle}</h1>
 
           <Form>
             <FormGroup>
@@ -136,21 +142,21 @@ class TodoCreateList extends React.Component {
               {items.length > 0 ?
                 <div className="todo-create-list-items-container">
                   {items.map((item) => {
-                    return (
+                      return (
 
-                      <TodoListItem
-                        key={item.id}
-                        removeFn={e => this.handleItemRemoval(item)}
-                        id={item.id}
-                        date={item.date}
+                        <TodoListItem
+                          key={item.id}
+                          removeFn={e => this.handleItemRemoval(item)}
+                          id={item.id}
+                          date={item.date}
                         >
-                        {item.name}
-                      </TodoListItem>
-                    );
-                  }
-                )}
-              </div>
-              : null }
+                          {item.name}
+                        </TodoListItem>
+                      );
+                    }
+                  )}
+                </div>
+                : null }
 
               <Row className="todo-create-list-control-buttons">
                 <Col xs={12}>
