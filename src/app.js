@@ -12,14 +12,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-
-import routes from './routes';
-import reducers from './reducers';
-
 import socketIOClient from 'socket.io-client';
 import sailsIOClient from 'sails.io.js';
 import Iso from 'iso';
 
+import routes from './routes';
+import reducers from './reducers';
 
 export default class App extends React.Component {
 

@@ -59,7 +59,6 @@ class TodoCreateList extends React.Component {
       var item = {
         title,
         id: uuid.v1(),
-        date: new Date(),
       };
       this.setState({
         items: R.append(item, this.state.items),
