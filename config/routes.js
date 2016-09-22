@@ -38,8 +38,8 @@ module.exports.routes = {
   'POST /api/auth/user': 'AuthController.user',
   'POST /api/user/create': 'UserController.create',
   'POST /api/user/activate/:id': 'UserController.activate',
-  'PUT /api/user/update/:id': 'UserController.update',
-  'DELETE /api/user/destroy/:id': 'UserController.destroy',
+  'PUT /api/user/:id': 'UserController.update',
+  'DELETE /api/user/:id': 'UserController.destroy',
 
   'GET /api/user': 'UserController.find',
   'GET /api/user/:id': 'UserController.findOne',
