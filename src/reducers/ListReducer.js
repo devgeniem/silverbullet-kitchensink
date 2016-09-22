@@ -25,9 +25,7 @@ const removeList = (state, action) =>
 Object.assign(R.clone(state), { lists: R.filter(id => id === action.id, state.lists) });
 
 const createList = (state, action) => {
-  var newState = Object.assign({}, state);
-  newState.lists = R.append(action.data, newState.lists);
-  return newState;
+  return state;
 };
 
 // map our types to our handlers
