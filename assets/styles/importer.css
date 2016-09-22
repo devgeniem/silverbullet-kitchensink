@@ -5855,7 +5855,9 @@ button.close {
     .todo-button[disabled]:hover .glyphicon, .todo-button[disabled]:active .glyphicon, .todo-button[disabled]:focus .glyphicon, .todo-button[disabled]:active:hover .glyphicon {
       background: #9c1111; }
 
-.todo-wrapper input[type=text].form-control {
+.todo-wrapper input[type=text].form-control,
+.todo-wrapper input[type=password].form-control,
+.todo-wrapper input[type=email].form-control {
   border: none;
   box-shadow: none;
   border-bottom: 1px solid #ed4747;
