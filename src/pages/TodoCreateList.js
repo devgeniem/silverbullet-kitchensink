@@ -54,6 +54,7 @@ class TodoCreateList extends React.Component {
 
 
   render() {
+    
     var {todos} = this.props;
     var items = this.state.items;
     var existingItem;
@@ -65,6 +66,8 @@ class TodoCreateList extends React.Component {
         existingItem = todos[existingItemIndex];
       }
     }
+
+
 
     return (
       <div className="todo-create-list-container">
@@ -107,19 +110,24 @@ class TodoCreateList extends React.Component {
                 </Col>
               </Row>
 
-              {items.length > 0 ? <div className="todo-create-list-items-container">
-
-                {items.map((item) => {
+              {items.length > 0 ?
+                <div className="todo-create-list-items-container">
+                  {items.map((item) => {
                     return (
-                      <TodoListItem key={item.id}
-                                    removeFn={e => this.handleItemRemoval(item)}
-                                    id={item.id}
-                                    date={item.date}
-                      >{item.name}</TodoListItem>
+                      <TodoListItem
+                        key={item.id}
+                        removeFn={e => this.handleItemRemoval(item)}
+                        id={item.id}
+
+                        date={item.date}
+                        >
+                        {item.name}
+                      </TodoListItem>
                     );
                   }
                 )}
-              </div> : null }
+              </div>
+              : null }
 
               <Row className="todo-create-list-control-buttons">
                 <Col xs={12}>

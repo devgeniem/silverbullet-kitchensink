@@ -18,12 +18,13 @@ class TodoListItem extends React.Component {
 
   render() {
     var { children } = this.props;
+    console.log(this.props)
 
     return (
-      <ListGroupItem className="todo-list-item">
+      <ListGroupItem href={this.props.href} className="todo-list-item">
         <div className="todo-list-item-title">
           <span>{children}</span>
-          <span>{this.props.date.toString()}</span>
+          <span>{"asdasd"}</span>
         </div>
         <Glyphicon
           glyph="remove"

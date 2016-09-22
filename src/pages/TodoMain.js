@@ -2,18 +2,18 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { Button, Glyphicon, Row, Col, Grid, ListGroup } from 'react-bootstrap';
-import TodoListItem from './TodoListItem';
+import TodoListItem from '../pages/TodoListItem';
 
 class TodoMain extends React.Component {
 
   render() {
     var lists = this.props.lists;
-    // FIXME: fix the href
+    const createListPath = "/reactDemo/create-list/";
     var AddNewButton = (
       <Button
         href="/reactDemo/create-list"
         className="todo-button"
-        >
+      >
         <Glyphicon glyph="plus" /> Add a new list
         </Button>
       );
@@ -26,10 +26,14 @@ class TodoMain extends React.Component {
               <ListGroup>
                 {lists.map((list) => {
                   return (
-                      <TodoListItem id={list.id}
-                        key={list.id}
-                      >{list.name}</TodoListItem>
-                    );
+                    <TodoListItem
+                      id={list.id}
+                      key={list.id}
+                      href={createListPath + list.id}
+                      >
+                      {list.name}
+                    </TodoListItem>
+                  );
                 }
                 )}
               </ListGroup>

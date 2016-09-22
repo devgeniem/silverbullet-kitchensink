@@ -20,6 +20,7 @@ const listMock = [{
   items: [{
     id: uuid.v1(),
     name: 'Osta tyynyjä',
+    date: new Date(),
   }],
 }, {
   name: 'Mocklista 2',
@@ -28,6 +29,7 @@ const listMock = [{
   items: [{
     id: uuid.v1(),
     name: 'Osta matto',
+    date: new Date(),
   }],
 }];
 
