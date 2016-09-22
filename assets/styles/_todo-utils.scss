@@ -74,6 +74,8 @@ $large-font-size: 1.5em;
   @include hoverColors();
   &[disabled] {
     @include hoverColors();
+    box-shadow: 0 3px 0 0 $darker-red;
+
   }
 
 }

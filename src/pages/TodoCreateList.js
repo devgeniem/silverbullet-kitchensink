@@ -2,8 +2,10 @@ import React from 'react';
 import uuid from 'node-uuid';
 import {connect} from 'react-redux';
 import {Form, Grid, FormControl, Button, Glyphicon, Row, Col, FormGroup} from 'react-bootstrap';
-import R from 'ramda';
 
+// FIXME: we should maybe pick one? :)
+import R from 'ramda';
+import _ from 'lodash';
 import Actions from '../actions/Creators';
 import TodoListItem from './TodoListItem';
 import TodoModalShareList from './TodoModalShareList';
@@ -36,7 +38,7 @@ class TodoCreateList extends React.Component {
       title: this.state.listTitle,
     };
     var {dispatch} =  this.props;
-    console.log(data);
+
     dispatch(Actions.createList);
   }
 
@@ -53,11 +55,22 @@ class TodoCreateList extends React.Component {
         items: R.append(item, this.state.items),
       });
     }
+
+    this.setState({itemTitle: ''});
   }
 
   handleItemRemoval(id) {
-    console.log(this.props, id);
-//    this.props.removeItem(id);
+
+
+    var tempItems = this.state.items;
+    _.remove(tempItems, function (item) {
+      return item.id === id;
+    });
+
+    this.setState({
+      items: tempItems
+    });
+
   }
 
 
@@ -125,7 +138,7 @@ class TodoCreateList extends React.Component {
                     return (
                       <TodoListItem key={item.id}
                                     date={item.modifiedDate}
-                                    removeFn={e => this.handleItemRemoval(item)}
+                                    removeFn={e => this.handleItemRemoval(item.id)}
                                     id={item.id}>{item.name}</TodoListItem>
                     );
                   }
