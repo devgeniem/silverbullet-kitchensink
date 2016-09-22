@@ -26,9 +26,13 @@ class TodoMain extends React.Component {
     this.context.router.push(url);
   }
 
+  removeListItem(id) {
+    const { dispatch } = this.props;
+    Actions(dispatch).deleteList(id);
+  }
+
   render() {
     const { lists } = this.props;
-    console.log(lists);
     const listPath = '/reactDemo/create-list';
     var AddNewButton = (
       <Button
@@ -66,6 +70,7 @@ class TodoMain extends React.Component {
       <TodoListItem
         key={list.id}
         href={listPath + list.id}
+        removeFn={()=>this.removeListItem(list.id)}
       >
         {list.title}
       </TodoListItem>

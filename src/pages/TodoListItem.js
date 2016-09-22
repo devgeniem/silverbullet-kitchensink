@@ -1,9 +1,9 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import moment from 'moment';
 
 // BOOTSTRAP
-import {ListGroupItem, Glyphicon} from 'react-bootstrap';
+import { ListGroupItem, Glyphicon } from 'react-bootstrap';
 
 
 class TodoListItem extends React.Component {
@@ -34,28 +34,30 @@ class TodoListItem extends React.Component {
   }
 
   handleRemove(e) {
-
     e.preventDefault();
     e.stopPropagation();
-
     !!this.props.removeFn ? this.props.removeFn() : console.warn('TodoListItem: Callback function has not been set');
   }
 
   render() {
 
-    var {children} = this.props;
+    var { children } = this.props;
 
     return (
       <ListGroupItem className="todo-list-item" onClick={e => this.navigateTo(e, this.props.href)}>
         <div className="todo-list-item-title">
           <span>{children}</span>
           <span>
-            <Glyphicon className="time"
-                       glyph="calendar"/> {this.getPrettyDate(this.props.date)}
+            <Glyphicon
+              className="time"
+              glyph="calendar"
+            /> {this.getPrettyDate(this.props.updatedAt)}
 
-            <Glyphicon className="time"
-                       glyph="time"/> {this.getPrettyTime(this.props.date)}
-                       </span>
+            <Glyphicon
+              className="time"
+              glyph="time"
+            /> {this.getPrettyTime(this.props.updatedAt)}
+          </span>
         </div>
         <Glyphicon
           glyph="remove"
