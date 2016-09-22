@@ -1,1 +1,25 @@
+@font-face {
+  font-family: 'Lato';
+  src: url('../fonts/LatoLatin-Regular.eot'), url('../fonts/LatoLatin-Regular.ttf') format('truetype'), url('../fonts/LatoLatin-Regular.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('../fonts/LatoLatin-Bold.eot'), url('../fonts/LatoLatin-Bold.ttf') format('truetype'), url('../fonts/LatoLatin-Bold.svg') format('svg');
+  font-weight: 600;
+  font-style: normal;
+}
+
+
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// COMMON
+@import "todo-colors";
+@import "todo-utils";
+@import "todo-elements";
+// COMPONENTS ETC.
+@import "todo-list-item";
+@import "todo-create-list";
+@import "todo-layout";
+

@@ -32,11 +32,15 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   '/': {
-    view: 'homepage'
+    view: 'homepage',
   },
   'POST /api/session': 'SessionController.session',
   'POST /api/auth/user': 'AuthController.user',
 
+
+  'GET /api/list-items': 'TodoListItemController.find',
+  'POST /api/list-item': 'TodoListItemController.create',
+  'DELETE /api/list-item/:id': 'TodoListItemController.destroy',
 
   /***************************************************************************
   *                                                                          *

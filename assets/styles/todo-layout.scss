@@ -1,0 +1,72 @@
+.todo-wrapper {
+
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  .todo-header-bar {
+
+    .todo-header-bar-user-icon  {
+      @include roundButton($darker-red, $white);
+    }
+
+    .dropdown {
+      // Menu on the right
+      .dropdown-menu {
+
+        margin-top: 12px;
+        border-radius: 0 0 4px 4px;
+        min-width: 250px;
+
+        li {
+          a {
+            font-size: $med-font-size;
+            padding: 15px;
+
+            .glyphicon {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+
+      .todo-header-bar-menu-button {
+        @include roundButton($white, $red);
+        .todo-header-bar-user-icon {
+          font-size: 25px;
+        }
+      }
+    }
+
+    background: $header-gradient;
+    border-bottom: 1px solid $darker-red;
+    height: 75px;
+    align-items: center;
+    padding: 0 15px;
+    display: flex;
+
+    img {
+      max-width: 90px;
+    }
+
+    > div {
+      // Logo
+      &:first-of-type {
+        flex: 1;
+      }
+      // Profile button container
+      &:last-of-type {
+
+      }
+
+    }
+
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+  }
+
+  .todo-main-content {
+    padding: 15px 0;
+  }
+}
