@@ -36,7 +36,7 @@ module.exports.routes = {
   },
   'POST /api/session': 'SessionController.session',
   'POST /api/auth/user': 'AuthController.user',
-  'POST /api/user/create': 'UserController.create',
+  'POST /api/user': 'UserController.create',
   'POST /api/user/activate/:id': 'UserController.activate',
   'PUT /api/user/:id': 'UserController.update',
   'DELETE /api/user/:id': 'UserController.destroy',
