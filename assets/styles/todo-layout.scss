@@ -7,9 +7,9 @@
       @include roundButton($darker-red, $white);
     }
 
-    background: $red;
+    background: $header-gradient;
     border-bottom: 1px solid $darker-red;
-    height: 60px;
+    height: 75px;
     align-items: center;
     padding: 0 15px;
     display: flex;
@@ -25,26 +25,21 @@
       }
       // Profile button container
       &:last-of-type {
-        a {
-          @include roundButton($darker-red, $white, true);
-        }
+
       }
 
     }
 
+    .todo-header-bar-menu-button {
+      @include roundButton($white, $red);
+    }
     a {
-
-      color: $white;
-      font-size: $large-font-size;
-      margin-right: 15px;
       &:hover {
         text-decoration: none;
       }
-
     }
-
-  }
-  .todo-main-content {
-    margin-top: 15px;
+    .todo-main-content {
+      margin-top: 15px;
+    }
   }
 }

@@ -5942,9 +5942,9 @@ button.close {
 .todo-wrapper {
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
   .todo-wrapper .todo-header-bar {
-    background: #ed4747;
+    background: linear-gradient(90deg, #ed4747 10%, #f45c43 100%);
     border-bottom: 1px solid #b31414;
-    height: 60px;
+    height: 75px;
     align-items: center;
     padding: 0 15px;
     display: flex; }
@@ -5968,9 +5968,9 @@ button.close {
       max-width: 90px; }
     .todo-wrapper .todo-header-bar > div:first-of-type {
       flex: 1; }
-    .todo-wrapper .todo-header-bar > div:last-of-type a {
-      color: #fff;
-      background: #b31414;
+    .todo-wrapper .todo-header-bar .todo-header-bar-menu-button {
+      color: #ed4747;
+      background: #fff;
       height: 50px;
       display: flex;
       align-items: center;
@@ -5980,19 +5980,13 @@ button.close {
       cursor: pointer;
       border: none;
       outline: none;
-      transition: all 150ms linear;
-      height: 40px;
-      width: 40px; }
-      .todo-wrapper .todo-header-bar > div:last-of-type a:hover, .todo-wrapper .todo-header-bar > div:last-of-type a:active {
+      transition: all 150ms linear; }
+      .todo-wrapper .todo-header-bar .todo-header-bar-menu-button:hover, .todo-wrapper .todo-header-bar .todo-header-bar-menu-button:active {
         color: #fff;
         background: #b31414; }
-    .todo-wrapper .todo-header-bar a {
-      color: #fff;
-      font-size: 1.5em;
-      margin-right: 15px; }
-      .todo-wrapper .todo-header-bar a:hover {
-        text-decoration: none; }
-  .todo-wrapper .todo-main-content {
-    margin-top: 15px; }
+    .todo-wrapper .todo-header-bar a:hover {
+      text-decoration: none; }
+    .todo-wrapper .todo-header-bar .todo-main-content {
+      margin-top: 15px; }
 
 /*# sourceMappingURL=importer.css.map */

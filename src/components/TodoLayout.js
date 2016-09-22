@@ -1,5 +1,5 @@
 import React from 'react';
-import {Glyphicon} from 'react-bootstrap';
+import TodoHeaderMenu from '../pages/TodoHeaderMenu';
 import {Link} from 'react-router';
 
 export default ({children}) => (
@@ -12,12 +12,12 @@ export default ({children}) => (
                alt=""/></Link>
       </div>
       <div>
-        <Link to="/profile">
-          <Glyphicon className="todo-header-bar-user-icon"
-                     glyph="user"/></Link>
+        <TodoHeaderMenu></TodoHeaderMenu>
       </div>
 
     </header>
-    <div className="todo-main-content"> {children}</div>
+    <div className="todo-main-content">{children}</div>
   </div>
+
+
 );

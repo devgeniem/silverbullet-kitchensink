@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 // BOOTSTRAP
-import {ListGroupItem, Glyphicon, Button} from 'react-bootstrap';
+import {ListGroupItem, Glyphicon} from 'react-bootstrap';
 
 
 class TodoListItem extends React.Component {
@@ -19,7 +19,6 @@ class TodoListItem extends React.Component {
   render() {
 
     var {children} = this.props;
-    console.log(this.props);
 
     return (
       <ListGroupItem className="todo-list-item">
