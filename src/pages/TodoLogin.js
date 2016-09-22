@@ -1,9 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import LoginForm from './forms/LoginForm';
-import {Grid} from 'react-bootstrap';
+import { Grid } from 'react-bootstrap';
 
-export default class TodoLogin extends React.Component {
-
+class TodoLogin extends React.Component {
 
   render() {
 
@@ -18,3 +18,11 @@ export default class TodoLogin extends React.Component {
       </div>);
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  };
+}
+
+export default connect(mapStateToProps)(TodoLogin);
