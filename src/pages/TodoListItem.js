@@ -23,7 +23,7 @@ class TodoListItem extends React.Component {
       <ListGroupItem className="todo-list-item">
         <div className="todo-list-item-title">
           <span>{children}</span>
-          <span>Mock date</span>
+          <span>{this.props.date.toString()}</span>
         </div>
         <Glyphicon
           glyph="remove"

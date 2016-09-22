@@ -7,6 +7,7 @@ import R from 'ramda';
 import Actions from '../actions/Creators';
 import TodoListItem from './TodoListItem';
 import TodoModalShareList from './TodoModalShareList';
+import uuid from 'node-uuid';
 
 class TodoCreateList extends React.Component {
 
@@ -35,7 +36,11 @@ class TodoCreateList extends React.Component {
 
   handleAddItemButton(name) {
     if (!!name) {
-      var item = {};
+      var item = {
+        name,
+        id: uuid.v1(),
+        date: new Date(),
+      };
       this.setState({
         itemTitle: '',
         items: R.append(item, this.state.items),
@@ -60,10 +65,6 @@ class TodoCreateList extends React.Component {
         existingItem = todos[existingItemIndex];
       }
     }
-
-    console.log("items", items);
-    console.log("context", this);
-
 
     return (
       <div className="todo-create-list-container">
@@ -113,6 +114,7 @@ class TodoCreateList extends React.Component {
                       <TodoListItem key={item.id}
                                     removeFn={e => this.handleItemRemoval(item)}
                                     id={item.id}
+                                    date={item.date}
                       >{item.name}</TodoListItem>
                     );
                   }
