@@ -1,5 +1,5 @@
 import React from 'react';
-
+import uuid from 'node-uuid';
 import {connect} from 'react-redux';
 import {Form, Grid, FormControl, Button, Glyphicon, Row, Col, FormGroup} from 'react-bootstrap';
 import R from 'ramda';
@@ -24,31 +24,45 @@ class TodoCreateList extends React.Component {
     return !(this.state.listTitle);
   }
 
+  // Fixes an issue with controllable/uncontrollable inputs. You might
+  // wanna check if there's better way of doing this
+  getListTitle() {
+    return this.state.listTitle || '';
+  }
+
   handleSaveButton() {
     var data = {
       items: this.state.items,
       title: this.state.listTitle,
     };
     var {dispatch} =  this.props;
+    console.log(data);
     dispatch(Actions.createList);
   }
 
   handleAddItemButton(name) {
     if (!!name) {
-      var item = {};
+
+      var item = {
+        name,
+        id: uuid.v1(),
+        modifiedDate: new Date()
+      };
+
       this.setState({
-        itemTitle: '',
         items: R.append(item, this.state.items),
       });
     }
   }
 
   handleItemRemoval(id) {
+    console.log(this.props, id);
 //    this.props.removeItem(id);
   }
 
 
   render() {
+
     var {todos} = this.props;
     var items = this.state.items;
     var existingItem;
@@ -75,7 +89,7 @@ class TodoCreateList extends React.Component {
             <FormGroup>
               <Row>
                 <Col xs={12}>
-                  <FormControl value={this.state.listTitle}
+                  <FormControl value={this.getListTitle()}
                                type="text"
                                placeholder="Enter title"
                                onChange={e => this.setState({listTitle: e.target.value})}
@@ -98,8 +112,7 @@ class TodoCreateList extends React.Component {
 
                   <Button className="todo-create-list-add-item-button"
                           disabled={!this.state.itemTitle}
-                          onClick={() => this.handleAddItemButton(this.state.itemTitle)}
-                  >
+                          onClick={() => this.handleAddItemButton(this.state.itemTitle)}>
                     <Glyphicon glyph="plus"/>
                   </Button>
 
@@ -111,9 +124,9 @@ class TodoCreateList extends React.Component {
                 {items.map((item) => {
                     return (
                       <TodoListItem key={item.id}
+                                    date={item.modifiedDate}
                                     removeFn={e => this.handleItemRemoval(item)}
-                                    id={item.id}
-                      >{item.name}</TodoListItem>
+                                    id={item.id}>{item.name}</TodoListItem>
                     );
                   }
                 )}
