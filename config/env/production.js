@@ -12,27 +12,23 @@
 
 module.exports = {
 
-  /***************************************************************************
-   * Set the default database connection for models in the production        *
-   * environment (see config/connections.js and config/models.js )           *
-   ***************************************************************************/
+  // !!!! PLEASE PUT YOUR EMAIL SETTINGS TO config/local.js !!!!
+  // Example email settings:
 
-  // models: {
-  //   connection: 'someMysqlServer'
-  // },
+  //  mail_from: 'todo@example.com',
+  //  admin_email: 'feedback@example.com',
+  //  smtp: {
+  //      port: MY_SMTP_PORT,
+  //      host: 'smtp.MY_SMTP_SERVER.com',
+  //      auth: {
+  //          user: 'MY_USERNAME',
+  //          pass: 'MY_PASSWORD',
+  //      },
+  //  },
 
-  /***************************************************************************
-   * Set the port in the production environment to 80                        *
-   ***************************************************************************/
+  hostname: 'http://localhost:1337',
 
-  // port: 80,
-
-  /***************************************************************************
-   * Set the log level in production environment to "silent"                 *
-   ***************************************************************************/
-
-  // log: {
-  //   level: "silent"
-  // }
-
+  log: {
+    level: "silent"
+  }
 };

@@ -12,13 +12,20 @@
 
 module.exports = {
 
-  /***************************************************************************
-   * Set the default database connection for models in the development       *
-   * environment (see config/connections.js and config/models.js )           *
-   ***************************************************************************/
+  // !!!! PLEASE PUT YOUR EMAIL SETTINGS TO config/local.js !!!!
+  // Example email settings:
 
-  // models: {
-  //   connection: 'someMongodbServer'
-  // }
+  //  mail_from: 'todo@example.com',
+  //  admin_email: 'feedback@example.com',
+  //  smtp: {
+  //      port: MY_SMTP_PORT,
+  //      host: 'smtp.MY_SMTP_SERVER.com',
+  //      auth: {
+  //          user: 'MY_USERNAME',
+  //          pass: 'MY_PASSWORD',
+  //      },
+  //  },
+
+  hostname: 'http://localhost:1337',
 
 };
