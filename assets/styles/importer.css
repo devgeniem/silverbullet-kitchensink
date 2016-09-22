@@ -5893,7 +5893,7 @@ button.close {
     .todo-wrapper .todo-list-item > div > span:last-of-type {
       color: #888;
       font-size: 0.95em; }
-  .todo-wrapper .todo-list-item .glyphicon {
+  .todo-wrapper .todo-list-item .glyphicon:not(.time) {
     color: #fff;
     background: #ed4747;
     height: 50px;
@@ -5906,7 +5906,7 @@ button.close {
     border: none;
     outline: none;
     transition: all 150ms linear; }
-    .todo-wrapper .todo-list-item .glyphicon:hover, .todo-wrapper .todo-list-item .glyphicon:active, .todo-wrapper .todo-list-item .glyphicon:focus {
+    .todo-wrapper .todo-list-item .glyphicon:not(.time):hover, .todo-wrapper .todo-list-item .glyphicon:not(.time):active, .todo-wrapper .todo-list-item .glyphicon:not(.time):focus {
       color: #fff;
       background: #b31414;
       box-shadow: none; }

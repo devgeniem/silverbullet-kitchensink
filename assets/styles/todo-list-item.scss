@@ -36,7 +36,7 @@
     }
 
     // Da removah buttonah
-    .glyphicon {
+    .glyphicon:not(.time) {
       @include roundButton($red, $white);
     }
   }
