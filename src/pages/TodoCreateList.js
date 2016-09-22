@@ -3,6 +3,7 @@ import uuid from 'node-uuid';
 import {connect} from 'react-redux';
 import {Form, Grid, FormControl, Button, Glyphicon, Row, Col, FormGroup} from 'react-bootstrap';
 
+
 // FIXME: we should maybe pick one? :)
 import R from 'ramda';
 import _ from 'lodash';
@@ -12,6 +13,10 @@ import TodoModalShareList from './TodoModalShareList';
 
 
 class TodoCreateList extends React.Component {
+
+  static contextTypes = {
+    router: React.PropTypes.object,
+  };
 
   constructor(props) {
     super(props);
@@ -24,6 +29,10 @@ class TodoCreateList extends React.Component {
   saveDisabled() {
     return !(this.state.listTitle &&
     this.state.items.length !== 0);
+  }
+
+  navigateTo(url) {
+    this.context.router.push(url);
   }
 
   // Fixes an issue with controllable/uncontrollable inputs. You might
@@ -39,12 +48,14 @@ class TodoCreateList extends React.Component {
     var {dispatch} =  this.props;
     var data = {title, items};
 
-    Actions(dispatch).createList(data);
+    Actions(dispatch).createList(data).then(res => {
+      this.navigateTo('/reactDemo');
+    });
   }
 
   handleAddItemButton(title) {
     if (!!title) {
-
+      console.log(this.props);
       var item = {
         title,
         id: uuid.v1(),
