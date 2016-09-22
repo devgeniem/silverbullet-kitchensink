@@ -41,9 +41,9 @@ export default {
      * @apiName create user
      * @apiGroup User
      *
-     * @apiParam {String} role Role (admin/user)
      * @apiParam {String} name Name
      * @apiParam {String} email Email
+     * @apiParam {String} password Password
      *
      * @apiSuccess {Object} User
      *
@@ -52,8 +52,15 @@ export default {
      */
     create: function (req, res) {
         var params = req.params.all();
-        User.create(params)
+
+        var data = {role: 'user'};
+        if (params.name) data.name = params.name;
+        if (params.email) data.email = params.email;
+        if (params.password) data.password = params.password;
+
+        User.create(data)
             .then(createdUser => {
+                mailer.sendUserActivationMail(createdUser);
                 res.ok(createdUser);
             })
             .catch(err => {
@@ -118,6 +125,49 @@ export default {
         User.destroy({ id: params.id })
             .then(() => {
                 res.ok(true);
+            })
+            .catch(res.serverError);
+    },
+
+    /**
+     * @api {get} /user/activate/:id activate
+     * @apiName activate
+     * @apiGroup User
+     *
+     * @apiParam {String} id User ID
+     * @apiParam {String} activationCode Activation code
+     *
+     * @apiSuccess {Boolean} Activation successful
+     *
+     * @apiDescription
+     * Activate user and save password
+     */
+    activate: function (req, res) {
+
+        var params = req.params.all();
+
+        User.findOne({ id: params.id })
+            .then(User => {
+                if (User) {
+                    if (!User.active && User.activationCode === params.activationCode) {
+                        User.active = true;
+                        return User.save()
+                            .then(ok => {
+                                res.ok(true);
+                            })
+                            .catch(res.serverError);
+                    } else {
+                        res.forbidden({
+                            key: 'invalid_code_or_activation',
+                            text: 'User is already activated or activation code is invalid'
+                        });
+                    }
+                } else {
+                    res.notFound({
+                        key: 'not_found',
+                        text: 'User not found'
+                    });
+                }
             })
             .catch(res.serverError);
     }

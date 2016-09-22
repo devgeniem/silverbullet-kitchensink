@@ -22,8 +22,20 @@ export default {
         encryptedPassword: {
             type: "string"
         },
+        active: {
+            type: "boolean",
+            defaultsTo: false
+        },
+        activationCode: {
+            type: "string"
+        },
         comparePassword: function(password) {
             return bcrypt.compareSync(password, this.encryptedPassword);
+        },
+        newActivationCode: function() {
+            this.activationCode = hashids.encode(new Date().getTime(), Math.round(Math.random() * 1024));
+            this.save();
+            return this.activationCode;
         },
         // We don't wan't to send back encrypted password
         toJSON: function () {
@@ -34,6 +46,10 @@ export default {
         }
     },
     beforeCreate: function(user, next) {
+        //user is not active by default
+        user.active = false;
+        //give person activation code
+        user.activationCode = hashids.encode(new Date().getTime(), Math.round(Math.random() * 1024));
         // Encrypt new password
         user.encryptedPassword = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
         next();

@@ -36,7 +36,13 @@ module.exports.routes = {
   },
   'POST /api/session': 'SessionController.session',
   'POST /api/auth/user': 'AuthController.user',
+  'POST /api/user/create': 'UserController.create',
+  'POST /api/user/activate': 'UserController.activate',
+  'POST /api/user/update/:id': 'UserController.update',
+  'POST /api/user/destroy/:id': 'UserController.destroy',
 
+  'GET /api/user': 'UserController.find',
+  'GET /api/user/:id': 'UserController.findOne',
 
   'GET /api/todo-lists': 'TodoController.findLists',
   'POST /api/todo-list': 'TodoController.createList',
