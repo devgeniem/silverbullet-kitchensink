@@ -12,13 +12,15 @@
 
 module.exports = {
 
-  /***************************************************************************
-   * Set the default database connection for models in the development       *
-   * environment (see config/connections.js and config/models.js )           *
-   ***************************************************************************/
-
-  // models: {
-  //   connection: 'someMongodbServer'
-  // }
+    mail_from: 'dashboard@example.com',
+    admin_email: 'feedback@example.com',
+    smtp: {
+        port: 587,
+        host: 'smtp.mandrillapp.com',
+        auth: {
+            user: 'hannu.kumpula@geniem.com',
+            pass: '4OCRMDHhNKAa51-QNyFoZA',
+        },
+    },
 
 };
