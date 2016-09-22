@@ -18,8 +18,5 @@ module.exports = {
       type: 'boolean',
       required: true,
     },
-    date: {
-      type: 'date',
-    },
   },
 };
