@@ -10,7 +10,7 @@
       border-radius: 0;
       padding: 0;
       font-size: $med-font-size;
-      height: 45px;
+      height: calc(3 * #{$default-margin});
     }
   }
 

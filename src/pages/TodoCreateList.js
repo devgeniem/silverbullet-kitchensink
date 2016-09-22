@@ -22,7 +22,8 @@ class TodoCreateList extends React.Component {
   }
 
   saveDisabled() {
-    return !(this.state.listTitle && this.state.items.length !== 0);
+    return !(this.state.listTitle &&
+    this.state.items.length !== 0);
   }
 
   // Fixes an issue with controllable/uncontrollable inputs. You might
@@ -98,9 +99,7 @@ class TodoCreateList extends React.Component {
                   <FormControl value={this.getListTitle()}
                                type="text"
                                placeholder="Enter title"
-                               onChange={e => this.setState({listTitle: e.target.value})}
-                  />
-
+                               onChange={e => this.setState({listTitle: e.target.value})}/>
                 </Col>
               </Row>
 
@@ -153,8 +152,7 @@ class TodoCreateList extends React.Component {
 
         </Grid>
       </div>
-    )
-      ;
+    );
   }
 }
 
