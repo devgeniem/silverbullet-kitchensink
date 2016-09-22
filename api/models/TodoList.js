@@ -8,9 +8,9 @@
 module.exports = {
 
   attributes: {
-    user: {
+    /*user: {
       model: 'user',
-    },
+    },*/
     title: {
       type: 'string',
       required: true,
