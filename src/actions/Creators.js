@@ -8,6 +8,7 @@ export default (dispatch) => {
   const refreshLists = () => api.get('/todo-lists').then(data => dispatch({ type: Types.REFRESH_LIST, data }));
   const loginUser = data => api.login(data).then(response => dispatch({ type: Types.LOGIN_USER, response }));
   const registerUser = data => api.post('/user', { name: data.name, email: data.email, password: data.password }).then(response => dispatch({ type: Types.REGISTER_USER, response }));
+  const activate = (user, code) => api.post('/user/activate/' + user, { activationCode: code }).then(() => dispatch({ type: Types.Types.ACTIVATE }));
 
   return {
     deleteList,
@@ -16,5 +17,6 @@ export default (dispatch) => {
     refreshLists,
     loginUser,
     registerUser,
+    activate,
   };
 };

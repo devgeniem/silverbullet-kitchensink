@@ -31,9 +31,7 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-  '/': {
-    view: 'homepage',
-  },
+
   'POST /api/session': 'SessionController.session',
   'POST /api/auth/user': 'AuthController.user',
   'POST /api/user': 'UserController.create',
@@ -50,6 +48,7 @@ module.exports.routes = {
   'POST /api/todo-item': 'TodoController.createItem',
   'DELETE /api/todo-item/:id': 'TodoController.destroyItem',
   'PUT /api/todo-item/:id': 'TodoController.updateItem',
+  'GET /register/:id/:activationCode': 'UserController.handleActivation',
 
   /***************************************************************************
   *                                                                          *

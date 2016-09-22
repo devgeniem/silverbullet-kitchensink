@@ -8,4 +8,5 @@ export default createTypes(`
   REFRESH_LIST,
   LOGIN_USER,
   REGISTER_USER,
+  ACTIVATE,
 `);
