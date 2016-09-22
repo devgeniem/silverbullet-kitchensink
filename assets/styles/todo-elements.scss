@@ -1,5 +1,7 @@
 .todo-wrapper {
-  input[type=text] {
+  input[type=text],
+  input[type=password],
+  input[type=email] {
 
     &.form-control {
       border: none;

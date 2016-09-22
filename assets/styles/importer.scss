@@ -12,7 +12,6 @@
   font-style: normal;
 }
 
-
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 // COMMON
 @import "todo-colors";
@@ -22,4 +21,7 @@
 @import "todo-list-item";
 @import "todo-create-list";
 @import "todo-layout";
+@import "todo-login";
+@import "todo-registration";
+
 
