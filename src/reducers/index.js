@@ -1,1 +1,5 @@
-export { default as notification } from './notificationReducer';
+import ListReducer from './ListReducer';
+
+export default {
+  todo: ListReducer,
+};
