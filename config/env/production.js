@@ -12,23 +12,23 @@
 
 module.exports = {
 
-    mail_from: 'dashboard@example.com',
-    admin_email: 'feedback@example.com',
-    smtp: {
-        port: 587,
-        host: 'smtp.mandrillapp.com',
-        auth: {
-            user: 'hannu.kumpula@geniem.com',
-            pass: '4OCRMDHhNKAa51-QNyFoZA',
-        },
-    },
+  // !!!! PLEASE PUT YOUR EMAIL SETTINGS TO config/local.js !!!!
+  // Example email settings:
 
-  /***************************************************************************
-   * Set the log level in production environment to "silent"                 *
-   ***************************************************************************/
+  //  mail_from: 'todo@example.com',
+  //  admin_email: 'feedback@example.com',
+  //  smtp: {
+  //      port: MY_SMTP_PORT,
+  //      host: 'smtp.MY_SMTP_SERVER.com',
+  //      auth: {
+  //          user: 'MY_USERNAME',
+  //          pass: 'MY_PASSWORD',
+  //      },
+  //  },
 
-  // log: {
-  //   level: "silent"
-  // }
+  hostname: 'http://localhost:1337',
 
+  log: {
+    level: "silent"
+  }
 };
