@@ -28,6 +28,7 @@ class TodoMain extends React.Component {
 
   render() {
     const { lists } = this.props;
+    console.log(lists);
     const listPath = '/reactDemo/create-list';
     var AddNewButton = (
       <Button

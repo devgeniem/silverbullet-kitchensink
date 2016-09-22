@@ -12,7 +12,6 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
-import Immutable from 'seamless-immutable';
 import socketIOClient from 'socket.io-client';
 import sailsIOClient from 'sails.io.js';
 import Iso from 'iso';
@@ -42,7 +41,7 @@ export default class App extends React.Component {
 
       this.store = createStore(
                 combineReducers({ ...reducers, routing: routerReducer }),
-                Immutable(state),
+                state,
                 compose(
                   applyMiddleware(thunk),
                   window.devToolsExtension ? window.devToolsExtension() : f => f
@@ -70,7 +69,7 @@ export default class App extends React.Component {
     const memoryHistory = createMemoryHistory(this.props.req.url);
     this.store = createStore(
             combineReducers({ ...reducers, routing: routerReducer }),
-            Immutable(this.props.state),
+            this.props.state,
             applyMiddleware(thunk)
         );
     this.history = syncHistoryWithStore(memoryHistory, this.store);
