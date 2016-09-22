@@ -27,6 +27,7 @@ This is a starter boilerplate app using [Sails](http://sailsjs.org) and [React](
 - DustJs support
 
 ## Running the application
+- Edit config/env/development.js and config/env/production.js to hold your email config (or use config/local.js).
 - Run `npm install`
 - `npm start` will start the sails server and webpack watcher,
   after this the react application can be developed without restarting the sails server
