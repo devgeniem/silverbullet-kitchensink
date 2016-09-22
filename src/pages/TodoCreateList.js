@@ -23,12 +23,26 @@ class TodoCreateList extends React.Component {
     this.state = {
       itemTitle: '',
       items: [],
+      existingItem: false,
     };
   }
 
   saveDisabled() {
     return !(this.state.listTitle &&
     this.state.items.length !== 0);
+  }
+
+  componentDidMount() {
+    if (!!this.props.params) {
+      var itemId = this.props.params.listId;
+      var existingItem = R.find(obj=> obj.id === itemId, this.props.todos )
+      if ( !existingItem ) return;
+      this.setState({
+        listTitle: existingItem.title,
+        existingItem: true,
+        items: existingItem.items,
+      });
+    }
   }
 
   navigateTo(url) {
@@ -55,7 +69,6 @@ class TodoCreateList extends React.Component {
 
   handleAddItemButton(title) {
     if (!!title) {
-      console.log(this.props);
       var item = {
         title,
         id: uuid.v1(),
@@ -85,24 +98,8 @@ class TodoCreateList extends React.Component {
 
     var {todos} = this.props;
     var items = this.state.items;
-    var existingItem;
-    //TODO: this should probably be in didReceiveNewProps or smhitng
-    var itemId = null;
-
-    if (!!this.props.params) {
-      itemId = this.props.params.listId;
-
-      for (var i = 0; i < todos.length; ++i) {
-
-      }
-
-      if (existingItem !== undefined) {
-        existingItem = todos[existingItemIndex];
-        console.log("existingItem", existingItem);
-      }
-    }
-
-    var pageTitle = (!!itemId) ? 'Edit list ' + (this.state.listTitle || '') : 'Create a new list';
+    console.log("params: ",this.props.params)
+    var pageTitle = !!this.props.params.listId ? 'Edit list ' + (this.state.listTitle || '') : 'Create a new list';
 
     return (
       <div className="todo-create-list-container">
@@ -146,8 +143,8 @@ class TodoCreateList extends React.Component {
               {items.length > 0 ?
                 <div className="todo-create-list-items-container">
                   {items.map((item) => {
+                    if ( !item ) return;
                       return (
-
                         <TodoListItem
                           key={item.id}
                           removeFn={e => this.handleItemRemoval(item)}

@@ -18,5 +18,8 @@ module.exports = {
       type: 'boolean',
       required: true,
     },
+    owner: {
+      model: 'todolist',
+    },
   },
 };
