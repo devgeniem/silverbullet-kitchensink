@@ -25,10 +25,10 @@ export default {
   component: Layout,
   indexRoute: {
     component: TodoMain,
-  },git
+  },
   childRoutes: [{
     path: 'create-list/:listId',
-    component: CreateList,
+    component: TodoCreateList,
   }, {
     path: 'create-list',
     component: TodoCreateList
