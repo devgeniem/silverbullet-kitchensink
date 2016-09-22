@@ -28,10 +28,12 @@ class TodoMain extends React.Component {
 
   render() {
     const { lists } = this.props;
+    const listPath = '/reactDemo/create-list';
     var AddNewButton = (
       <Button
-        href="/reactDemo/create-list"
+        href={listPath}
         className="todo-button"
+        onClick={e => this.navigateTo(e, listPath)}
       >
         <Glyphicon glyph="plus" /> Add a new list
       </Button>
@@ -63,7 +65,6 @@ class TodoMain extends React.Component {
       <TodoListItem
         key={list.id}
         href={listPath + list.id}
-        onClick={e => this.navigateTo(e, listPath)}
       >
         {list.title}
       </TodoListItem>

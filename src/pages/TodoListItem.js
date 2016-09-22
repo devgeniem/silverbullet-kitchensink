@@ -8,9 +8,19 @@ import {ListGroupItem, Glyphicon} from 'react-bootstrap';
 
 class TodoListItem extends React.Component {
 
+  static contextTypes = {
+    router: React.PropTypes.object,
+  };
+
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  navigateTo(e, url) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.context.router.push(url);
   }
 
   getPrettyDate(date) {
@@ -36,7 +46,7 @@ class TodoListItem extends React.Component {
     var {children} = this.props;
 
     return (
-      <ListGroupItem href={this.props.href} className="todo-list-item">
+      <ListGroupItem className="todo-list-item" onClick={e => this.navigateTo(e, this.props.href)}>
         <div className="todo-list-item-title">
           <span>{children}</span>
           <span>
