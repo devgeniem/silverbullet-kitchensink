@@ -1,6 +1,7 @@
 .todo-wrapper {
   .todo-list-item {
 
+    outline: none;
     user-select: none;
     -ms-user-select: none;
     cursor: pointer;

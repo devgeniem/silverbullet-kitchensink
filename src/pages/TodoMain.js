@@ -31,18 +31,24 @@ class TodoMain extends React.Component {
     const {lists} = this.props;
     const listPath = '/reactDemo/create-list';
 
+    var headerClass = (lists.length > 0) ? 'todo-button list-header' : 'todo-button';
+
     var AddNewButton = (
+
+
       <Button
         href={listPath}
-        className="todo-button"
-        onClick={e => this.navigateTo(e, listPath)}
-      >
+        className={headerClass}
+        onClick={e => this.navigateTo(e, listPath)}>
         <Glyphicon glyph="plus"/> Add a new list
       </Button>
     );
 
     return (
-      <Grid>
+      <Grid className="todo-main-container">
+        <Row>
+          <Col xs={12}> { AddNewButton }</Col>
+        </Row>
         <Row>
           <Col xs={12}>
             <ListGroup>
@@ -54,9 +60,7 @@ class TodoMain extends React.Component {
             </ListGroup>
           </Col>
         </Row>
-        <Row>
-          <Col xs={12}> { AddNewButton }</Col>
-        </Row>
+
       </Grid>
     );
   }
