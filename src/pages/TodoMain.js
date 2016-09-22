@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import { Button, Glyphicon, Row, Col, Grid, ListGroup } from 'react-bootstrap';
 import TodoListItem from './TodoListItem';
 
@@ -8,11 +9,14 @@ class TodoMain extends React.Component {
   render() {
     var lists = this.props.lists;
     // FIXME: fix the href
-    var AddNewButton = (<Button href="create-list"
-      className="todo-button"
-    ><Glyphicon glyph="plus" /> Add a new list</Button>);
-    console.log("props", this.props);
-
+    var AddNewButton = (
+      <Button
+        href="/reactDemo/create-list"
+        className="todo-button"
+        >
+        <Glyphicon glyph="plus" /> Add a new list
+        </Button>
+      );
 
     if (lists && lists.map) {
       return (

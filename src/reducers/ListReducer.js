@@ -1,7 +1,7 @@
 import { createReducer } from 'reduxsauce';
 import Immutable from 'seamless-immutable';
 import R from 'ramda';
-import Types from '../Actions/Types';
+import Types from '../actions/Types';
 import uuid from 'node-uuid';
 
 // helperfunctions
@@ -19,16 +19,16 @@ const listMock = [{
   modified: new Date(),
   items: [{
     id: uuid.v1(),
-    name: 'Osta tyynyjä'
-  }]
+    name: 'Osta tyynyjä',
+  }],
 }, {
   name: 'Mocklista 2',
   modified: new Date(),
   id: uuid.v1(),
   items: [{
     id: uuid.v1(),
-    name: 'Osta matto'
-  }]
+    name: 'Osta matto',
+  }],
 }];
 
 // state management funtions
