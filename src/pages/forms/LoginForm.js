@@ -5,7 +5,8 @@ import Actions from '../../actions/Creators';
 export default class LoginForm extends React.Component {
 
   submitForm() {
-    console.log(this.refs)
+    console.log(this.refs.loginForm)
+    //console.log(this.refs)
     //Actions.loginUser(data)
   }
 
@@ -13,12 +14,12 @@ export default class LoginForm extends React.Component {
     return (
       <Form ref="loginForm">
         <FormGroup>
-          <FormControl type="email" placeholder="Email"/>
-          <FormControl type="password" placeholder="Password"/>
+          <FormControl name="email" type="email" placeholder="Email"/>
+          <FormControl name="password" type="password" placeholder="Password"/>
         </FormGroup>
         <Row>
           <Col xs={12}>
-            <Button onClick={this.submitForm} className="todo-button">Login</Button>
+            <Button onClick={this.submitForm.bind(this)} className="todo-button">Login</Button>
           </Col>
         </Row>
       </Form>
