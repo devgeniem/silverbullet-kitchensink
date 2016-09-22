@@ -128,15 +128,26 @@ export default {
     .catch(res.serverError);
   },
 
+  /**
+  * @api {post} /register/:id/:activationCode handle user activation link
+  * @apiName handle user activation link
+  * @apiGroup User
+  *
+  * @apiParam {String} id User ID
+  *
+  * @apiDescription
+  * Redirects user to root application
+  */
   handleActivation: function (req, res) {
     var params = req.params.all();
-    console.log(params);
+
 
     User.findOne({ id: params.id })
     .then((User) => {
       if (User) {
         if (!User.active && User.activationCode === params.activationCode) {
           User.active = true;
+          req.session.user = params.id;
           return User.save()
           .then(() => res.redirect('/'))
           .catch(res.serverError);
