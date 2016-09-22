@@ -36,24 +36,16 @@ class TodoCreateList extends React.Component {
   handleSaveButton() {
     var items = this.state.items;
     var title = this.state.listTitle;
-
-    var {dispatch} =  this.props;
-
-    var data = {name: title, items: items, id: uuid.v1()};
-    console.log("data"
-  :
-    data
-  )
-    ;
-
+    var { dispatch } = this.props;
+    var data = { title: title, items: items };
     Actions(dispatch).createList(data);
   }
 
-  handleAddItemButton(name) {
-    if (!!name) {
+  handleAddItemButton(title) {
+    if (!!title) {
 
       var item = {
-        name,
+        title,
         id: uuid.v1(),
         date: new Date(),
       };

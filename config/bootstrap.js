@@ -57,7 +57,7 @@ module.exports.bootstrap = function (cb) {
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
 
   var requests = users.map(user => ensureUser(user));
-  Promise.all(requests)
-  .then(() => cb())
-  .catch(cb);
+  return Promise.all(requests)
+    .then(() => cb())
+    .catch(cb);
 };

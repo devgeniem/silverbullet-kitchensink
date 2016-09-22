@@ -68,6 +68,7 @@
     "reduxsauce": "^0.2.0",
     "sails": "~0.12.4",
     "sails-disk": "~0.10.10",
+    "sails-mongo": "^0.12.1",
     "sails.io.js": "^0.13.8",
     "seamless-immutable": "^6.1.1",
     "socket.io-client": "^1.4.8",

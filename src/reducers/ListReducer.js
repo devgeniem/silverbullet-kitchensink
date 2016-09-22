@@ -54,11 +54,11 @@ state.merge({
   lists: R.filter(id => id === action.id, state.lists),
 });
 
-const createList = (state, action) =>
-state.merge({
-  lists: R.append(action.data, state.lists),
-});
-
+const createList = (state, action) => {
+  var newState = Object.assign({}, state);
+  newState.lists = R.append(action.data, newState.lists);
+  return newState;
+};
 
 // map our types to our handlers
 const ACTION_HANDLERS = {

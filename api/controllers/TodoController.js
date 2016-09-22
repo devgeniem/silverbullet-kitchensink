@@ -49,6 +49,7 @@ module.exports = {
    * @apiGroup Todo
    *
    * @apiParam {String} title Todo list title
+   * @apiParam {Array} items Todo list items
    *
    * @apiSuccess {Object} TodoList item
    *
@@ -57,7 +58,8 @@ module.exports = {
    */
   createList: function (req, res) {
     const params = req.params.all();
-    TodoList.create({ title: params.title })
+    var items = JSON.parse(params.items).map(item => ({ title: item.title, completed: false }));
+    TodoList.create({ title: params.title, items: items })
       .then(res.ok)
       .catch(res.serverError);
   },
