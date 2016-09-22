@@ -9,7 +9,7 @@ class TodoMain extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     lists: React.PropTypes.array,
-  }
+  };
 
   static contextTypes = {
     router: React.PropTypes.object,
@@ -34,10 +34,15 @@ class TodoMain extends React.Component {
   render() {
     const { lists } = this.props;
     const listPath = '/reactDemo/create-list';
+
+    var headerClass = (lists.length > 0) ? 'todo-button list-header' : 'todo-button';
+
     var AddNewButton = (
+
+
       <Button
         href={listPath}
-        className="todo-button"
+        className={headerClass}
         onClick={e => this.navigateTo(e, listPath)}
       >
         <Glyphicon glyph="plus" /> Add a new list
@@ -45,21 +50,22 @@ class TodoMain extends React.Component {
     );
 
     return (
-      <Grid>
+      <Grid className="todo-main-container">
+        <Row>
+          <Col xs={12}> { AddNewButton }</Col>
+        </Row>
         <Row>
           <Col xs={12}>
             <ListGroup>
               {
                 lists && lists.map ?
-                lists.map(list => this.renderTodoListItem(list)) :
-                "You haven't got any lists, man"
+                  lists.map(list => this.renderTodoListItem(list)) :
+                  "You haven't got any lists, man"
               }
             </ListGroup>
           </Col>
         </Row>
-        <Row>
-          <Col xs={12}> { AddNewButton }</Col>
-        </Row>
+
       </Grid>
     );
   }
@@ -70,6 +76,7 @@ class TodoMain extends React.Component {
       <TodoListItem
         key={list.id}
         href={listPath + list.id}
+        date={list.updatedAt}
         removeFn={()=>this.removeListItem(list.id)}
       >
         {list.title}

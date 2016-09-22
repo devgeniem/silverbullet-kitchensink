@@ -51,12 +51,12 @@ class TodoListItem extends React.Component {
             <Glyphicon
               className="time"
               glyph="calendar"
-            /> {this.getPrettyDate(this.props.updatedAt)}
+            /> {this.getPrettyDate(this.props.date)}
 
             <Glyphicon
               className="time"
               glyph="time"
-            /> {this.getPrettyTime(this.props.updatedAt)}
+            /> {this.getPrettyTime(this.props.date)}
           </span>
         </div>
         <Glyphicon
