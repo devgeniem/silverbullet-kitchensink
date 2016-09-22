@@ -10,36 +10,30 @@
 */
 
 require('babel-core/register')();
-var babelify = require('babelify');
-var browserify = require('browserify-middleware');
 var React = require('react');
 var express = require('express');
 var ReactDOMServer = require('react-dom/server');
-var reactApp = React.createFactory(require('../src/app.js'));
+var reactRouter = require('react-router');
 var addResView = require('sails/lib/hooks/views/res.view');
 var Iso = require('iso').default;
 var path = require('path');
+var reactApp = React.createFactory(require('../src/app'));
+var reactRoutes = require('../src/routes');
 
-var reactRoutes = require('../src/routes.js')
-var reactRouter = require('react-router');
 var match = reactRouter.match;
-var routerContext = reactRouter.RouterContext
-
 
 function reactView(req, res, next) {
   var viewData;
   var iso;
   var state = (req.session && req.session.state) ? req.session.state : {};
-  var routes = reactRoutes
+  var routes = reactRoutes;
 
-  match( {routes, location: req.url }, function (error, redirectLocation, renderProps ) {
+  match({ routes, location: req.url }, function(error, redirectLocation, renderProps) {
     // couldnt match request url to react path
-    if ( error ) {
+    if (error) {
       // 500
-    }
-
-    // 200
-    else  if ( renderProps){
+    } else if (renderProps) {
+      // 200
       var reactHtml = ReactDOMServer.renderToString(reactApp({ req: req, state: state }));
       //TODO some smarter way to find if there react route?
       iso = new Iso();
@@ -56,9 +50,9 @@ function reactView(req, res, next) {
       } else {
         res.view('react', viewData);
       }
-    } // end of 200
-    else {
-      return next()
+      // end of 200
+    } else {
+      return next();
     }
   });
 }

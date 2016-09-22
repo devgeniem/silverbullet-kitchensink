@@ -1,16 +1,32 @@
 module.exports = function(grunt) {
 
+    var options = {};
+
+    if (process.env.NODE_ENV === 'production') {
+        options = {
+            outputStyle: 'compressed',
+            sourceMap: false,
+            sourceComments: false,
+        };
+    } else {
+        options = {
+            expanded: true,
+        };
+    }
+
     grunt.config.set('sass', {
+        options: options,
         dev: {
-            files: [{
-                expand: true,
-                cwd: 'assets/styles/',
-                src: ['importer.scss'],
-                dest: '.tmp/public/styles/',
-                ext: '.css'
-            }]
+            files: {
+                '.tmp/public/styles/importer.css': 'assets/styles/importer.scss',
+            },
+        },
+        build: {
+            files: {
+                '.tmp/public/styles/importer.css': 'assets/styles/importer.scss',
+            },
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-sass');
 };

@@ -35,6 +35,8 @@ module.exports.routes = {
     view: 'homepage',
   },
   'POST /api/session': 'SessionController.session',
+  'POST /api/auth/user': 'AuthController.user',
+
 
   'GET /api/todo-lists': 'TodoController.findLists',
   'POST /api/todo-list': 'TodoController.createList',

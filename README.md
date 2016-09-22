@@ -7,19 +7,22 @@ A [Sails](http://sailsjs.org) application
 This is a starter boilerplate app using [Sails](http://sailsjs.org) and [React](https://facebook.github.io/react/).
 
 ## Goals
-- Universal (isomorphic) react redux application in sails environment
+- ~~Isomorphic~~ [Universal](https://medium.com/@mjackson/universal-javascript-4761051b7ae9) react redux application in sails environment
 - Sails remains usable for API and static pages
 - Proper development and production builds
 - Use Redux and React Router along with Sails routing
 
 ## Technologies used
 - Sails
-- React
-- Redux
-- React Router
-- Webpack
+- [React](https://github.com/facebook/react)
+- [Redux](https://github.com/rackt/redux)
+- [React Router](https://github.com/rackt/react-router)
+- [React Router Redux](https://github.com/reactjs/react-router-redux)
+- [Webpack](http://webpack.github.io)
+- [Babel](http://babeljs.io)
+- [ESLint](http://eslint.org)
 
-## Added funtionality
+## Added functionality
 - Sass support
 - DustJs support
 
