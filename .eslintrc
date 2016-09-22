@@ -31,7 +31,8 @@
   "globals": {
     "_": true,
     "sails": true,
-    "TodoListItem": true,
+    "TodoList": true,
+    "TodoItem": true,
     "User": true,
   },
 }
