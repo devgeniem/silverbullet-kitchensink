@@ -5813,3 +5813,195 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+
+.todo-button {
+  box-shadow: 0 3px 0 0 #b31414;
+  align-content: center;
+  display: flex;
+  background: #ed4747;
+  border: none;
+  color: #fff;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: 600;
+  min-width: 150px;
+  transition: all 150ms linear;
+  margin-right: 5px; }
+  .todo-button .glyphicon {
+    margin-right: 5px;
+    display: flex;
+    background: #b31414;
+    height: 30px;
+    width: 30px;
+    transition: all 150ms linear;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    top: 0; }
+  .todo-button:hover, .todo-button:active, .todo-button:focus, .todo-button:active:hover {
+    color: #fff;
+    outline: none;
+    background: #b31414; }
+    .todo-button:hover .glyphicon, .todo-button:active .glyphicon, .todo-button:focus .glyphicon, .todo-button:active:hover .glyphicon {
+      background: #9c1111; }
+  .todo-button[disabled]:hover, .todo-button[disabled]:active, .todo-button[disabled]:focus, .todo-button[disabled]:active:hover {
+    color: #fff;
+    outline: none;
+    background: #b31414; }
+    .todo-button[disabled]:hover .glyphicon, .todo-button[disabled]:active .glyphicon, .todo-button[disabled]:focus .glyphicon, .todo-button[disabled]:active:hover .glyphicon {
+      background: #9c1111; }
+
+.todo-wrapper input[type=text].form-control,
+.todo-wrapper input[type=password].form-control,
+.todo-wrapper input[type=email].form-control {
+  border: none;
+  box-shadow: none;
+  border-bottom: 1px solid #ed4747;
+  border-radius: 0;
+  padding: 0;
+  font-size: 1.2em;
+  height: 45px; }
+.todo-wrapper label {
+  font-size: 0.95em; }
+.todo-wrapper h1 {
+  font-size: 28px; }
+.todo-wrapper h1, .todo-wrapper h2, .todo-wrapper h3, .todo-wrapper h4, .todo-wrapper h5 {
+  margin-bottom: 20px; }
+
+.todo-wrapper .todo-list-item {
+  user-select: none;
+  -ms-user-select: none;
+  cursor: pointer;
+  position: relative;
+  padding: 5px 15px;
+  display: flex;
+  align-items: center;
+  transition: background 150ms linear; }
+  .todo-wrapper .todo-list-item:hover {
+    background: #fafafa; }
+  .todo-wrapper .todo-list-item > div {
+    flex: 1;
+    flex-direction: column;
+    display: flex; }
+    .todo-wrapper .todo-list-item > div > span:first-of-type {
+      font-weight: 600;
+      font-size: 1.2em; }
+    .todo-wrapper .todo-list-item > div > span:last-of-type {
+      color: #888;
+      font-size: 0.95em; }
+  .todo-wrapper .todo-list-item .glyphicon {
+    color: #fff;
+    background: #ed4747;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    width: 50px;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    transition: all 150ms linear; }
+    .todo-wrapper .todo-list-item .glyphicon:hover, .todo-wrapper .todo-list-item .glyphicon:active, .todo-wrapper .todo-list-item .glyphicon:focus {
+      color: #fff;
+      background: #b31414;
+      box-shadow: none; }
+
+.todo-create-list-container .todo-create-list-add-item-container > div {
+  display: flex; }
+.todo-create-list-container .todo-create-list-add-item-container .todo-create-list-add-item-button {
+  color: #fff;
+  background: #ed4747;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  width: 50px;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 150ms linear;
+  height: 40px;
+  width: 40px; }
+  .todo-create-list-container .todo-create-list-add-item-container .todo-create-list-add-item-button:hover, .todo-create-list-container .todo-create-list-add-item-container .todo-create-list-add-item-button:active, .todo-create-list-container .todo-create-list-add-item-container .todo-create-list-add-item-button:focus {
+    color: #fff;
+    background: #b31414;
+    box-shadow: none; }
+.todo-create-list-container .todo-create-list-items-container {
+  background: #f7f7f7;
+  padding: 15px;
+  margin-top: 15px;
+  border: 1px solid #ddd;
+  border-radius: 3px; }
+.todo-create-list-container .todo-create-list-control-buttons {
+  margin-top: 15px; }
+  .todo-create-list-container .todo-create-list-control-buttons > div {
+    display: flex; }
+
+.todo-wrapper {
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  .todo-wrapper .todo-header-bar {
+    background: linear-gradient(90deg, #ed4747 10%, #f45c43 100%);
+    border-bottom: 1px solid #b31414;
+    height: 75px;
+    align-items: center;
+    padding: 0 15px;
+    display: flex; }
+    .todo-wrapper .todo-header-bar .todo-header-bar-user-icon  {
+      color: #fff;
+      background: #b31414;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      width: 50px;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: all 150ms linear; }
+      .todo-wrapper .todo-header-bar .todo-header-bar-user-icon :hover, .todo-wrapper .todo-header-bar .todo-header-bar-user-icon :active, .todo-wrapper .todo-header-bar .todo-header-bar-user-icon :focus {
+        color: #fff;
+        background: #b31414;
+        box-shadow: none; }
+    .todo-wrapper .todo-header-bar .dropdown .dropdown-menu {
+      margin-top: 12px;
+      border-radius: 0 0 4px 4px;
+      min-width: 250px; }
+      .todo-wrapper .todo-header-bar .dropdown .dropdown-menu li a {
+        font-size: 1.2em;
+        padding: 15px; }
+        .todo-wrapper .todo-header-bar .dropdown .dropdown-menu li a .glyphicon {
+          margin-right: 5px; }
+    .todo-wrapper .todo-header-bar .dropdown .todo-header-bar-menu-button {
+      color: #ed4747;
+      background: #fff;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      width: 50px;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: all 150ms linear; }
+      .todo-wrapper .todo-header-bar .dropdown .todo-header-bar-menu-button:hover, .todo-wrapper .todo-header-bar .dropdown .todo-header-bar-menu-button:active, .todo-wrapper .todo-header-bar .dropdown .todo-header-bar-menu-button:focus {
+        color: #fff;
+        background: #b31414;
+        box-shadow: none; }
+      .todo-wrapper .todo-header-bar .dropdown .todo-header-bar-menu-button .todo-header-bar-user-icon {
+        font-size: 25px; }
+    .todo-wrapper .todo-header-bar img {
+      max-width: 90px; }
+    .todo-wrapper .todo-header-bar > div:first-of-type {
+      flex: 1; }
+    .todo-wrapper .todo-header-bar a:hover {
+      text-decoration: none; }
+  .todo-wrapper .todo-main-content {
+    padding: 15px 0; }
+
+/*# sourceMappingURL=importer.css.map */

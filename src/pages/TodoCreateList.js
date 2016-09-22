@@ -1,9 +1,8 @@
 import React from 'react';
 
-import { connect } from 'react-redux';
-import { Form, Grid, FormControl, ControlLabel, Button, Glyphicon, Row, Col, Well, FormGroup } from 'react-bootstrap';
+import {connect} from 'react-redux';
+import {Form, Grid, FormControl, Button, Glyphicon, Row, Col, FormGroup} from 'react-bootstrap';
 import R from 'ramda';
-import uuid from 'node-uuid';
 
 import Actions from '../actions/Creators';
 import TodoListItem from './TodoListItem';
@@ -30,7 +29,7 @@ class TodoCreateList extends React.Component {
       items: this.state.items,
       title: this.state.listTitle,
     };
-    var { dispatch } =  this.props;
+    var {dispatch} =  this.props;
     dispatch(Actions.createList);
   }
 
@@ -40,7 +39,7 @@ class TodoCreateList extends React.Component {
       this.setState({
         itemTitle: '',
         items: R.append(item, this.state.items),
-       });
+      });
     }
   }
 
@@ -50,16 +49,15 @@ class TodoCreateList extends React.Component {
 
 
   render() {
-    var { todos } = this.props;
+    var {todos} = this.props;
     var items = this.state.items;
     var existingItem;
     //TODO: this should probably be in didReceiveNewProps or smhitng
-    if ( !!this.props.params) {
+    if (!!this.props.params) {
       var itemId = this.props.params.listId;
       var existingItemIndex = R.find(obj => obj.key === itemId, todos);
-      if ( existingItemIndex !== -1 ) {
+      if (existingItemIndex !== -1) {
         existingItem = todos[existingItemIndex];
-        console.log("todos" : todos);
       }
     }
 
@@ -78,9 +76,9 @@ class TodoCreateList extends React.Component {
               <Row>
                 <Col xs={12}>
                   <FormControl value={this.state.listTitle}
-                    type="text"
-                    placeholder="Enter title"
-                    onChange={e => this.setState({ listTitle: e.target.value })}
+                               type="text"
+                               placeholder="Enter title"
+                               onChange={e => this.setState({listTitle: e.target.value})}
                   />
 
                 </Col>
@@ -93,16 +91,16 @@ class TodoCreateList extends React.Component {
                 <Col xs={12}>
 
                   <FormControl value={this.state.itemTitle}
-                    type="text"
-                    placeholder="Item title"
-                    onChange={e => this.setState({ itemTitle: e.target.value })}
+                               type="text"
+                               placeholder="Item title"
+                               onChange={e => this.setState({itemTitle: e.target.value})}
                   />
 
                   <Button className="todo-create-list-add-item-button"
-                    disabled={!this.state.itemTitle}
-                    onClick={() => this.handleAddItemButton(this.state.itemTitle)}
+                          disabled={!this.state.itemTitle}
+                          onClick={() => this.handleAddItemButton(this.state.itemTitle)}
                   >
-                    <Glyphicon glyph="plus" />
+                    <Glyphicon glyph="plus"/>
                   </Button>
 
                 </Col>
@@ -110,27 +108,24 @@ class TodoCreateList extends React.Component {
 
               {items.length > 0 ? <div className="todo-create-list-items-container">
 
-                <ControlLabel>Items</ControlLabel>
                 {items.map((item) => {
-                  return (
+                    return (
                       <TodoListItem key={item.id}
-                        removeFn={e => this.handleItemRemoval(item)}
-                        id={item.id}
+                                    removeFn={e => this.handleItemRemoval(item)}
+                                    id={item.id}
                       >{item.name}</TodoListItem>
                     );
-                }
+                  }
                 )}
               </div> : null }
 
               <Row className="todo-create-list-control-buttons">
                 <Col xs={12}>
                   <Button className="todo-button"
-                    onClick={() => this.handleSaveButton()}
-                    disabled={this.saveDisabled()}
-                  >
-                    <Glyphicon glyph="save" /> Save</Button>
-                </Col>
-                <Col xs={1}>
+                          onClick={() => this.handleSaveButton()}
+                          disabled={this.saveDisabled()}>
+
+                    <Glyphicon glyph="save"/> Save</Button>
                   <TodoModalShareList />
                 </Col>
               </Row>
@@ -139,7 +134,8 @@ class TodoCreateList extends React.Component {
 
         </Grid>
       </div>
-    );
+    )
+      ;
   }
 }
 
