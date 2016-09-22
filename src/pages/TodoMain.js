@@ -85,6 +85,7 @@ class TodoMain extends React.Component {
         key={list.id}
         href={listPath + list.id}
         date={list.updatedAt}
+        allowNavigation
         removeFn={()=>this.handleListRemoval(list.id)}
       >
         {list.title}
