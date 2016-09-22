@@ -35,10 +35,15 @@ module.exports.routes = {
     view: 'homepage',
   },
   'POST /api/session': 'SessionController.session',
+  'POST /api/auth/user': 'AuthController.user',
 
-  'GET /api/list-items': 'TodoListItemController.find',
-  'POST /api/list-item': 'TodoListItemController.create',
-  'DELETE /api/list-item/:id': 'TodoListItemController.destroy',
+
+  'GET /api/todo-lists': 'TodoController.findLists',
+  'POST /api/todo-list': 'TodoController.createList',
+  'DELETE /api/todo-list/:id': 'TodoController.destroyList',
+  'POST /api/todo-item': 'TodoController.createItem',
+  'DELETE /api/todo-item/:id': 'TodoController.destroyItem',
+  'PUT /api/todo-item/:id': 'TodoController.updateItem',
 
   /***************************************************************************
   *                                                                          *

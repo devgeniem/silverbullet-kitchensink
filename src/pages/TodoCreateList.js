@@ -1,16 +1,17 @@
 import React from 'react';
-
+import uuid from 'node-uuid';
 import {connect} from 'react-redux';
 import {Form, Grid, FormControl, Button, Glyphicon, Row, Col, FormGroup} from 'react-bootstrap';
-import R from 'ramda';
 
+// FIXME: we should maybe pick one? :)
+import R from 'ramda';
+import _ from 'lodash';
 import Actions from '../actions/Creators';
 import TodoListItem from './TodoListItem';
 import TodoModalShareList from './TodoModalShareList';
-import uuid from 'node-uuid';
+
 
 class TodoCreateList extends React.Component {
-
 
   constructor(props) {
     super(props);
@@ -22,7 +23,14 @@ class TodoCreateList extends React.Component {
   }
 
   saveDisabled() {
-    return !(this.state.listTitle);
+    return !(this.state.listTitle &&
+    this.state.items.length !== 0);
+  }
+
+  // Fixes an issue with controllable/uncontrollable inputs. You might
+  // wanna check if there's better way of doing this
+  getListTitle() {
+    return this.state.listTitle || '';
   }
 
   handleSaveButton() {
@@ -30,6 +38,7 @@ class TodoCreateList extends React.Component {
     var title = this.state.listTitle;
 
     var {dispatch} =  this.props;
+
     var data = {name: title, items: items, id: uuid.v1()};
     console.log("data":data);
 
@@ -38,20 +47,30 @@ class TodoCreateList extends React.Component {
 
   handleAddItemButton(name) {
     if (!!name) {
+
       var item = {
         name,
         id: uuid.v1(),
         date: new Date(),
       };
       this.setState({
-        itemTitle: '',
         items: R.append(item, this.state.items),
       });
     }
+
+    this.setState({itemTitle: ''});
   }
 
   handleItemRemoval(id) {
-//    this.props.removeItem(id);
+
+    var tempItems = this.state.items;
+
+    _.remove(tempItems, item => item.id === id);
+
+    this.setState({
+      items: tempItems
+    });
+
   }
 
 
@@ -76,7 +95,6 @@ class TodoCreateList extends React.Component {
     }
 
 
-
     return (
       <div className="todo-create-list-container">
         <Grid>
@@ -87,12 +105,10 @@ class TodoCreateList extends React.Component {
             <FormGroup>
               <Row>
                 <Col xs={12}>
-                  <FormControl value={this.state.listTitle}
+                  <FormControl value={this.getListTitle()}
                                type="text"
                                placeholder="Enter title"
-                               onChange={e => this.setState({listTitle: e.target.value})}
-                  />
-
+                               onChange={e => this.setState({listTitle: e.target.value})}/>
                 </Col>
               </Row>
 
@@ -110,8 +126,7 @@ class TodoCreateList extends React.Component {
 
                   <Button className="todo-create-list-add-item-button"
                           disabled={!this.state.itemTitle}
-                          onClick={() => this.handleAddItemButton(this.state.itemTitle)}
-                  >
+                          onClick={() => this.handleAddItemButton(this.state.itemTitle)}>
                     <Glyphicon glyph="plus"/>
                   </Button>
 
@@ -122,11 +137,11 @@ class TodoCreateList extends React.Component {
                 <div className="todo-create-list-items-container">
                   {items.map((item) => {
                     return (
+
                       <TodoListItem
                         key={item.id}
                         removeFn={e => this.handleItemRemoval(item)}
                         id={item.id}
-
                         date={item.date}
                         >
                         {item.name}
@@ -152,8 +167,7 @@ class TodoCreateList extends React.Component {
 
         </Grid>
       </div>
-    )
-      ;
+    );
   }
 }
 

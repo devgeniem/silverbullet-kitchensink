@@ -1,9 +1,15 @@
 {
-  "name": "rboot",
+  "name": "silverbullet",
   "private": true,
-  "version": "0.0.0",
-  "description": "a Sails application",
-  "keywords": [],
+  "version": "0.1.0",
+  "description": "A Sails/React boilerplate",
+  "keywords": [
+    "sails",
+    "react",
+    "isomorphic",
+    "universal",
+    "redux"
+  ],
   "dependencies": {
     "babel-cli": "^6.14.0",
     "babel-core": "^6.14.0",
@@ -17,12 +23,13 @@
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
-    "babelify": "^7.3.0",
+    "bcrypt": "^0.8.7",
+    "bcrypt-nodejs": "0.0.3",
     "bootstrap-sass": "^3.3.7",
-    "browserify-middleware": "^7.0.0",
     "connect-redis": "^3.1.0",
     "dustjs-linkedin": "^2.7.4",
     "ejs": "2.5.2",
+    "express": "^4.14.0",
     "grunt": "1.0.1",
     "grunt-contrib-clean": "1.0.0",
     "grunt-contrib-coffee": "1.0.0",
@@ -34,9 +41,12 @@
     "grunt-contrib-uglify": "2.0.0",
     "grunt-contrib-watch": "1.0.0",
     "grunt-sails-linker": "~0.10.1",
+    "grunt-sass": "^1.2.1",
     "grunt-sync": "0.6.2",
+    "hashids": "^1.1.1",
     "include-all": "~0.1.6",
     "iso": "^5.2.0",
+    "jsonwebtoken": "^7.1.9",
     "moment": "^2.15.0",
     "msgpack-lite": "^0.1.20",
     "node-uuid": "^1.4.7",
@@ -91,6 +101,7 @@
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.2.2",
     "grunt-contrib-sass": "^1.0.0",
+    "moment": "^2.15.1",
     "nodemon": "^1.10.2"
   }
 }

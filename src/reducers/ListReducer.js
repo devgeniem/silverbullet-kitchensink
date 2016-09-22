@@ -54,13 +54,10 @@ state.merge({
   lists: R.filter(id => id === action.id, state.lists),
 });
 
-// const createList = (state, action) =>
-// state.merge({
-//   lists: R.append(action.data, state.lists)
-// });
-
 const createList = (state, action) =>
-  Object.assign({}, state, {lists: action.data});
+state.merge({
+  lists: R.append(action.data, state.lists)
+});
 
 
 // map our types to our handlers

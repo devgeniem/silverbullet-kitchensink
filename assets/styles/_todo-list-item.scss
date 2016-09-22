@@ -5,7 +5,7 @@
     -ms-user-select: none;
     cursor: pointer;
     position: relative;
-    padding: 5px 15px;
+    padding: 5px $default-margin;
     display: flex;
     align-items: center;
     transition: background 150ms linear;
@@ -30,13 +30,14 @@
         &:last-of-type {
           color: $grey-font-color;
           font-size: $small-font-size;
+          margin-top: 2px;
         }
       }
 
     }
 
     // Da removah buttonah
-    .glyphicon {
+    .glyphicon:not(.time) {
       @include roundButton($red, $white);
     }
   }

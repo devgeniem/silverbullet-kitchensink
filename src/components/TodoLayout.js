@@ -27,9 +27,9 @@ export default class TodoMain extends React.Component {
 
       <header className="todo-header-bar">
         <div>
-          <Link to="/">
+          <Link to="/reactDemo/">
             <img src="../images/logo.svg"
-                 alt=""/></Link>
+                 alt="Logo"/></Link>
         </div>
         <div>
           <TodoHeaderMenu items={this.menuItems}></TodoHeaderMenu>

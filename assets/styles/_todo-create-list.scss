@@ -12,12 +12,15 @@
     background: $grey-bg;
     padding: 15px;
     margin-top: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid $grey-border;
     border-radius: 3px;
 
   }
   .todo-create-list-control-buttons {
-    margin-top: 15px;
+    button {
+      margin-right: $default-margin;
+    }
+    margin-top: calc(3 * #{$default-margin});
     > div {
       display: flex;
     }

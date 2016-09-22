@@ -1,8 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
+import moment from 'moment';
 
 // BOOTSTRAP
-import { ListGroupItem, Glyphicon } from 'react-bootstrap';
+import {ListGroupItem, Glyphicon} from 'react-bootstrap';
 
 
 class TodoListItem extends React.Component {
@@ -10,6 +11,11 @@ class TodoListItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  getPrettyDate(date) {
+    if (!!date) return moment().format('DD.mm.YYYY - HH:mm');
+    return null;
   }
 
   handleRemove(id) {
@@ -20,11 +26,15 @@ class TodoListItem extends React.Component {
     var { children } = this.props;
     console.log(this.props)
 
+    var {children} = this.props;
     return (
       <ListGroupItem href={this.props.href} className="todo-list-item">
         <div className="todo-list-item-title">
           <span>{children}</span>
-          <span>{"asdasd"}</span>
+          <span>
+            <Glyphicon className="time"
+                       glyph="time"/> {this.getPrettyDate(this.props.date)}
+                       </span>
         </div>
         <Glyphicon
           glyph="remove"
