@@ -20,7 +20,7 @@ class TodoListItem extends React.Component {
   };
 
   static defaultProps = {
-    allowNavigation: true,
+    allowNavigation: false,
   };
 
   constructor(props) {
