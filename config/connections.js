@@ -29,7 +29,7 @@ module.exports.connections = {
   *                                                                          *
   ***************************************************************************/
   localDiskDb: {
-    adapter: 'sails-disk'
+    adapter: 'sails-disk',
   },
 
   /***************************************************************************
@@ -64,6 +64,13 @@ module.exports.connections = {
   //   password: 'password', //optional
   //   database: 'your_mongo_db_name_here' //optional
   // },
+
+  localMongoServer: {
+    adapter: 'sails-mongo',
+    host: 'localhost',
+    port: 27017,
+    database: 'silverbullet',
+  },
 
   /***************************************************************************
   *                                                                          *

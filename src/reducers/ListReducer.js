@@ -36,7 +36,7 @@ const listMock = [{
 // state management funtions
 
 export const INITIAL_STATE = Immutable({
-  lists: listMock,
+  lists: [],
 });
 
 const refreshLists = (state, action) =>
@@ -59,7 +59,6 @@ const createList = (state, action) => {
   newState.lists = R.append(action.data, newState.lists);
   return newState;
 };
-
 
 // map our types to our handlers
 const ACTION_HANDLERS = {
