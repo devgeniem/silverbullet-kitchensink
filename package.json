@@ -3,7 +3,13 @@
   "private": true,
   "version": "0.1.0",
   "description": "A Sails/React boilerplate",
-  "keywords": ["sails", "react", "isomorphic", "universal", "redux"],
+  "keywords": [
+    "sails",
+    "react",
+    "isomorphic",
+    "universal",
+    "redux"
+  ],
   "dependencies": {
     "babel-cli": "^6.14.0",
     "babel-core": "^6.14.0",
@@ -35,6 +41,7 @@
     "grunt-contrib-uglify": "2.0.0",
     "grunt-contrib-watch": "1.0.0",
     "grunt-sails-linker": "~0.10.1",
+    "grunt-sass": "^1.2.1",
     "grunt-sync": "0.6.2",
     "hashids": "^1.1.1",
     "include-all": "~0.1.6",
