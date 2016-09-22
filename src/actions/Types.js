@@ -6,4 +6,6 @@ export default createTypes(`
   REMOVE_LIST,
   MODIFY_LIST,
   REFRESH_LIST,
+  LOGIN_USER,
+  REGISTER_USER,
 `);
