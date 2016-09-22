@@ -72,7 +72,6 @@ class TodoMain extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state);
   return {};
 }
 

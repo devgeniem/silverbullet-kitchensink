@@ -5904,9 +5904,10 @@ button.close {
     border: none;
     outline: none;
     transition: all 150ms linear; }
-    .todo-wrapper .todo-list-item .glyphicon:hover, .todo-wrapper .todo-list-item .glyphicon:active {
+    .todo-wrapper .todo-list-item .glyphicon:hover, .todo-wrapper .todo-list-item .glyphicon:active, .todo-wrapper .todo-list-item .glyphicon:focus {
       color: #fff;
-      background: #b31414; }
+      background: #b31414;
+      box-shadow: none; }
 
 .todo-create-list-container .todo-create-list-add-item-container > div {
   display: flex; }
@@ -5925,9 +5926,10 @@ button.close {
   transition: all 150ms linear;
   height: 40px;
   width: 40px; }
-  .todo-create-list-container .todo-create-list-add-item-container .todo-create-list-add-item-button:hover, .todo-create-list-container .todo-create-list-add-item-container .todo-create-list-add-item-button:active {
+  .todo-create-list-container .todo-create-list-add-item-container .todo-create-list-add-item-button:hover, .todo-create-list-container .todo-create-list-add-item-container .todo-create-list-add-item-button:active, .todo-create-list-container .todo-create-list-add-item-container .todo-create-list-add-item-button:focus {
     color: #fff;
-    background: #b31414; }
+    background: #b31414;
+    box-shadow: none; }
 .todo-create-list-container .todo-create-list-items-container {
   background: #f7f7f7;
   padding: 15px;
@@ -5961,9 +5963,10 @@ button.close {
       border: none;
       outline: none;
       transition: all 150ms linear; }
-      .todo-wrapper .todo-header-bar .todo-header-bar-user-icon :hover, .todo-wrapper .todo-header-bar .todo-header-bar-user-icon :active {
+      .todo-wrapper .todo-header-bar .todo-header-bar-user-icon :hover, .todo-wrapper .todo-header-bar .todo-header-bar-user-icon :active, .todo-wrapper .todo-header-bar .todo-header-bar-user-icon :focus {
         color: #fff;
-        background: #b31414; }
+        background: #b31414;
+        box-shadow: none; }
     .todo-wrapper .todo-header-bar img {
       max-width: 90px; }
     .todo-wrapper .todo-header-bar > div:first-of-type {
@@ -5981,12 +5984,13 @@ button.close {
       border: none;
       outline: none;
       transition: all 150ms linear; }
-      .todo-wrapper .todo-header-bar .todo-header-bar-menu-button:hover, .todo-wrapper .todo-header-bar .todo-header-bar-menu-button:active {
+      .todo-wrapper .todo-header-bar .todo-header-bar-menu-button:hover, .todo-wrapper .todo-header-bar .todo-header-bar-menu-button:active, .todo-wrapper .todo-header-bar .todo-header-bar-menu-button:focus {
         color: #fff;
-        background: #b31414; }
+        background: #b31414;
+        box-shadow: none; }
     .todo-wrapper .todo-header-bar a:hover {
       text-decoration: none; }
-    .todo-wrapper .todo-header-bar .todo-main-content {
-      margin-top: 15px; }
+  .todo-wrapper .todo-main-content {
+    padding: 15px 0; }
 
 /*# sourceMappingURL=importer.css.map */
