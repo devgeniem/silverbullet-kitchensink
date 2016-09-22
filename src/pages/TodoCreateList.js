@@ -26,12 +26,14 @@ class TodoCreateList extends React.Component {
   }
 
   handleSaveButton() {
-    var data = {
-      items: this.state.items,
-      title: this.state.listTitle,
-    };
+    var items = this.state.items;
+    var title = this.state.listTitle;
+
     var {dispatch} =  this.props;
-    dispatch(Actions.createList);
+    var data = {name: title, items: items, id: uuid.v1()};
+    console.log("data":data);
+
+    Actions(dispatch).createList(data);
   }
 
   handleAddItemButton(name) {
@@ -54,16 +56,22 @@ class TodoCreateList extends React.Component {
 
 
   render() {
-    
+
     var {todos} = this.props;
     var items = this.state.items;
     var existingItem;
     //TODO: this should probably be in didReceiveNewProps or smhitng
     if (!!this.props.params) {
       var itemId = this.props.params.listId;
-      var existingItemIndex = R.find(obj => obj.key === itemId, todos);
-      if (existingItemIndex !== -1) {
+
+
+      for ( var i = 0; i < todos.length; ++i ) {
+
+      }
+
+      if (existingItem !== undefined) {
         existingItem = todos[existingItemIndex];
+        console.log("existingItem", existingItem);
       }
     }
 
@@ -150,6 +158,7 @@ class TodoCreateList extends React.Component {
 }
 
 function mapStateToProps(state) {
+  console.log("new redux state", state);
   return {
     todos: state.todo.lists,
   };

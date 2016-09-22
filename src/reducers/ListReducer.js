@@ -56,7 +56,7 @@ state.merge({
 
 const createList = (state, action) =>
 state.merge({
-  lists: R.append(action.data, state.list),
+  lists: R.append(action.data, state.lists)
 });
 
 // map our types to our handlers

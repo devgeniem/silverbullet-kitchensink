@@ -7,6 +7,7 @@ import TodoListItem from '../pages/TodoListItem';
 class TodoMain extends React.Component {
 
   render() {
+    console.log("props", this.props.lists);
     var lists = this.props.lists;
     const createListPath = "/reactDemo/create-list/";
     var AddNewButton = (
