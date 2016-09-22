@@ -8,6 +8,13 @@ import { ListGroupItem, Glyphicon } from 'react-bootstrap';
 
 class TodoListItem extends React.Component {
 
+  static propTypes = {
+    href: React.PropTypes.string,
+    date: React.PropTypes.string,
+    children: React.PropTypes.node,
+    removeFn: React.PropTypes.func,
+  };
+
   static contextTypes = {
     router: React.PropTypes.object,
   };
@@ -24,23 +31,16 @@ class TodoListItem extends React.Component {
   }
 
   getPrettyDate(date) {
-    if (!!date) return moment(date).format('DD.M.YYYY ');
+    if (date) return moment(date).format('DD.M.YYYY ');
     return null;
   }
 
   getPrettyTime(date) {
-    if (!!date) return moment(date).format('HH:mm');
+    if (date) return moment(date).format('HH:mm');
     return null;
   }
 
-  handleRemove(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    !!this.props.removeFn ? this.props.removeFn() : console.warn('TodoListItem: Callback function has not been set');
-  }
-
   render() {
-
     var { children } = this.props;
 
     return (
@@ -62,7 +62,7 @@ class TodoListItem extends React.Component {
         <Glyphicon
           glyph="remove"
           className="todo-list-item-remove-item"
-          onClick={(e) => this.handleRemove(e)}
+          onClick={()=>this.props.removeFn()}
         />
       </ListGroupItem>
     );

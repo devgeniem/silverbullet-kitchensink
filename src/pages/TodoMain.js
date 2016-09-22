@@ -6,6 +6,14 @@ import Actions from '../actions/Creators';
 
 class TodoMain extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      lists: props.lists,
+    };
+  }
+
+
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     lists: React.PropTypes.array,
@@ -26,7 +34,7 @@ class TodoMain extends React.Component {
     this.context.router.push(url);
   }
 
-  removeListItem(id) {
+  handleListRemoval(id) {
     const { dispatch } = this.props;
     Actions(dispatch).deleteList(id);
   }
@@ -77,7 +85,7 @@ class TodoMain extends React.Component {
         key={list.id}
         href={listPath + list.id}
         date={list.updatedAt}
-        removeFn={()=>this.removeListItem(list.id)}
+        removeFn={()=>this.handleListRemoval(list.id)}
       >
         {list.title}
       </TodoListItem>
