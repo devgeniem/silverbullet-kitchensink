@@ -12,7 +12,6 @@ import TodoModalShareList from './TodoModalShareList';
 
 class TodoCreateList extends React.Component {
 
-
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +22,7 @@ class TodoCreateList extends React.Component {
   }
 
   saveDisabled() {
-    return !(this.state.listTitle);
+    return !(this.state.listTitle && this.state.items.length !== 0);
   }
 
   // Fixes an issue with controllable/uncontrollable inputs. You might
@@ -61,11 +60,9 @@ class TodoCreateList extends React.Component {
 
   handleItemRemoval(id) {
 
-
     var tempItems = this.state.items;
-    _.remove(tempItems, function (item) {
-      return item.id === id;
-    });
+
+    _.remove(tempItems, item => item.id === id);
 
     this.setState({
       items: tempItems
@@ -87,10 +84,6 @@ class TodoCreateList extends React.Component {
         existingItem = todos[existingItemIndex];
       }
     }
-
-    console.log("items", items);
-    console.log("context", this);
-
 
     return (
       <div className="todo-create-list-container">
