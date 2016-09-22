@@ -24,11 +24,7 @@ Object.assign(R.clone(state), { lists: handleListModification(action.id, action.
 const removeList = (state, action) =>
 Object.assign(R.clone(state), { lists: R.filter(id => id === action.id, state.lists) });
 
-const createList = (state, action) => {
-  var newState = Object.assign({}, state);
-  newState.lists = R.append(action.data, newState.lists);
-  return newState;
-};
+const createList = state => state;
 
 // map our types to our handlers
 const ACTION_HANDLERS = {
