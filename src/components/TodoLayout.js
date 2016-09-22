@@ -1,9 +1,17 @@
 import React from 'react';
 import TodoHeaderMenu from '../pages/TodoHeaderMenu';
-import {Link} from 'react-router';
-
 
 export default class TodoMain extends React.Component {
+
+  static contextTypes = {
+    router: React.PropTypes.object,
+  };
+
+  navigateTo(e, url) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.context.router.push(url);
+  }
 
   constructor(props) {
     super(props);
@@ -27,9 +35,9 @@ export default class TodoMain extends React.Component {
 
       <header className="todo-header-bar">
         <div>
-          <Link to="/reactDemo/">
-            <img src="../images/logo.svg"
-                 alt="Logo"/></Link>
+          <img onClick={e => this.navigateTo(e, '/reactDemo')}
+               src="../images/logo.svg"
+               alt="Logo"/>
         </div>
         <div>
           <TodoHeaderMenu items={this.menuItems}></TodoHeaderMenu>

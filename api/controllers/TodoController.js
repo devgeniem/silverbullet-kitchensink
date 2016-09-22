@@ -17,7 +17,7 @@ module.exports = {
    * Get todo lists
    */
   findLists: function (req, res) {
-    TodoList.find({}).sort('createdAt DESC')
+    TodoList.find({}).populate("items").sort('createdAt DESC')
       .then(res.ok)
       .catch(res.serverError);
   },
@@ -59,6 +59,7 @@ module.exports = {
   createList: function (req, res) {
     const params = req.params.all();
     var items = JSON.parse(params.items).map(item => ({ title: item.title, completed: false }));
+    console.log(items);
     TodoList.create({ title: params.title, items: items })
       .then(res.ok)
       .catch(res.serverError);

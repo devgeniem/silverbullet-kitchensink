@@ -3,6 +3,7 @@ import uuid from 'node-uuid';
 import {connect} from 'react-redux';
 import {Form, Grid, FormControl, Button, Glyphicon, Row, Col, FormGroup} from 'react-bootstrap';
 
+
 // FIXME: we should maybe pick one? :)
 import R from 'ramda';
 import _ from 'lodash';
@@ -13,18 +14,39 @@ import TodoModalShareList from './TodoModalShareList';
 
 class TodoCreateList extends React.Component {
 
+  static contextTypes = {
+    router: React.PropTypes.object,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
       itemTitle: '',
       items: [],
+      existingItem: false,
     };
-
   }
 
   saveDisabled() {
     return !(this.state.listTitle &&
     this.state.items.length !== 0);
+  }
+
+  componentDidMount() {
+    if (!!this.props.params) {
+      var itemId = this.props.params.listId;
+      var existingItem = R.find(obj=> obj.id === itemId, this.props.todos )
+      if ( !existingItem ) return;
+      this.setState({
+        listTitle: existingItem.title,
+        existingItem: true,
+        items: existingItem.items,
+      });
+    }
+  }
+
+  navigateTo(url) {
+    this.context.router.push(url);
   }
 
   // Fixes an issue with controllable/uncontrollable inputs. You might
@@ -34,20 +56,22 @@ class TodoCreateList extends React.Component {
   }
 
   handleSaveButton() {
+
     var items = this.state.items;
     var title = this.state.listTitle;
-    var { dispatch } = this.props;
-    var data = { title: title, items: items };
-    Actions(dispatch).createList(data);
+    var {dispatch} =  this.props;
+    var data = {title, items};
+
+    Actions(dispatch).createList(data).then(res => {
+      this.navigateTo('/reactDemo');
+    });
   }
 
   handleAddItemButton(title) {
     if (!!title) {
-
       var item = {
         title,
         id: uuid.v1(),
-        date: new Date(),
       };
       this.setState({
         items: R.append(item, this.state.items),
@@ -74,24 +98,8 @@ class TodoCreateList extends React.Component {
 
     var {todos} = this.props;
     var items = this.state.items;
-    var existingItem;
-    //TODO: this should probably be in didReceiveNewProps or smhitng
-    var itemId = null;
-
-    if (!!this.props.params) {
-      itemId = this.props.params.listId;
-
-      for (var i = 0; i < todos.length; ++i) {
-
-      }
-
-      if (existingItem !== undefined) {
-        existingItem = todos[existingItemIndex];
-        console.log("existingItem", existingItem);
-      }
-    }
-
-    var pageTitle = (!!itemId) ? 'Edit list ' + (this.state.listTitle || '') : 'Create a new list';
+    console.log("params: ",this.props.params)
+    var pageTitle = !!this.props.params.listId ? 'Edit list ' + (this.state.listTitle || '') : 'Create a new list';
 
     return (
       <div className="todo-create-list-container">
@@ -135,15 +143,15 @@ class TodoCreateList extends React.Component {
               {items.length > 0 ?
                 <div className="todo-create-list-items-container">
                   {items.map((item) => {
+                    if ( !item ) return;
                       return (
-
                         <TodoListItem
                           key={item.id}
                           removeFn={e => this.handleItemRemoval(item)}
                           id={item.id}
-                          date={item.date}
-                        >
-                          {item.name}
+                          date={item.date}>
+
+                          {item.title}
                         </TodoListItem>
                       );
                     }
