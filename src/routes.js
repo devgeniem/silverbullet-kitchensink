@@ -5,33 +5,34 @@ import TodoCreateList from './pages/TodoCreateList';
 import TodoLogin from './pages/TodoLogin';
 import TodoRegistration from './pages/TodoRegistration';
 
+
 /*
- This is the router configuration file for the
- underlying react-router used by the react application.
+This is the router configuration file for the
+underlying react-router used by the react application.
 
- Routes defined here come second in priority, the first being
- sails routes defined in config/routes.js
+Routes defined here come second in priority, the first being
+sails routes defined in config/routes.js
 
- For more information about react routing, go to
- https://github.com/ReactTraining/react-router
+For more information about react routing, go to
+https://github.com/ReactTraining/react-router
 
- The router itself is initialized in src/app.js according to
- this object.  For more information about the object configuration, go to
- https://github.com/ReactTraining/react-router/blob/master/docs/guides/RouteConfiguration.md#configuration-with-plain-routes
- */
+The router itself is initialized in src/app.js according to
+this object.  For more information about the object configuration, go to
+https://github.com/ReactTraining/react-router/blob/master/docs/guides/RouteConfiguration.md#configuration-with-plain-routes
+*/
 
 const checkLogin = (nextState, replace, isLoggedIn) => {
   // TODO: Uncomment when login works
   /*if (!isLoggedIn) {
     replace({
-      pathname: '/reactDemo/login',
+      pathname: '/login',
       state: { nextPathname: nextState.location.pathname },
     });
   }*/
 };
 
 export default isLoggedIn => ({
-  path: '/reactDemo',
+  path: '/',
   component: Layout,
   indexRoute: {
     component: TodoMain,
@@ -46,7 +47,7 @@ export default isLoggedIn => ({
     component: TodoCreateList,
     onEnter: (nextState, replace) => checkLogin(nextState, replace, isLoggedIn),
   }, {
-    path: '/reactDemo/login',
+    path: 'login',
     component: TodoLogin,
   }, {
     path: 'register',

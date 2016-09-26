@@ -34,6 +34,7 @@ function reactView(req, res, next) {
       // 500
     } else if (renderProps) {
       // 200
+      console.log(req.session);
       var reactHtml = ReactDOMServer.renderToString(reactApp({ req: req, state: state }));
       //TODO some smarter way to find if there react route?
       iso = new Iso();

@@ -73,7 +73,6 @@ class TodoMain extends React.Component {
             </ListGroup>
           </Col>
         </Row>
-
       </Grid>
     );
   }
