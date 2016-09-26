@@ -26,7 +26,7 @@ function reactView(req, res, next) {
   var viewData;
   var iso;
   var state = (req.session && req.session.state) ? req.session.state : {};
-  var routes = reactRoutes;
+  var routes = reactRoutes(true);
 
   match({ routes, location: req.url }, function(error, redirectLocation, renderProps) {
     // couldnt match request url to react path

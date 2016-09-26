@@ -20,23 +20,36 @@ import TodoRegistration from './pages/TodoRegistration';
  https://github.com/ReactTraining/react-router/blob/master/docs/guides/RouteConfiguration.md#configuration-with-plain-routes
  */
 
-export default {
+const checkLogin = (nextState, replace, isLoggedIn) => {
+  // TODO: Uncomment when login works
+  /*if (!isLoggedIn) {
+    replace({
+      pathname: '/reactDemo/login',
+      state: { nextPathname: nextState.location.pathname },
+    });
+  }*/
+};
+
+export default isLoggedIn => ({
   path: '/reactDemo',
   component: Layout,
   indexRoute: {
     component: TodoMain,
+    onEnter: (nextState, replace) => checkLogin(nextState, replace, isLoggedIn),
   },
   childRoutes: [{
     path: 'list/:listId',
     component: TodoCreateList,
+    onEnter: (nextState, replace) => checkLogin(nextState, replace, isLoggedIn),
   }, {
     path: 'create-list',
-    component: TodoCreateList
+    component: TodoCreateList,
+    onEnter: (nextState, replace) => checkLogin(nextState, replace, isLoggedIn),
   }, {
-    path: 'login',
-    component: TodoLogin
+    path: '/reactDemo/login',
+    component: TodoLogin,
   }, {
     path: 'register',
-    component: TodoRegistration
-  }]
-}
+    component: TodoRegistration,
+  }],
+});
