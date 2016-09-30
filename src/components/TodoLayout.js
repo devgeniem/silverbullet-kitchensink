@@ -43,7 +43,7 @@ class TodoMain extends React.Component {
     return (<div className="todo-wrapper">
       <header className="todo-header-bar">
         <div>
-          <a href="#" onClick={e => this.navigateTo(e, '/reactDemo')}>
+          <a href="#" onClick={e => this.navigateTo(e, '/')}>
             <img src="../images/logo.svg" alt="Logo" />
           </a>
         </div>

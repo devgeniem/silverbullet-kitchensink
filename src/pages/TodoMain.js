@@ -41,7 +41,7 @@ class TodoMain extends React.Component {
 
   render() {
     const { lists } = this.props;
-    const listPath = '/reactDemo/create-list';
+    const listPath = '/create-list';
 
     var headerClass = (lists.length > 0) ? 'todo-button list-header' : 'todo-button';
 
@@ -78,7 +78,7 @@ class TodoMain extends React.Component {
   }
 
   renderTodoListItem(list) {
-    const listPath = '/reactDemo/list/';
+    const listPath = '/list/';
     return (
       <TodoListItem
         key={list.id}

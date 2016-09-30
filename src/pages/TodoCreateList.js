@@ -62,6 +62,7 @@ class TodoCreateList extends React.Component {
     var data = { title, items };
 
     Actions(dispatch).createList(data).then((res) => {
+      console.log("gtfo");
       this.navigateTo('/');
     });
   }
