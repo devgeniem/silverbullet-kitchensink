@@ -7,6 +7,7 @@ import {Form, Grid, FormControl, Button, Glyphicon, Row, Col, FormGroup} from 'r
 // FIXME: we should maybe pick one? :)
 import R from 'ramda';
 import _ from 'lodash';
+
 import Actions from '../actions/Creators';
 import TodoListItem from './TodoListItem';
 import TodoModalShareList from './TodoModalShareList';
@@ -39,7 +40,7 @@ class TodoCreateList extends React.Component {
       if ( !existingItem ) return;
       this.setState({
         listTitle: existingItem.title,
-        existingItem: true,
+        existingItem: existingItem,
         items: existingItem.items,
       });
     }
@@ -62,7 +63,18 @@ class TodoCreateList extends React.Component {
     var {dispatch} =  this.props;
     var data = {title, items};
 
-    Actions(dispatch).createList(data).then(res => {
+    console.log("state", this.state);
+    console.log("props", this.props);
+    let promise;
+
+    if  (this.state.existingItem) {
+      let id = this.state.existingItem.id;  
+      promise = Actions(dispatch).modifyList(id, data);
+    }
+    else {
+      promise =  Actions(dispatch).createList(data);
+    }
+    promise.then(res => {
       this.navigateTo('/reactDemo');
     });
   }
@@ -95,10 +107,8 @@ class TodoCreateList extends React.Component {
 
 
   render() {
-
     var {todos} = this.props;
     var items = this.state.items;
-    console.log("params: ",this.props.params)
     var pageTitle = !!this.props.params.listId ? 'Edit list ' + (this.state.listTitle || '') : 'Create a new list';
 
     return (
@@ -179,7 +189,6 @@ class TodoCreateList extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log("new redux state", state);
   return {
     todos: state.todo.lists,
   };
