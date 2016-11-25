@@ -49,6 +49,7 @@
     "iso": "^5.2.0",
     "json-loader": "^0.5.4",
     "jsonwebtoken": "^7.1.9",
+    "localStorage": "^1.0.3",
     "moment": "^2.15.0",
     "msgpack-lite": "^0.1.20",
     "node-uuid": "^1.4.7",

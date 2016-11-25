@@ -18,11 +18,12 @@ export default class TodoHeaderMenu extends React.Component {
   }
 
   render() {
-    var {items} = this.props;
 
+    var {items} = this.props;
     return (
       <Dropdown id="todo-header-bar-menu"
                 pullRight>
+
         <Dropdown.Toggle className="todo-header-bar-menu-button"
                          bsRole="toggle"
                          noCaret>
@@ -32,8 +33,11 @@ export default class TodoHeaderMenu extends React.Component {
 
         <Dropdown.Menu bsRole="menu">
           {items.map(item => {
-              let glyphicon = item.glyphicon ? <Glyphicon glyph={item.glyphicon}/> : null;
-              let callback = item.callback ? item.callback : this.defaultItemCb;
+
+
+              var glyphicon = item.glyphicon ? <Glyphicon glyph={item.glyphicon}/> : null;
+              var callback = item.callback ? item.callback : this.defaultItemCb;
+
               return (<MenuItem key={item.title}
                                 onClick={() => callback(item)}>
                 {glyphicon} {item.title}
@@ -44,4 +48,5 @@ export default class TodoHeaderMenu extends React.Component {
       </Dropdown>
     )
   }
+
 }

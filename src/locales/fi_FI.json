@@ -6,12 +6,15 @@
     "menuitem_2": "Valikko testi 2",
     "save": "Tallenna",
     "close": "Sulje",
+    "finnish": "Suomi",
+    "english": "Englanti",
+    "language": "Kieli"
   },
   "todo": {
   	"add_new_list": "Lisää uusi tehtävälista",
   	"edit_list": "Muokkaa tehtävälistaa",
   	"enter_title": "Tehtävälistan nimi",
   	"item_title": "Tehtävän nimi",
-  	"share_list": "Jaa lista",
+  	"share_list": "Jaa lista"
   }
 }

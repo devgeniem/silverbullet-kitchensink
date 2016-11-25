@@ -1,6 +1,7 @@
 import React from 'react';
 import { translate } from 'react-i18next';
-import TodoHeaderMenu from '../pages/TodoHeaderMenu';
+import TodoHeaderMenu from './TodoHeaderMenu';
+import TodoLangSwitcher from './TodoLangSwitcher';
 
 class TodoLayout extends React.Component {
 
@@ -49,7 +50,8 @@ class TodoLayout extends React.Component {
                alt="Logo"/>
         </div>
         <div>
-          <TodoHeaderMenu items={menuItems}></TodoHeaderMenu>
+          <TodoLangSwitcher />
+          <TodoHeaderMenu items={menuItems} />
         </div>
 
       </header>

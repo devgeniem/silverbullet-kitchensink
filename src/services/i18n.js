@@ -1,12 +1,13 @@
-import i18n from "i18next"
-import fi from "../locales/fi_FI"
-import en from "../locales/en_US"
+import i18n from 'i18next';
+import fi from '../locales/fi_FI';
+import en from '../locales/en_US';
+import localStorage from 'localStorage';
 
 i18n.init({
-  lng: "en",
+  lng: localStorage.getItem('currentLang') || "en",
   fallbackLng: "fi",
   ns: ['common'],
-  defaultNS: 'common',
+  defaultNS: 'common'
 })
 
 for (const ns in fi) {
