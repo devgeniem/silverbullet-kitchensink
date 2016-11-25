@@ -1,8 +1,9 @@
 import React from 'react';
 import i18next from 'i18next';
 import { translate } from 'react-i18next';
+import { connect } from 'react-redux';
 import {Glyphicon, Dropdown, MenuItem} from 'react-bootstrap';
-import localStorage from 'localStorage';
+import Actions from '../actions/Creators';
 
 class TodoLangSwitcher extends React.Component {
 
@@ -10,8 +11,13 @@ class TodoLangSwitcher extends React.Component {
     super(props);
   }
 
+  static propTypes = {
+    dispatch: React.PropTypes.func.isRequired,
+  };
+
   onSelectLanguage(lang) {
-    localStorage.setItem("currentLang", lang)
+    const { dispatch } = this.props;
+    Actions(dispatch).changeLanguage(lang);
     i18next.changeLanguage(lang)
   }
 
@@ -51,4 +57,10 @@ class TodoLangSwitcher extends React.Component {
   }
 }
 
-export default translate(['common'])(TodoLangSwitcher);
+function mapStateToProps(state) {
+  return {
+    lang: state.lang.lang,
+  };
+}
+
+export default connect(mapStateToProps)(translate(['common'])(TodoLangSwitcher));

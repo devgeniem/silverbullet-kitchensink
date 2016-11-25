@@ -6,4 +6,5 @@ export default createTypes(`
   REMOVE_LIST
   MODIFY_LIST
   REFRESH_LIST
+  CHANGE_LANGUAGE
 `);

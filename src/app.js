@@ -17,7 +17,7 @@ import sailsIOClient from 'sails.io.js';
 import Iso from 'iso';
 
 import {I18nextProvider} from "react-i18next"
-import i18n from "./services/i18n"
+import getI18n from "./services/i18n"
 
 import routes from './routes';
 import reducers from './reducers';
@@ -80,7 +80,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <I18nextProvider i18n={i18n}>
+      <I18nextProvider i18n={getI18n(this.store.getState().lang.lang)}>
         <Provider store={this.store}>
           <Router history={this.history} routes={routes} />
         </Provider>

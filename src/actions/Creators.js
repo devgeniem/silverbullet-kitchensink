@@ -18,10 +18,13 @@ export default (dispatch) => {
     api.get('/todo-lists')
       .then(data => dispatch({ type: Types.REFRESH_LIST, data }));
 
+  const changeLanguage = (lang) => dispatch({ type: Types.CHANGE_LANGUAGE, lang });
+
   return {
     deleteList,
     createList,
     modifyList,
     refreshLists,
+    changeLanguage,
   };
 };
