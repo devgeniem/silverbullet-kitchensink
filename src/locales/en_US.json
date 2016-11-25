@@ -1,5 +1,17 @@
 {
   "common": {
-    "title": "ToDo - Powered by Silverbullet"
+    "title": "ToDo - Powered by Silverbullet",
+    "logout": "Logout",
+    "menuitem_1": "Demo menu item 1",
+    "menuitem_2": "Demo menu item 2",
+    "save": "Save",
+    "close": "Close",
+  },
+  "todo": {
+  	"add_new_list": "Add a new list",
+  	"edit_list": "Edit list",
+  	"enter_title": "Enter title",
+  	"item_title": "Item title",
+  	"share_list": "Share list",
   }
 }

@@ -1,7 +1,8 @@
 import React from 'react';
+import { translate } from 'react-i18next';
 import TodoHeaderMenu from '../pages/TodoHeaderMenu';
 
-export default class TodoMain extends React.Component {
+class TodoLayout extends React.Component {
 
   static contextTypes = {
     router: React.PropTypes.object,
@@ -15,22 +16,30 @@ export default class TodoMain extends React.Component {
 
   constructor(props) {
     super(props);
+  }
 
-    this.menuItems = [{
-      title: 'Rairai'
-    }, {
-      title: 'Logout',
-      glyphicon: 'log-out',
-      callback: function () {
-        console.log('Logging out');
+  getMenuItems() {
+    const { t } = this.props
+    return ([
+      {
+        title: t('menuitem_1')
+      },
+      {
+        title: t('menuitem_2')
+      },
+      {
+        title: t('logout'),
+        glyphicon: 'log-out',
+        callback: function () {
+          console.log('Logging out');
+        }
       }
-    }];
+    ])
   }
 
   render() {
-
+    const menuItems = this.getMenuItems();
     var {children} = this.props;
-
     return (<div className="todo-wrapper">
 
       <header className="todo-header-bar">
@@ -40,7 +49,7 @@ export default class TodoMain extends React.Component {
                alt="Logo"/>
         </div>
         <div>
-          <TodoHeaderMenu items={this.menuItems}></TodoHeaderMenu>
+          <TodoHeaderMenu items={menuItems}></TodoHeaderMenu>
         </div>
 
       </header>
@@ -48,3 +57,5 @@ export default class TodoMain extends React.Component {
     </div>);
   }
 }
+
+export default translate(['common'])(TodoLayout);

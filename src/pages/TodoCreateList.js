@@ -1,6 +1,7 @@
 import React from 'react';
 import uuid from 'node-uuid';
 import {connect} from 'react-redux';
+import { translate } from 'react-i18next';
 import {Form, Grid, FormControl, Button, Glyphicon, Row, Col, FormGroup} from 'react-bootstrap';
 
 
@@ -107,9 +108,9 @@ class TodoCreateList extends React.Component {
 
 
   render() {
-    var {todos} = this.props;
+    var {todos, t} = this.props;
     var items = this.state.items;
-    var pageTitle = !!this.props.params.listId ? 'Edit list ' + (this.state.listTitle || '') : 'Create a new list';
+    var pageTitle = !!this.props.params.listId ? t('edit_list') + ' ' + (this.state.listTitle || '') : t('add_new_list');
 
     return (
       <div className="todo-create-list-container">
@@ -123,7 +124,7 @@ class TodoCreateList extends React.Component {
                 <Col xs={12}>
                   <FormControl value={this.getListTitle()}
                                type="text"
-                               placeholder="Enter title"
+                               placeholder={t('enter_title')}
                                onChange={e => this.setState({listTitle: e.target.value})}/>
                 </Col>
               </Row>
@@ -137,7 +138,7 @@ class TodoCreateList extends React.Component {
 
                   <FormControl value={this.state.itemTitle}
                                type="text"
-                               placeholder="Item title"
+                               placeholder={t('item_title')}
                                onChange={e => this.setState({itemTitle: e.target.value})}
                   />
 
@@ -175,7 +176,7 @@ class TodoCreateList extends React.Component {
                           onClick={() => this.handleSaveButton()}
                           disabled={this.saveDisabled()}>
 
-                    <Glyphicon glyph="save"/> Save</Button>
+                    <Glyphicon glyph="save"/> {t('save')}</Button>
                   <TodoModalShareList />
                 </Col>
               </Row>
@@ -194,4 +195,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(TodoCreateList);
+export default connect(mapStateToProps)(translate(["common", "todo"])(TodoCreateList));

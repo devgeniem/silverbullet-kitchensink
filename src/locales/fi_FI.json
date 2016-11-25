@@ -1,5 +1,11 @@
 {
   "common": {
-    "title": "ToDo - Powered by Silverbullet"
+    "title": "ToDo - Powered by Silverbullet",
+    "logout": "Kirjaudu ulos",
+    "menuitem_1": "Valikko testi 1",
+    "menuitem_2": "Valikko testi 2"   
+  },
+  "todo": {
+  	"add_new_list": "Lisää uusi todo-lista"
   }
 }

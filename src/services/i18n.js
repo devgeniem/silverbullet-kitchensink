@@ -3,8 +3,8 @@ import fi from "../locales/fi_FI"
 import en from "../locales/en_US"
 
 i18n.init({
-  lng: "fi",
-  fallbackLng: "en",
+  lng: "en",
+  fallbackLng: "fi",
   ns: ['common'],
   defaultNS: 'common',
 })

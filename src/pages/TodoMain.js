@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { translate } from 'react-i18next';
 import { Button, Glyphicon, Row, Col, Grid, ListGroup } from 'react-bootstrap';
 import TodoListItem from '../pages/TodoListItem';
 import Actions from '../actions/Creators';
@@ -41,7 +42,7 @@ class TodoMain extends React.Component {
   }
 
   render() {
-    const { lists } = this.props;
+    const { lists, t } = this.props;
     const listPath = '/create-list';
 
     var headerClass = (lists.length > 0) ? 'todo-button list-header' : 'todo-button';
@@ -54,10 +55,9 @@ class TodoMain extends React.Component {
         className={headerClass}
         onClick={e => this.navigateTo(e, listPath)}
       >
-        <Glyphicon glyph="plus" /> Add a new list
+        <Glyphicon glyph="plus" /> {t('add_new_list')}
       </Button>
     );
-
     return (
       <Grid className="todo-main-container">
         <Row>
@@ -101,4 +101,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(TodoMain);
+export default connect(mapStateToProps)(translate(["todo"])(TodoMain));
