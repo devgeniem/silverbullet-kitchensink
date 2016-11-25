@@ -44,6 +44,10 @@ module.exports = {
           //plugins: ['transform-runtime']
         },
       },
+      {
+        test: /\.json$/,
+        loader: "json"
+      },      
     ],
   },
 };

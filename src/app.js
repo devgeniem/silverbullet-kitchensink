@@ -16,6 +16,9 @@ import socketIOClient from 'socket.io-client';
 import sailsIOClient from 'sails.io.js';
 import Iso from 'iso';
 
+import {I18nextProvider} from "react-i18next"
+import i18n from "./services/i18n"
+
 import routes from './routes';
 import reducers from './reducers';
 
@@ -77,9 +80,11 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Provider store={this.store}>
-        <Router history={this.history} routes={routes} />
-      </Provider>
+      <I18nextProvider i18n={i18n}>
+        <Provider store={this.store}>
+          <Router history={this.history} routes={routes} />
+        </Provider>
+      </I18nextProvider>
     );
   }
 }
