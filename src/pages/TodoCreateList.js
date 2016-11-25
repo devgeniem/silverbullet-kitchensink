@@ -75,7 +75,7 @@ class TodoCreateList extends React.Component {
       promise =  Actions(dispatch).createList(data);
     }
     promise.then(res => {
-      this.navigateTo('/reactDemo');
+      this.navigateTo('/');
     });
   }
 

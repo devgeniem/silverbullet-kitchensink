@@ -3,6 +3,6 @@
 <!-- Default home page -->
 <div>
   <p> TODO: informative front page  </p>
-  <a href="/reactDemo"> React app </a>
+  <a href="/"> React app </a>
 </div>
 {/content}
