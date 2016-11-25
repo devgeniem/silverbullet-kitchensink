@@ -1,13 +1,50 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import TodoHeaderMenu from './TodoHeaderMenu';
 import TodoLangSwitcher from './TodoLangSwitcher';
+import Actions from '../actions/Creators';
 
 class TodoLayout extends React.Component {
+
+  static propTypes = {
+    dispatch: React.PropTypes.func,
+    children: React.PropTypes.node,
+    user: React.PropTypes.object,
+  };
 
   static contextTypes = {
     router: React.PropTypes.object,
   };
+
+  constructor(props) {
+    super(props);
+  }
+
+  getMenuItems() {
+    const { t, user, dispatch } = this.props
+    if (user.isLoggedIn) {
+      return ([
+        {
+          title: user.profile.name ? user.profile.name : 'no name'
+        },
+        {
+          title: t('menuitem_1')
+        },
+        {
+          title: t('menuitem_2')
+        },
+        {
+          title: t('logout'),
+          glyphicon: 'log-out',
+          callback: function () {
+            Actions(dispatch).logoutUser();
+            window.location.replace('/login');
+          }
+        }
+      ])
+    }
+  }
 
   navigateTo(e, url) {
     e.preventDefault();
@@ -15,34 +52,11 @@ class TodoLayout extends React.Component {
     this.context.router.push(url);
   }
 
-  constructor(props) {
-    super(props);
-  }
-
-  getMenuItems() {
-    const { t } = this.props
-    return ([
-      {
-        title: t('menuitem_1')
-      },
-      {
-        title: t('menuitem_2')
-      },
-      {
-        title: t('logout'),
-        glyphicon: 'log-out',
-        callback: function () {
-          console.log('Logging out');
-        }
-      }
-    ])
-  }
-
   render() {
     const menuItems = this.getMenuItems();
-    var {children} = this.props;
-    return (<div className="todo-wrapper">
+    const { children, user } = this.props;
 
+    return (<div className="todo-wrapper">
       <header className="todo-header-bar">
         <div>
           <img onClick={e => this.navigateTo(e, '/')}
@@ -51,13 +65,20 @@ class TodoLayout extends React.Component {
         </div>
         <div>
           <TodoLangSwitcher />
-          <TodoHeaderMenu items={menuItems} />
+          { user.isLoggedIn ?
+            <TodoHeaderMenu items={this.menuItems} /> : null
+          }
         </div>
-
       </header>
       <div className="todo-main-content">{children}</div>
     </div>);
   }
 }
 
-export default translate(['common'])(TodoLayout);
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  };
+}
+
+export default connect(mapStateToProps)(translate(['common'])(TodoLayout));

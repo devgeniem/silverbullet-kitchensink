@@ -79,6 +79,7 @@ export default class App extends React.Component {
   }
 
   render() {
+    const isLoggedIn = !!this.store.getState().user.isLoggedIn;
     return (
       <I18nextProvider i18n={getI18n(this.store.getState().lang.lang)}>
         <Provider store={this.store}>

@@ -7,4 +7,8 @@ export default createTypes(`
   MODIFY_LIST
   REFRESH_LIST
   CHANGE_LANGUAGE
+  LOGIN_USER
+  LOGOUT_USER
+  REGISTER_USER
+  ACTIVATE
 `);

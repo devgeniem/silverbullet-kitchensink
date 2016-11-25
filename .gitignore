@@ -119,5 +119,5 @@ nbproject
 .sass-cache
 /dist
 /dev
-
+yarn.lock
 
