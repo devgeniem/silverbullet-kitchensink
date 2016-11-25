@@ -35,7 +35,7 @@ export default class TodoMain extends React.Component {
 
       <header className="todo-header-bar">
         <div>
-          <img onClick={e => this.navigateTo(e, '/reactDemo')}
+          <img onClick={e => this.navigateTo(e, '/')}
                src="../images/logo.svg"
                alt="Logo"/>
         </div>
