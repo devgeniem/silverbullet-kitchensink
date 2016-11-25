@@ -21,7 +21,7 @@ import TodoRegistration from './pages/TodoRegistration';
  */
 
 export default {
-  path: '/reactDemo',
+  path: '/',
   component: Layout,
   indexRoute: {
     component: TodoMain,
