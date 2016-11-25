@@ -2,11 +2,12 @@
 import { createTypes } from 'reduxsauce';
 //TODO write better comments here
 export default createTypes(`
-  CREATE_LIST,
-  REMOVE_LIST,
-  MODIFY_LIST,
-  REFRESH_LIST,
-  LOGIN_USER,
-  REGISTER_USER,
-  ACTIVATE,
+  CREATE_LIST
+  REMOVE_LIST
+  MODIFY_LIST
+  REFRESH_LIST
+  LOGIN_USER
+  LOGOUT_USER
+  REGISTER_USER
+  ACTIVATE
 `);

@@ -20,14 +20,17 @@ class TodoMain extends React.Component {
 
     this.menuItems = [];
 
-    if (props.user.name) {
+    if (props.user.isLoggedIn) {
       var { dispatch } = props;
       this.menuItems = [{
-        title: props.user.name,
+        title: props.user.profile.name ? props.user.profile.name : 'no name',
       }, {
         title: 'Logout',
         glyphicon: 'log-out',
-        callback: () => Actions(dispatch).logoutUser(),
+        callback: () => {
+          Actions(dispatch).logoutUser();
+          window.location.replace('/login');
+        },
       }];
     }
   }

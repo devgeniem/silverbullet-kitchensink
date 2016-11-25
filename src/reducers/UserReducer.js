@@ -5,12 +5,13 @@ import Types from '../actions/Types';
 // state management funtions
 
 export const INITIAL_STATE = {
-  user: {},
+  profile: {},
+  token: null,
   isLoggedIn: false,
 };
 
 const loginUser = (state, action) =>
-Object.assign(R.clone(state), { user: action.data, isLoggedIn: true });
+  Object.assign(R.clone(state), { profile: action.response.user, token: action.response.token, isLoggedIn: true });
 
 const logoutUser = () => INITIAL_STATE;
 

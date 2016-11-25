@@ -1,23 +1,42 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { FormControl, FormGroup, Button, Form, Row, Col } from 'react-bootstrap';
 import Actions from '../../actions/Creators';
 
-class LoginForm extends React.Component {
+@connect()
+@withRouter
+export default class LoginForm extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       email: '',
       password: '',
+      error: false,
     };
   }
 
-  submitForm(e) {
-    const { dispatch } = this.props;
-    console.log('LOGIN', this.state);
-    Actions(dispatch).loginUser(this.state);
+  submitForm = (e) => {
+    const { dispatch, location, router } = this.props;
     e.preventDefault();
+    Actions(dispatch).loginUser(this.state)
+      .then(() => {
+        if (location.state && location.state.nextPathname) {
+          window.location.replace(location.state.nextPathname);
+        } else {
+          window.location.replace('/');
+        }
+      })
+      .catch((err) => {
+        if (err.text) {
+          this.setState({
+            error: err.text,
+          });
+        } else {
+          console.error('LOGIN ERROR', err);
+        }
+      });
   }
 
   handleDataChange(data) {
@@ -28,7 +47,7 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <Form onSubmit={(e) => this.submitForm(e)}>
+      <Form onSubmit={this.submitForm}>
         <FormGroup>
           <FormControl name="email" type="email" placeholder="Email" onChange={e => this.handleDataChange(e.target)} />
           <FormControl name="password" type="password" placeholder="Password" onChange={e => this.handleDataChange(e.target)} />
@@ -42,5 +61,3 @@ class LoginForm extends React.Component {
     );
   }
 }
-
-export default connect()(LoginForm);

@@ -30,7 +30,12 @@ module.exports = {
         loader: 'babel',
         query: {
           presets: ['es2015', 'react', 'stage-0'],
-          //plugins: ['transform-runtime']
+          plugins: [
+            'syntax-export-extensions',
+            'transform-export-extensions',
+            'add-module-exports',
+            'transform-decorators-legacy',
+          ],
         },
       },
     ],

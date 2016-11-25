@@ -22,13 +22,12 @@ https://github.com/ReactTraining/react-router/blob/master/docs/guides/RouteConfi
 */
 
 const checkLogin = (nextState, replace, isLoggedIn) => {
-  // TODO: Uncomment when login works
-  /*if (!isLoggedIn) {
+  if (!isLoggedIn) {
     replace({
       pathname: '/login',
       state: { nextPathname: nextState.location.pathname },
     });
-  }*/
+  }
 };
 
 export default isLoggedIn => ({
