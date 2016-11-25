@@ -11,6 +11,7 @@ class TodoMain extends React.Component {
     this.state = {
       lists: props.lists,
     };
+    console.log("lists", props.lists);
   }
 
 
