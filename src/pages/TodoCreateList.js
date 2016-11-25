@@ -68,14 +68,14 @@ class TodoCreateList extends React.Component {
     let promise;
 
     if  (this.state.existingItem) {
-      let id = this.state.existingItem.id;  
+      let id = this.state.existingItem.id;
       promise = Actions(dispatch).modifyList(id, data);
     }
     else {
       promise =  Actions(dispatch).createList(data);
     }
     promise.then(res => {
-      this.navigateTo('/reactDemo');
+      this.navigateTo('/');
     });
   }
 
