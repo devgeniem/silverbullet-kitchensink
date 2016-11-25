@@ -7,10 +7,10 @@ import Types from '../actions/Types';
 export const INITIAL_STATE = { lists: [] };
 
 const refreshLists = (state, action) =>
-Object.assign(R.clone(state), { lists: action.data });
+R.merge(state, { lists: action.data });
 
 const removeList = (state, action) =>
-Object.assign(R.clone(state), { lists: R.filter(id => id === action.id, state.lists) });
+R.merge(state, { lists: R.filter(id => id === action.id, state.lists) });
 
 // map our types to our handlers
 const ACTION_HANDLERS = {

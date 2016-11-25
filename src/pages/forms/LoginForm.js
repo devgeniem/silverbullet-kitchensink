@@ -13,9 +13,11 @@ class LoginForm extends React.Component {
     };
   }
 
-  submitForm() {
+  submitForm(e) {
     const { dispatch } = this.props;
+    console.log('LOGIN', this.state);
     Actions(dispatch).loginUser(this.state);
+    e.preventDefault();
   }
 
   handleDataChange(data) {
@@ -26,14 +28,14 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <Form>
+      <Form onSubmit={(e) => this.submitForm(e)}>
         <FormGroup>
           <FormControl name="email" type="email" placeholder="Email" onChange={e => this.handleDataChange(e.target)} />
           <FormControl name="password" type="password" placeholder="Password" onChange={e => this.handleDataChange(e.target)} />
         </FormGroup>
         <Row>
           <Col xs={12}>
-            <Button onClick={() => this.submitForm} className="todo-button">Login</Button>
+            <Button type="submit" className="todo-button">Login</Button>
           </Col>
         </Row>
       </Form>

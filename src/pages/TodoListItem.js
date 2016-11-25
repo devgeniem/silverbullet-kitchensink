@@ -19,15 +19,21 @@ class TodoListItem extends React.Component {
     router: React.PropTypes.object,
   };
 
+  static defaultProps = {
+    allowNavigation: false,
+  };
+
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   navigateTo(e, url) {
-    e.preventDefault();
-    e.stopPropagation();
-    this.context.router.push(url);
+    if ( this.props.allowNavigation ) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.context.router.push(url);
+    }
   }
 
   getPrettyDate(date) {

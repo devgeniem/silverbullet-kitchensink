@@ -59,10 +59,19 @@ module.exports = {
   createList: function (req, res) {
     const params = req.params.all();
     var items = JSON.parse(params.items).map(item => ({ title: item.title, completed: false }));
-    console.log(items);
     TodoList.create({ title: params.title, items: items })
       .then(res.ok)
       .catch(res.serverError);
+  },
+
+  modifyList: function (req, res) {
+    const params = req.params.all();
+    console.log("modifylist: ", params);
+    var items = JSON.parse(params.items).map(item =>
+      ({ title: item.title, completed: false }));
+    TodoList.update({id: params.id}, {title: params.title, items})
+      .then(res.ok)
+      .catch(res.serverError)
   },
 
   /**
@@ -104,6 +113,8 @@ module.exports = {
       .then(res.ok)
       .catch(res.serverError);
   },
+
+
 
   /**
    * @api {put} /todo-item/:id update todo item by id

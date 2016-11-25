@@ -44,6 +44,7 @@ module.exports.routes = {
 
   'GET /api/todo-lists': 'TodoController.findLists',
   'POST /api/todo-list': 'TodoController.createList',
+  'PUT /api/todo-list/:id': 'TodoController.modifyList',
   'DELETE /api/todo-list/:id': 'TodoController.destroyList',
   'POST /api/todo-item': 'TodoController.createItem',
   'DELETE /api/todo-item/:id': 'TodoController.destroyItem',

@@ -10,10 +10,10 @@
 */
 
 var users = [{
-  email: 'super@example.com',
+  email: 'admin@example.com',
   role: 'admin',
-  name: 'SuperAdmin',
-  password: 'super',
+  name: 'Admin',
+  password: 'password',
 },
 ];
 

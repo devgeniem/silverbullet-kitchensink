@@ -12,6 +12,15 @@ This is a starter boilerplate app using [Sails](http://sailsjs.org) and [React](
 - Proper development and production builds
 - Use Redux and React Router along with Sails routing
 
+## Work in progress
+- finish login-rework branch
+  - activation screen for entering activation code
+  - finish registration page
+  - generate user login on successful auth and save to session
+- tie todoItems - model to user
+- set policies to require authentication everywhere
+- documentation and code review
+
 ## Technologies used
 - Sails
 - [React](https://github.com/facebook/react)

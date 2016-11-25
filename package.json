@@ -90,9 +90,9 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/jussilof/rboot.git"
+    "url": "git://github.com/geniemdev/silverbullet.git"
   },
-  "author": "jussilof",
+  "author": "geniem",
   "license": "",
   "devDependencies": {
     "babel-eslint": "^6.1.2",
