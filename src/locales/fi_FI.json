@@ -3,9 +3,15 @@
     "title": "ToDo - Powered by Silverbullet",
     "logout": "Kirjaudu ulos",
     "menuitem_1": "Valikko testi 1",
-    "menuitem_2": "Valikko testi 2"   
+    "menuitem_2": "Valikko testi 2",
+    "save": "Tallenna",
+    "close": "Sulje",
   },
   "todo": {
-  	"add_new_list": "Lisää uusi todo-lista"
+  	"add_new_list": "Lisää uusi tehtävälista",
+  	"edit_list": "Muokkaa tehtävälistaa",
+  	"enter_title": "Tehtävälistan nimi",
+  	"item_title": "Tehtävän nimi",
+  	"share_list": "Jaa lista",
   }
 }
