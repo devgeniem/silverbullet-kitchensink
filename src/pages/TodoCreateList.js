@@ -75,7 +75,7 @@ class TodoCreateList extends React.Component {
       promise =  Actions(dispatch).createList(data);
     }
     promise.then(res => {
-      this.navigateTo('/');
+      this.navigateTo('/reactDemo');
     });
   }
 
@@ -162,14 +162,14 @@ class TodoCreateList extends React.Component {
 
                 </Col>
               </Row>
-
+              {items.length > 0 ?
                 <div className="todo-create-list-items-container">
-                {
-                  items && items.map ?
-                            items.map(item => this.renderTodoListItem(item)) : null
-                          }
+                  {
+                    items && items.map ?
+                    items.map(item => this.renderTodoListItem(item)) : null
+                  }
                 </div>
-
+                : null }
               <Row className="todo-create-list-control-buttons">
                 <Col xs={12}>
                   <Button className="todo-button"
