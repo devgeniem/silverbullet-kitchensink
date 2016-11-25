@@ -37,6 +37,10 @@ class TodoListItem extends React.Component {
   }
 
   getPrettyDate(date) {
+    console.log(date);
+
+
+
     if (date) return moment(date).format('DD.M.YYYY ');
     return null;
   }

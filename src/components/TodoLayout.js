@@ -46,9 +46,9 @@ class TodoMain extends React.Component {
     return (<div className="todo-wrapper">
       <header className="todo-header-bar">
         <div>
-          <a href="#" onClick={e => this.navigateTo(e, '/')}>
-            <img src="../images/logo.svg" alt="Logo" />
-          </a>
+          <img onClick={e => this.navigateTo(e, '/')}
+               src="../images/logo.svg"
+               alt="Logo"/>
         </div>
         { user.isLoggedIn ?
           <div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { FormControl, FormGroup, Button, Form, Row, Col } from 'react-bootstrap';
+import { FormControl, FormGroup, Button, Form, Row, Col, Alert } from 'react-bootstrap';
 import Actions from '../../actions/Creators';
 
 @connect()
@@ -19,8 +19,9 @@ export default class LoginForm extends React.Component {
 
   submitForm = (e) => {
     const { dispatch, location, router } = this.props;
+    const { email, password } = this.state;
     e.preventDefault();
-    Actions(dispatch).loginUser(this.state)
+    Actions(dispatch).loginUser({ email, password })
       .then(() => {
         if (location.state && location.state.nextPathname) {
           window.location.replace(location.state.nextPathname);
@@ -48,6 +49,7 @@ export default class LoginForm extends React.Component {
   render() {
     return (
       <Form onSubmit={this.submitForm}>
+        { this.state.error && <Alert bsStyle="danger">{this.state.error}</Alert> }
         <FormGroup>
           <FormControl name="email" type="email" placeholder="Email" onChange={e => this.handleDataChange(e.target)} />
           <FormControl name="password" type="password" placeholder="Password" onChange={e => this.handleDataChange(e.target)} />
