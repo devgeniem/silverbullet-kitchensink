@@ -1,7 +1,7 @@
 import React from 'react';
 import uuid from 'node-uuid';
-import {connect} from 'react-redux';
-import {Form, Grid, FormControl, Button, Glyphicon, Row, Col, FormGroup} from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { Form, Grid, FormControl, Button, Glyphicon, Row, Col, FormGroup } from 'react-bootstrap';
 
 
 // FIXME: we should maybe pick one? :)
@@ -36,8 +36,8 @@ class TodoCreateList extends React.Component {
   componentDidMount() {
     if (!!this.props.params) {
       var itemId = this.props.params.listId;
-      var existingItem = R.find(obj=> obj.id === itemId, this.props.todos )
-      if ( !existingItem ) return;
+      var existingItem = R.find(obj=> obj.id === itemId, this.props.todos);
+      if (!existingItem) return;
       this.setState({
         listTitle: existingItem.title,
         existingItem: existingItem,
@@ -57,11 +57,10 @@ class TodoCreateList extends React.Component {
   }
 
   handleSaveButton() {
-
     var items = this.state.items;
     var title = this.state.listTitle;
-    var {dispatch} =  this.props;
-    var data = {title, items};
+    var { dispatch } = this.props;
+    var data = { title, items };
 
     console.log("state", this.state);
     console.log("props", this.props);
@@ -90,7 +89,7 @@ class TodoCreateList extends React.Component {
       });
     }
 
-    this.setState({itemTitle: ''});
+    this.setState({ itemTitle: '' });
   }
 
 
@@ -100,9 +99,8 @@ class TodoCreateList extends React.Component {
     _.remove(tempItems, tempItem => tempItem.id === item.id);
 
     this.setState({
-      items: tempItems
+      items: tempItems,
     });
-
   }
 
 
@@ -135,9 +133,10 @@ class TodoCreateList extends React.Component {
               <Row>
                 <Col xs={12}>
                   <FormControl value={this.getListTitle()}
-                               type="text"
-                               placeholder="Enter title"
-                               onChange={e => this.setState({listTitle: e.target.value})}/>
+                    type="text"
+                    placeholder="Enter title"
+                    onChange={e => this.setState({ listTitle: e.target.value })}
+                  />
                 </Col>
               </Row>
 
@@ -149,15 +148,16 @@ class TodoCreateList extends React.Component {
                 <Col xs={12}>
 
                   <FormControl value={this.state.itemTitle}
-                               type="text"
-                               placeholder="Item title"
-                               onChange={e => this.setState({itemTitle: e.target.value})}
+                    type="text"
+                    placeholder="Item title"
+                    onChange={e => this.setState({ itemTitle: e.target.value })}
                   />
 
                   <Button className="todo-create-list-add-item-button"
-                          disabled={!this.state.itemTitle}
-                          onClick={() => this.handleAddItemButton(this.state.itemTitle)}>
-                    <Glyphicon glyph="plus"/>
+                    disabled={!this.state.itemTitle}
+                    onClick={() => this.handleAddItemButton(this.state.itemTitle)}
+                  >
+                    <Glyphicon glyph="plus" />
                   </Button>
 
                 </Col>
@@ -173,10 +173,11 @@ class TodoCreateList extends React.Component {
               <Row className="todo-create-list-control-buttons">
                 <Col xs={12}>
                   <Button className="todo-button"
-                          onClick={() => this.handleSaveButton()}
-                          disabled={this.saveDisabled()}>
+                    onClick={() => this.handleSaveButton()}
+                    disabled={this.saveDisabled()}
+                  >
 
-                    <Glyphicon glyph="save"/> Save</Button>
+                    <Glyphicon glyph="save" /> Save</Button>
                   <TodoModalShareList />
                 </Col>
               </Row>

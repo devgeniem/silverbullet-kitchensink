@@ -49,6 +49,7 @@ module.exports.routes = {
   'POST /api/todo-item': 'TodoController.createItem',
   'DELETE /api/todo-item/:id': 'TodoController.destroyItem',
   'PUT /api/todo-item/:id': 'TodoController.updateItem',
+  'GET /register/:id/:activationCode': 'UserController.handleActivation',
 
   /***************************************************************************
   *                                                                          *

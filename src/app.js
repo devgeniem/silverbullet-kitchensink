@@ -76,9 +76,10 @@ export default class App extends React.Component {
   }
 
   render() {
+    const isLoggedIn = !!this.store.getState().user.isLoggedIn;
     return (
       <Provider store={this.store}>
-        <Router history={this.history} routes={routes} />
+        <Router history={this.history} routes={routes(isLoggedIn)} />
       </Provider>
     );
   }

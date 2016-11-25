@@ -7,7 +7,8 @@
   "plugins": [
     "syntax-export-extensions",
     "transform-export-extensions",
-    "add-module-exports"
+    "add-module-exports",
+    "transform-decorators-legacy"
   ],
   "ignore": [
     "./src/assets/js/*"
