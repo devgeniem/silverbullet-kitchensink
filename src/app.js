@@ -83,7 +83,7 @@ export default class App extends React.Component {
     return (
       <I18nextProvider i18n={getI18n(this.store.getState().lang.lang)}>
         <Provider store={this.store}>
-          <Router history={this.history} routes={routes} />
+          <Router history={this.history} routes={routes(isLoggedIn)} />
         </Provider>
       </I18nextProvider>
     );
