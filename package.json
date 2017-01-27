@@ -76,7 +76,7 @@
     "start:app": "node app.js",
     "webpack:watch": "webpack --watch",
     "nodemon": "nodemon ./nodemonWrapper.js --ignore 'dev/*' --ignore README",
-    "lint": "eslint .",
+    "lint": "eslint src",
     "pm2-start": "webpack; pm2 start app.js -i 1 --name silverbullet",
     "pm2-stop": "pm2 stop all; pm2 delete all"
   },
