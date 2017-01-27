@@ -29,7 +29,7 @@ class ListItem extends React.Component {
   }
 
   navigateTo(e, url) {
-    if ( this.props.allowNavigation ) {
+    if (this.props.allowNavigation) {
       e.preventDefault();
       e.stopPropagation();
       this.context.router.push(url);
@@ -56,7 +56,6 @@ class ListItem extends React.Component {
   }
 
   render() {
-
     var { children } = this.props;
 
     return (
@@ -78,7 +77,7 @@ class ListItem extends React.Component {
         <Glyphicon
           glyph="remove"
           className="todo-list-item-remove-item"
-          onClick={(e) => this.handleRemove(e)}
+          onClick={e => this.handleRemove(e)}
         />
       </ListGroupItem>
     );

@@ -1,7 +1,7 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
-import {Modal, Button, Glyphicon} from 'react-bootstrap';
+import { Modal, Button, Glyphicon } from 'react-bootstrap';
 
 class ShareList extends React.Component {
 
@@ -11,21 +11,23 @@ class ShareList extends React.Component {
   }
 
   close() {
-    this.setState({showModal: false});
+    this.setState({ showModal: false });
   }
 
   open() {
     console.log('OPENING MODAL');
-    this.setState({showModal: true});
+    this.setState({ showModal: true });
   }
 
   render() {
-    const { t } = this.props
+    const { t } = this.props;
     return (
       <div>
-        <Button className="todo-button"
-                onClick={() => this.open()}>
-          <Glyphicon glyph="share"/> {t('share_list')}</Button>
+        <Button
+          className="todo-button"
+          onClick={() => this.open()}
+        >
+          <Glyphicon glyph="share" /> {t('share_list')}</Button>
 
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
@@ -48,4 +50,4 @@ function mapStateToProps(state) {
   return {};
 }
 
-export default connect(mapStateToProps, {})(translate(["common", "todo"])(ShareList));
+export default connect(mapStateToProps, {})(translate(['common', 'todo'])(ShareList));

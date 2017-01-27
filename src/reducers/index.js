@@ -5,5 +5,5 @@ import UserReducer from './UserReducer';
 export default {
   lang: LangReducer,
   todo: ListReducer,
-  user: UserReducer
+  user: UserReducer,
 };

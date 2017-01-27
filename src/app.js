@@ -16,8 +16,8 @@ import socketIOClient from 'socket.io-client';
 import sailsIOClient from 'sails.io.js';
 import Iso from 'iso';
 
-import {I18nextProvider} from "react-i18next"
-import getI18n from "./services/i18n"
+import { I18nextProvider } from 'react-i18next';
+import getI18n from './services/i18n';
 
 import routes from './routes';
 import reducers from './reducers';
@@ -47,8 +47,8 @@ export default class App extends React.Component {
                 state,
                 compose(
                   applyMiddleware(thunk),
-                  window.devToolsExtension ? window.devToolsExtension() : f => f
-                )
+                  window.devToolsExtension ? window.devToolsExtension() : f => f,
+                ),
             );
 
       this.history = syncHistoryWithStore(browserHistory, this.store);
@@ -73,7 +73,7 @@ export default class App extends React.Component {
     this.store = createStore(
             combineReducers({ ...reducers, routing: routerReducer }),
             this.props.state,
-            applyMiddleware(thunk)
+            applyMiddleware(thunk),
         );
     this.history = syncHistoryWithStore(memoryHistory, this.store);
   }
@@ -93,7 +93,7 @@ export default class App extends React.Component {
 if (process.browser) {
   ReactDOM.render(
     <App />,
-    document.getElementById('app')
+    document.getElementById('app'),
   );
 } else {
   module.exports = App;

@@ -22,7 +22,7 @@ export default {
             resolve(response);
           }
         });
-      });
+    });
   },
   get(path, options={}) {
     return new Promise((resolve, reject) => {
@@ -51,7 +51,7 @@ export default {
       }
       if (options.attach) { // multipart
         req.field('data', JSON.stringify(data));
-        options.attach.forEach(file => {
+        options.attach.forEach((file) => {
           req.attach('upload', file, file.name);
         });
       } else { //normal send
@@ -103,5 +103,5 @@ export default {
         }
       });
     });
-  }
-}
+  },
+};

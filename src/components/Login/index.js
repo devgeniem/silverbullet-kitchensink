@@ -6,7 +6,6 @@ import { Grid } from 'react-bootstrap';
 class Login extends React.Component {
 
   render() {
-
     return (
       <div className="todo-login-container">
         <Grid>

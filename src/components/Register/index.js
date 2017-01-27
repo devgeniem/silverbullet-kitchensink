@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { connect } from 'react-redux';
-import { Grid } from 'react-bootstrap'
-import RegisterForm from '../forms/RegisterForm'
+import { Grid } from 'react-bootstrap';
+import RegisterForm from '../forms/RegisterForm';
 
 class Register extends React.Component {
 
@@ -18,7 +18,7 @@ class Register extends React.Component {
           </div>
         </Grid>
       </div>
-    )
+    );
   }
 }
 
@@ -29,5 +29,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(Register);
-
 

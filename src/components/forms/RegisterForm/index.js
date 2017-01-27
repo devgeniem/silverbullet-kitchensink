@@ -19,7 +19,7 @@ export default class RegisterForm extends React.Component {
   }
 
   handleDataChange(data) {
-    let obj = {};
+    const obj = {};
     obj[data.name] = data.value;
     this.setState(obj);
   }
@@ -28,9 +28,9 @@ export default class RegisterForm extends React.Component {
     return (
       <Form>
         <FormGroup>
-          <FormControl name="name" type="text" placeholder="Name" onChange={(e) => this.handleDataChange(e.target)} />
-          <FormControl name="email" type="email" placeholder="Email" onChange={(e) => this.handleDataChange(e.target)} />
-          <FormControl name="password" type="password" placeholder="Password" onChange={(e) => this.handleDataChange(e.target)}/>
+          <FormControl name="name" type="text" placeholder="Name" onChange={e => this.handleDataChange(e.target)} />
+          <FormControl name="email" type="email" placeholder="Email" onChange={e => this.handleDataChange(e.target)} />
+          <FormControl name="password" type="password" placeholder="Password" onChange={e => this.handleDataChange(e.target)} />
         </FormGroup>
         <Row>
           <Col xs={12}>
@@ -38,6 +38,6 @@ export default class RegisterForm extends React.Component {
           </Col>
         </Row>
       </Form>
-    )
+    );
   }
 }

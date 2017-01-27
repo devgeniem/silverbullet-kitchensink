@@ -12,7 +12,7 @@ class Todo extends React.Component {
     this.state = {
       lists: props.lists,
     };
-    console.log("lists", props.lists);
+    console.log('lists', props.lists);
   }
 
 
@@ -100,4 +100,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(translate(["todo"])(Todo));
+export default connect(mapStateToProps)(translate(['todo'])(Todo));

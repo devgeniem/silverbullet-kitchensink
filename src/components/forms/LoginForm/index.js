@@ -41,7 +41,7 @@ export default class LoginForm extends React.Component {
   }
 
   handleDataChange(data) {
-    let obj = {};
+    const obj = {};
     obj[data.name] = data.value;
     this.setState(obj);
   }
