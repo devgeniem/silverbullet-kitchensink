@@ -1,9 +1,12 @@
 import { createReducer } from 'reduxsauce';
 import R from 'ramda';
-import Types from '../actions/Types';
+import { Types } from '../actions/LangActions';
 
 // state management funtions
-export const INITIAL_STATE = { lang: 'en' };
+export const INITIAL_STATE = {
+  sync: true, // this state will be synced to server for serverside rendering
+  lang: 'en',
+};
 
 const setLanguage = (state, action) =>
 R.merge(state, { lang: action.lang });

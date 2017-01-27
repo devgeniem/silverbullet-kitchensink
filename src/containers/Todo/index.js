@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import { Button, Glyphicon, Row, Col, Grid, ListGroup } from 'react-bootstrap';
 import ListItem from '../../components/ListItem';
-import Actions from '../../actions/Creators';
+import { ListActions } from '../../actions';
 
 class Todo extends React.Component {
 
@@ -12,7 +12,6 @@ class Todo extends React.Component {
     this.state = {
       lists: props.lists,
     };
-    console.log('lists', props.lists);
   }
 
 
@@ -27,7 +26,7 @@ class Todo extends React.Component {
 
   componentWillMount() {
     const { dispatch } = this.props;
-    Actions(dispatch).refreshLists();
+    ListActions(dispatch).refreshLists();
   }
 
   navigateTo(e, url) {
@@ -38,7 +37,7 @@ class Todo extends React.Component {
 
   handleListRemoval(id) {
     const { dispatch } = this.props;
-    Actions(dispatch).deleteList(id).then(Actions(dispatch).refreshLists);
+    ListActions(dispatch).deleteList(id).then(ListActions(dispatch).refreshLists);
   }
 
   render() {

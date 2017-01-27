@@ -2,7 +2,12 @@ import React from 'react';
 import { translate } from 'react-i18next';
 import { Modal, Button, Glyphicon } from 'react-bootstrap';
 
-class ShareList extends React.Component {
+@translate(['common', 'todo'])
+export default class ShareList extends React.Component {
+
+  static propTypes = {
+    t: React.PropTypes.func.isRequired,
+  };
 
   constructor(props) {
     super(props);
@@ -45,5 +50,3 @@ class ShareList extends React.Component {
     );
   }
 }
-
-export default translate(['common', 'todo'])(ShareList);

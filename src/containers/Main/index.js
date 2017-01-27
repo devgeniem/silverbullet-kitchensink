@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import Header from '../../components/Header';
 import LangSwitcher from '../../components/LangSwitcher';
-import Actions from '../../actions/Creators';
+import { UserActions } from '../../actions';
 
 class App extends React.Component {
 
@@ -34,7 +34,7 @@ class App extends React.Component {
           title: t('logout'),
           glyphicon: 'log-out',
           callback: function () {
-            Actions(dispatch).logoutUser();
+            UserActions(dispatch).logoutUser();
             window.location.replace('/login');
           },
         },

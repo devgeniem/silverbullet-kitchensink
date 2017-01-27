@@ -61,7 +61,6 @@ module.exports.bootstrap = function (cb) {
       sails.log.info('* Email    : admin@example.com                   *')
       sails.log.info('* Password : password                            *')
       sails.log.info('**************************************************');
-      sails.log.debug(sails.config.views);
       return cb();
     })
     .catch(cb);

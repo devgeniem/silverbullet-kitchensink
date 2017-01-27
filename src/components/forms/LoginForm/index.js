@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { FormControl, FormGroup, Button, Form, Row, Col, Alert } from 'react-bootstrap';
-import Actions from '../../../actions/Creators';
+import { UserActions } from '../../../actions';
 
 @connect()
 @withRouter
@@ -21,7 +21,7 @@ export default class LoginForm extends React.Component {
     const { dispatch, location } = this.props;
     const { email, password } = this.state;
     e.preventDefault();
-    Actions(dispatch).loginUser({ email, password })
+    UserActions(dispatch).loginUser({ email, password })
       .then(() => {
         if (location.state && location.state.nextPathname) {
           window.location.replace(location.state.nextPathname);

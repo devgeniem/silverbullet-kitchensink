@@ -7,7 +7,7 @@ import { Form, Grid, FormControl, Button, Glyphicon, Row, Col, FormGroup } from 
 import R from 'ramda';
 import _ from 'lodash';
 
-import Actions from '../../actions/Creators';
+import { ListActions } from '../../actions';
 import ListItem from '../../components/ListItem';
 import ShareList from '../../components/ShareList';
 
@@ -62,16 +62,13 @@ class CreateList extends React.Component {
     var title = this.state.listTitle;
     var { dispatch } = this.props;
     var data = { title, items };
-
-    console.log('state', this.state);
-    console.log('props', this.props);
     let promise;
 
     if (this.state.existingItem) {
       const id = this.state.existingItem.id;
-      promise = Actions(dispatch).modifyList(id, data);
+      promise = ListActions(dispatch).modifyList(id, data);
     } else {
-      promise = Actions(dispatch).createList(data);
+      promise = ListActions(dispatch).createList(data);
     }
     promise.then(() => {
       this.navigateTo('/');

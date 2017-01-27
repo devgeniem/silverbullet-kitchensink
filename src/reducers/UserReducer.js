@@ -1,10 +1,11 @@
 import { createReducer } from 'reduxsauce';
 import R from 'ramda';
-import Types from '../actions/Types';
+import { Types } from '../actions/UserActions';
 
 // state management funtions
 
 export const INITIAL_STATE = {
+  sync: true,          // this state will be synced to server for serverside rendering
   profile: {},
   token: null,
   isLoggedIn: false,

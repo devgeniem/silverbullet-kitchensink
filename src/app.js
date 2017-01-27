@@ -25,8 +25,8 @@ import reducers from './reducers';
 export default class App extends React.Component {
 
   static propTypes = {
-    state: React.PropTypes.obj,
-    req: React.PropTypes.obj,
+    state: React.PropTypes.object,
+    req: React.PropTypes.object,
   };
 
   static defaultProps = {
@@ -41,6 +41,17 @@ export default class App extends React.Component {
     } else {
       this.initStoreServerSide();
     }
+  }
+
+  getSyncData() {
+    const storeData = this.store.getState();
+    const syncData = {};
+    Object.keys(storeData).forEach((key) => {
+      if (storeData[key].sync) {
+        syncData[key] = storeData[key];
+      }
+    });
+    return syncData;
   }
 
   initStoreClientSide() {
@@ -58,11 +69,11 @@ export default class App extends React.Component {
 
       this.history = syncHistoryWithStore(browserHistory, this.store);
 
-            //keep server session in sync with store
+      //keep server session in sync with store
       this.store.subscribe(() => {
-        const storeState = this.store.getState();
-        if (storeState) {
-          io.socket.post('/api/session', { state: storeState }, (body, JWR) => {
+        var syncData = this.getSyncData();
+        if (syncData) {
+          io.socket.post('/api/session', { state: syncData }, (body, JWR) => {
             if (JWR.statusCode !== 200) {
               console.error('Failed to save session state: ', JWR.statusCode);
             }
