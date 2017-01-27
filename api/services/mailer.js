@@ -13,12 +13,12 @@ export default {
             };
         smtpTransport.sendMail(mail, function(error, info) {
             if (error) {
-                return console.error('sendMail:', error);
+                return sails.log.error('sendMail:', error);
             }
             if (cb) {
                 cb(info);
             } else {
-                console.log('Message sent: ' + info.response);
+                sails.log.info('Message sent: ' + info.response);
             }
         });
     }
