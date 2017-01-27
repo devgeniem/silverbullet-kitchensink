@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { translate } from 'react-i18next';
 import {Modal, Button, Glyphicon} from 'react-bootstrap';
-//import {saveItem} from '../actions/modalShareListActions';
 
 class TodoModalShareList extends React.Component {
 
@@ -20,22 +20,22 @@ class TodoModalShareList extends React.Component {
   }
 
   render() {
-
+    const { t } = this.props
     return (
       <div>
         <Button className="todo-button"
                 onClick={() => this.open()}>
-          <Glyphicon glyph="share"/> Share list</Button>
+          <Glyphicon glyph="share"/> {t('share_list')}</Button>
 
         <Modal show={this.state.showModal} onHide={this.close}>
           <Modal.Header closeButton>
-            <Modal.Title>Share List</Modal.Title>
+            <Modal.Title>{t('share_list')}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             adasdsa
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={() => this.close()}>Close</Button>
+            <Button onClick={() => this.close()}>{t('close')}</Button>
           </Modal.Footer>
         </Modal>
       </div>
@@ -48,4 +48,4 @@ function mapStateToProps(state) {
   return {};
 }
 
-export default connect(mapStateToProps, {})(TodoModalShareList);
+export default connect(mapStateToProps, {})(translate(["common", "todo"])(TodoModalShareList));

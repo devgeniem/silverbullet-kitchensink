@@ -1,11 +1,47 @@
 import React from 'react';
-import TodoHeaderMenu from '../pages/TodoHeaderMenu';
+import { connect } from 'react-redux';
+import { translate } from 'react-i18next';
+import TodoHeaderMenu from './TodoHeaderMenu';
+import TodoLangSwitcher from './TodoLangSwitcher';
+import Actions from '../actions/Creators';
 
-export default class TodoMain extends React.Component {
+class TodoLayout extends React.Component {
+
+  static propTypes = {
+    dispatch: React.PropTypes.func,
+    children: React.PropTypes.node,
+    user: React.PropTypes.object,
+  };
 
   static contextTypes = {
     router: React.PropTypes.object,
   };
+
+  getMenuItems() {
+    const { t, user, dispatch } = this.props;
+    if (user.isLoggedIn) {
+      return [
+        {
+          title: user.profile.name ? user.profile.name : 'no name',
+        },
+        {
+          title: t('menuitem_1'),
+        },
+        {
+          title: t('menuitem_2'),
+        },
+        {
+          title: t('logout'),
+          glyphicon: 'log-out',
+          callback: function () {
+            Actions(dispatch).logoutUser();
+            window.location.replace('/login');
+          },
+        },
+      ];
+    }
+    return [];
+  }
 
   navigateTo(e, url) {
     e.preventDefault();
@@ -13,38 +49,33 @@ export default class TodoMain extends React.Component {
     this.context.router.push(url);
   }
 
-  constructor(props) {
-    super(props);
-
-    this.menuItems = [{
-      title: 'Rairai'
-    }, {
-      title: 'Logout',
-      glyphicon: 'log-out',
-      callback: function () {
-        console.log('Logging out');
-      }
-    }];
-  }
-
   render() {
-
-    var {children} = this.props;
+    const menuItems = this.getMenuItems();
+    const { children, user } = this.props;
 
     return (<div className="todo-wrapper">
-
       <header className="todo-header-bar">
         <div>
           <img onClick={e => this.navigateTo(e, '/')}
                src="../images/logo.svg"
-               alt="Logo"/>
+               alt="Logo" />
         </div>
         <div>
-          <TodoHeaderMenu items={this.menuItems}></TodoHeaderMenu>
+          <TodoLangSwitcher />
+          { user.isLoggedIn ?
+            <TodoHeaderMenu items={menuItems} /> : null
+          }
         </div>
-
       </header>
       <div className="todo-main-content">{children}</div>
     </div>);
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  };
+}
+
+export default connect(mapStateToProps)(translate(['common'])(TodoLayout));

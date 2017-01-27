@@ -16,6 +16,9 @@ import socketIOClient from 'socket.io-client';
 import sailsIOClient from 'sails.io.js';
 import Iso from 'iso';
 
+import {I18nextProvider} from "react-i18next"
+import getI18n from "./services/i18n"
+
 import routes from './routes';
 import reducers from './reducers';
 
@@ -76,10 +79,13 @@ export default class App extends React.Component {
   }
 
   render() {
+    const isLoggedIn = !!this.store.getState().user.isLoggedIn;
     return (
-      <Provider store={this.store}>
-        <Router history={this.history} routes={routes} />
-      </Provider>
+      <I18nextProvider i18n={getI18n(this.store.getState().lang.lang)}>
+        <Provider store={this.store}>
+          <Router history={this.history} routes={routes(isLoggedIn)} />
+        </Provider>
+      </I18nextProvider>
     );
   }
 }

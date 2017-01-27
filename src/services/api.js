@@ -11,7 +11,7 @@ export default {
         .post(getApiPath('/auth/user'))
         .send({
           email: credentials.email,
-          password: credentials.password
+          password: credentials.password,
         })
         .end((err, res) => {
           var response = (res.type === 'application/json') ? JSON.parse(res.text) : res;
