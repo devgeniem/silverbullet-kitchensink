@@ -1,4 +1,3 @@
-//import uuid from 'node-uuid';
 import Hashids from 'hashids';
 import bcrypt from 'bcrypt-nodejs';
 
