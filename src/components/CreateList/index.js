@@ -1,5 +1,5 @@
 import React from 'react';
-import uuid from 'node-uuid';
+import uuid from 'uuid';
 import {connect} from 'react-redux';
 import {Form, Grid, FormControl, Button, Glyphicon, Row, Col, FormGroup} from 'react-bootstrap';
 
