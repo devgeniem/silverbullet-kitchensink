@@ -121,7 +121,7 @@ module.exports.http = {
     ****************************************************************************/
 
     myRequestLogger: function (req, res, next) {
-      if (!/\..{2,3}$/.test(req.url)) {
+      if (!/\..{2,5}$/.test(req.url)) {
         sails.log.debug('Requested :: ', req.method, req.url);
       }
       return next();
