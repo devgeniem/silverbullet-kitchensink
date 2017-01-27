@@ -23,7 +23,6 @@ export default {
     if (!params.state) {
       return res.badRequest({ key: 'required_fields_missing', text: 'Parameter state required' });
     }
-    delete params.state.routing; // don't save router state
     req.session.state = params.state;
     return res.ok(params.state);
   },

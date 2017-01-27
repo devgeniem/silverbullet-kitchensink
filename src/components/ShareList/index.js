@@ -15,7 +15,6 @@ class ShareList extends React.Component {
   }
 
   open() {
-    console.log('OPENING MODAL');
     this.setState({showModal: true});
   }
 
