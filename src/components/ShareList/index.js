@@ -1,10 +1,13 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import { Modal, Button, Glyphicon } from 'react-bootstrap';
 
 @translate(['common', 'todo'])
 export default class ShareList extends React.Component {
+
+  static propTypes = {
+    t: React.PropTypes.func.isRequired,
+  };
 
   constructor(props) {
     super(props);
