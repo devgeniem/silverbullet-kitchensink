@@ -1,9 +1,8 @@
-import Layout from './components/TodoLayout';
-import TodoMain from './pages/TodoMain';
-import TodoCreateList from './pages/TodoCreateList';
-
-import TodoLogin from './pages/TodoLogin';
-import TodoRegistration from './pages/TodoRegistration';
+import Main from './containers/Main';
+import Todo from './container/Todo';
+import CreateList from './components/CreateList';
+import Login from './components/TodoLogin';
+import Register from './components/TodoRegistration';
 
 
 /*
@@ -32,24 +31,24 @@ const checkLogin = (nextState, replace, isLoggedIn) => {
 
 export default isLoggedIn => ({
   path: '/',
-  component: Layout,
+  component: Main,
   indexRoute: {
-    component: TodoMain,
+    component: Todo,
     onEnter: (nextState, replace) => checkLogin(nextState, replace, isLoggedIn),
   },
   childRoutes: [{
     path: 'list/:listId',
-    component: TodoCreateList,
+    component: CreateList,
     onEnter: (nextState, replace) => checkLogin(nextState, replace, isLoggedIn),
   }, {
     path: 'create-list',
-    component: TodoCreateList,
+    component: CreateList,
     onEnter: (nextState, replace) => checkLogin(nextState, replace, isLoggedIn),
   }, {
     path: 'login',
-    component: TodoLogin,
+    component: Login,
   }, {
     path: 'register',
-    component: TodoRegistration,
+    component: Register,
   }],
 });
