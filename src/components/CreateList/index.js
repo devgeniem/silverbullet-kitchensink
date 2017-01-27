@@ -61,9 +61,6 @@ class CreateList extends React.Component {
     var title = this.state.listTitle;
     var { dispatch } = this.props;
     var data = { title, items };
-
-    console.log('state', this.state);
-    console.log('props', this.props);
     let promise;
 
     if (this.state.existingItem) {

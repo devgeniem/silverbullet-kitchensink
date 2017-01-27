@@ -5,6 +5,7 @@ import Types from '../actions/Types';
 // state management funtions
 
 export const INITIAL_STATE = {
+  sync: true,          // this state will be synced to server for serverside rendering
   profile: {},
   token: null,
   isLoggedIn: false,
