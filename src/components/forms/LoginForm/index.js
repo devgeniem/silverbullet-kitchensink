@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { translate } from 'react-i18next';
 import { withRouter } from 'react-router';
 import { FormControl, FormGroup, Button, Form, Row, Col, Alert } from 'react-bootstrap';
 import { UserActions } from '../../../actions';
 
 @connect()
 @withRouter
+@translate(['common', 'login_register'])
 export default class LoginForm extends React.Component {
 
   constructor(props) {
@@ -47,16 +49,18 @@ export default class LoginForm extends React.Component {
   }
 
   render() {
+    const { t } = this.props;
+
     return (
       <Form onSubmit={this.submitForm}>
         { this.state.error && <Alert bsStyle="danger">{this.state.error}</Alert> }
         <FormGroup>
-          <FormControl name="email" type="email" placeholder="Email" onChange={e => this.handleDataChange(e.target)} />
-          <FormControl name="password" type="password" placeholder="Password" onChange={e => this.handleDataChange(e.target)} />
+          <FormControl name="email" type="email" placeholder={t('email')} onChange={e => this.handleDataChange(e.target)} />
+          <FormControl name="password" type="password" placeholder={t('password')} onChange={e => this.handleDataChange(e.target)} />
         </FormGroup>
         <Row>
           <Col xs={12}>
-            <Button type="submit" className="todo-button">Login</Button>
+            <Button type="submit" className="todo-button">{t('login')}</Button>
           </Col>
         </Row>
       </Form>

@@ -5,8 +5,14 @@ import moment from 'moment';
 // BOOTSTRAP
 import { ListGroupItem, Glyphicon } from 'react-bootstrap';
 
+function mapStateToProps(state) {
+  return {
+    items: state.TodoListItem ? state.TodoListItem.items : [],
+  };
+}
 
-class ListItem extends React.Component {
+@connect(mapStateToProps, {})
+export default class ListItem extends React.Component {
 
   static propTypes = {
     href: React.PropTypes.string,
@@ -92,11 +98,3 @@ class ListItem extends React.Component {
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    items: state.TodoListItem ? state.TodoListItem.items : [],
-  };
-}
-
-export default connect(mapStateToProps, {})(ListItem);

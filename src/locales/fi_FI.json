@@ -1,20 +1,30 @@
 {
-  "common": {
-    "title": "ToDo - Powered by Silverbullet",
-    "logout": "Kirjaudu ulos",
-    "menuitem_1": "Valikko testi 1",
-    "menuitem_2": "Valikko testi 2",
-    "save": "Tallenna",
-    "close": "Sulje",
-    "finnish": "Suomi",
-    "english": "Englanti",
-    "language": "Kieli"
-  },
-  "todo": {
-  	"add_new_list": "Lisää uusi tehtävälista",
-  	"edit_list": "Muokkaa tehtävälistaa",
-  	"enter_title": "Tehtävälistan nimi",
-  	"item_title": "Tehtävän nimi",
-  	"share_list": "Jaa lista"
-  }
+    "common": {
+        "title": "ToDo - Powered by Silverbullet",
+        "logout": "Kirjaudu ulos",
+        "menuitem_1": "Valikko testi 1",
+        "menuitem_2": "Valikko testi 2",
+        "save": "Tallenna",
+        "close": "Sulje",
+        "finnish": "Suomi",
+        "english": "Englanti",
+        "language": "Kieli"
+    },
+    "todo": {
+        "add_new_list": "Lisää uusi tehtävälista",
+        "edit_list": "Muokkaa tehtävälistaa",
+        "enter_title": "Tehtävälistan nimi",
+        "item_title": "Tehtävän nimi",
+        "share_list": "Jaa lista",
+        "no_lists": "Ei listoja.. vielä"
+    },
+    "login_register": {
+        "email": "Sähköposti",
+        "password": "Salasana",
+        "login": "Kirjaudu sisään",
+        "name": "Nimi",
+        "login_heading": "Kirjautuminen",
+        "register": "Rekisteröidy",
+        "register_heading": "Rekisteröityminen"
+    }
 }

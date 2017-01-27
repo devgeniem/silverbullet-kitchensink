@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Grid } from 'react-bootstrap';
+import { translate } from 'react-i18next';
 import RegisterForm from '../forms/RegisterForm';
 
-const Register = () => (
+const Register = ({ t }) => (
   <div className="todo-registration-container">
     <Grid>
-      <h1>Sign up!</h1>
+      <h1>{t('register_heading')}</h1>
       <div className="todo-registration-box">
         <RegisterForm />
       </div>
@@ -20,5 +21,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Register);
-
+export default connect(mapStateToProps)(translate(['login_register'])(Register));
