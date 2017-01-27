@@ -17,22 +17,18 @@ class TodoLayout extends React.Component {
     router: React.PropTypes.object,
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   getMenuItems() {
-    const { t, user, dispatch } = this.props
+    const { t, user, dispatch } = this.props;
     if (user.isLoggedIn) {
-      return ([
+      return [
         {
-          title: user.profile.name ? user.profile.name : 'no name'
+          title: user.profile.name ? user.profile.name : 'no name',
         },
         {
-          title: t('menuitem_1')
+          title: t('menuitem_1'),
         },
         {
-          title: t('menuitem_2')
+          title: t('menuitem_2'),
         },
         {
           title: t('logout'),
@@ -40,10 +36,11 @@ class TodoLayout extends React.Component {
           callback: function () {
             Actions(dispatch).logoutUser();
             window.location.replace('/login');
-          }
-        }
-      ])
+          },
+        },
+      ];
     }
+    return [];
   }
 
   navigateTo(e, url) {
@@ -61,12 +58,12 @@ class TodoLayout extends React.Component {
         <div>
           <img onClick={e => this.navigateTo(e, '/')}
                src="../images/logo.svg"
-               alt="Logo"/>
+               alt="Logo" />
         </div>
         <div>
           <TodoLangSwitcher />
           { user.isLoggedIn ?
-            <TodoHeaderMenu items={this.menuItems} /> : null
+            <TodoHeaderMenu items={menuItems} /> : null
           }
         </div>
       </header>
