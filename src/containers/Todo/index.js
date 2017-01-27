@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import { Button, Glyphicon, Row, Col, Grid, ListGroup } from 'react-bootstrap';
-import TodoListItem from '../pages/TodoListItem';
-import Actions from '../actions/Creators';
+import ListItem from '../../components/ListItem';
+import Actions from '../../actions/Creators';
 
-class TodoMain extends React.Component {
+class Todo extends React.Component {
 
   constructor(props) {
     super(props);
@@ -81,7 +81,7 @@ class TodoMain extends React.Component {
   renderTodoListItem(list) {
     const listPath = '/list/';
     return (
-      <TodoListItem
+      <ListItem
         key={list.id}
         href={listPath + list.id}
         date={list.updatedAt}
@@ -89,7 +89,7 @@ class TodoMain extends React.Component {
         removeFn={()=>this.handleListRemoval(list.id)}
       >
         {list.title}
-      </TodoListItem>
+      </ListItem>
     );
   }
 }
@@ -100,4 +100,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(translate(["todo"])(TodoMain));
+export default connect(mapStateToProps)(translate(["todo"])(Todo));

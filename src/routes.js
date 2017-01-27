@@ -1,8 +1,8 @@
 import Main from './containers/Main';
-import Todo from './container/Todo';
+import Todo from './containers/Todo';
 import CreateList from './components/CreateList';
-import Login from './components/TodoLogin';
-import Register from './components/TodoRegistration';
+import Login from './components/Login';
+import Register from './components/Register';
 
 
 /*

@@ -61,9 +61,9 @@ class App extends React.Component {
                alt="Logo" />
         </div>
         <div>
-          <TodoLangSwitcher />
+          <LangSwitcher />
           { user.isLoggedIn ?
-            <TodoHeaderMenu items={menuItems} /> : null
+            <Header items={menuItems} /> : null
           }
         </div>
       </header>

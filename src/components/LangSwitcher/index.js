@@ -3,9 +3,9 @@ import i18next from 'i18next';
 import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 import {Glyphicon, Dropdown, MenuItem} from 'react-bootstrap';
-import Actions from '../actions/Creators';
+import Actions from '../../actions/Creators';
 
-class TodoLangSwitcher extends React.Component {
+class LangSwitcher extends React.Component {
 
   constructor(props) {
     super(props);
@@ -63,4 +63,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(translate(['common'])(TodoLangSwitcher));
+export default connect(mapStateToProps)(translate(['common'])(LangSwitcher));

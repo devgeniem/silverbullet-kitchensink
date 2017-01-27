@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormControl, FormGroup, Button, Form, Row, Col } from 'react-bootstrap';
-import Actions from '../../actions/Creators';
+import Actions from '../../../actions/Creators';
 
 export default class RegisterForm extends React.Component {
 
