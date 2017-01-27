@@ -18,7 +18,7 @@ export default class LoginForm extends React.Component {
   }
 
   submitForm = (e) => {
-    const { dispatch, location, router } = this.props;
+    const { dispatch, location } = this.props;
     const { email, password } = this.state;
     e.preventDefault();
     Actions(dispatch).loginUser({ email, password })

@@ -56,11 +56,9 @@ class App extends React.Component {
     return (<div className="todo-wrapper">
       <header className="todo-header-bar">
         <div>
-          <img
-            onClick={e => this.navigateTo(e, '/')}
-            src="../images/logo.svg"
-            alt="Logo"
-          />
+          <a href="/">
+            <img src="../images/logo.svg" alt="Logo" />
+          </a>
         </div>
         <div>
           <LangSwitcher />

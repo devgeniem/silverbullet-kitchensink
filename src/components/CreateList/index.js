@@ -21,6 +21,7 @@ class CreateList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      listTitle: '',
       itemTitle: '',
       items: [],
       existingItem: false,
@@ -72,7 +73,7 @@ class CreateList extends React.Component {
     } else {
       promise = Actions(dispatch).createList(data);
     }
-    promise.then((res) => {
+    promise.then(() => {
       this.navigateTo('/');
     });
   }
@@ -117,7 +118,6 @@ class CreateList extends React.Component {
   }
 
   render() {
-    var { todos } = this.props;
     var items = this.state.items;
     var pageTitle = this.props.params.listId ? 'Edit list ' + (this.state.listTitle || '') : 'Create a new list';
 

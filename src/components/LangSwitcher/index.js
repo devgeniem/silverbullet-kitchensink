@@ -7,10 +7,6 @@ import Actions from '../../actions/Creators';
 
 class LangSwitcher extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
   };

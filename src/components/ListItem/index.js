@@ -36,7 +36,8 @@ class ListItem extends React.Component {
     }
   }
 
-  getPrettyDate(date) {
+  getPrettyDate() {
+    const { date } = this.props;
     if (date) {
       return moment(date).format('DD.M.YYYY ');
     }
@@ -44,15 +45,23 @@ class ListItem extends React.Component {
     return null;
   }
 
-  getPrettyTime(date) {
-    if (date) return moment(date).format('HH:mm');
+  getPrettyTime() {
+    const { date } = this.props;
+    if (date) {
+      return moment(date).format('HH:mm');
+    }
+
     return null;
   }
 
   handleRemove(e) {
     e.preventDefault();
     e.stopPropagation();
-    this.props.removeFn ? this.props.removeFn() : console.warn('TodoListItem: Callback function has not been set');
+    if (this.props.removeFn) {
+      this.props.removeFn();
+    } else {
+      console.warn('TodoListItem: Callback function has not been set');
+    }
   }
 
   render() {
@@ -66,12 +75,12 @@ class ListItem extends React.Component {
             <Glyphicon
               className="time"
               glyph="calendar"
-            /> {this.getPrettyDate(this.props.date)}
+            /> {this.getPrettyDate()}
 
             <Glyphicon
               className="time"
               glyph="time"
-            /> {this.getPrettyTime(this.props.date)}
+            /> {this.getPrettyTime()}
           </span>
         </div>
         <Glyphicon

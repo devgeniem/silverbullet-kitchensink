@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import { Modal, Button, Glyphicon } from 'react-bootstrap';
 
@@ -7,7 +6,9 @@ class ShareList extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      showModal: false,
+    };
   }
 
   close() {
@@ -15,7 +16,6 @@ class ShareList extends React.Component {
   }
 
   open() {
-    console.log('OPENING MODAL');
     this.setState({ showModal: true });
   }
 
@@ -46,8 +46,4 @@ class ShareList extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {};
-}
-
-export default connect(mapStateToProps, {})(translate(['common', 'todo'])(ShareList));
+export default translate(['common', 'todo'])(ShareList);

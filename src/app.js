@@ -29,6 +29,11 @@ export default class App extends React.Component {
     req: React.PropTypes.obj,
   };
 
+  static defaultProps = {
+    state: {},
+    req: {},
+  }
+
   constructor(props) {
     super(props);
     if (process.browser) {
@@ -58,8 +63,7 @@ export default class App extends React.Component {
         const storeState = this.store.getState();
         if (storeState) {
           io.socket.post('/api/session', { state: storeState }, (body, JWR) => {
-            if (JWR.statusCode === 200) {
-            } else {
+            if (JWR.statusCode !== 200) {
               console.error('Failed to save session state: ', JWR.statusCode);
             }
           });
