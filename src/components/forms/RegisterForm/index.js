@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormControl, FormGroup, Button, Form, Row, Col } from 'react-bootstrap';
-import Actions from '../../../actions/Creators';
+import { UserActions } from '../../../actions';
 
 export default class RegisterForm extends React.Component {
 
@@ -15,7 +15,7 @@ export default class RegisterForm extends React.Component {
 
   submitForm = () => {
     const { dispatch } = this.props;
-    Actions(dispatch).registerUser(this.state);
+    UserActions(dispatch).registerUser(this.state);
   }
 
   handleDataChange(data) {

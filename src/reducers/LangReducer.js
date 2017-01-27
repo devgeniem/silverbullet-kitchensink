@@ -1,6 +1,6 @@
 import { createReducer } from 'reduxsauce';
 import R from 'ramda';
-import Types from '../actions/Types';
+import { Types } from '../actions/LangActions';
 
 // state management funtions
 export const INITIAL_STATE = {
