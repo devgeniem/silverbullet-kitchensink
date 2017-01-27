@@ -6,7 +6,7 @@ import moment from 'moment';
 import { ListGroupItem, Glyphicon } from 'react-bootstrap';
 
 
-class TodoListItem extends React.Component {
+class ListItem extends React.Component {
 
   static propTypes = {
     href: React.PropTypes.string,
@@ -37,11 +37,10 @@ class TodoListItem extends React.Component {
   }
 
   getPrettyDate(date) {
-    console.log(date);
+    if (date) {
+      return moment(date).format('DD.M.YYYY ');
+    }
 
-
-
-    if (date) return moment(date).format('DD.M.YYYY ');
     return null;
   }
 
@@ -92,4 +91,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, {})(TodoListItem);
+export default connect(mapStateToProps, {})(ListItem);

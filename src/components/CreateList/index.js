@@ -3,17 +3,16 @@ import uuid from 'node-uuid';
 import {connect} from 'react-redux';
 import {Form, Grid, FormControl, Button, Glyphicon, Row, Col, FormGroup} from 'react-bootstrap';
 
-
 // FIXME: we should maybe pick one? :)
 import R from 'ramda';
 import _ from 'lodash';
 
-import Actions from '../actions/Creators';
-import TodoListItem from './TodoListItem';
-import TodoModalShareList from './TodoModalShareList';
+import Actions from '../../actions/Creators';
+import ListItem from '../../components/ListItem';
+import ShareList from '../../components/ShareList';
 
 
-class TodoCreateList extends React.Component {
+class CreateList extends React.Component {
 
   static contextTypes = {
     router: React.PropTypes.object,
@@ -77,7 +76,7 @@ class TodoCreateList extends React.Component {
       promise =  Actions(dispatch).createList(data);
     }
     promise.then(res => {
-      this.navigateTo('/reactDemo');
+      this.navigateTo('/');
     });
   }
 
@@ -109,14 +108,14 @@ class TodoCreateList extends React.Component {
 
     renderTodoListItem(item) {
       return (
-        <TodoListItem
+        <ListItem
           key={item.id}
           date={item.updatedAt}
           allowNavigation
           removeFn={()=>this.handleItemRemoval(item.id)}
         >
           {item.title}
-        </TodoListItem>
+        </ListItem>
       );
     }
 
@@ -128,9 +127,7 @@ class TodoCreateList extends React.Component {
     return (
       <div className="todo-create-list-container">
         <Grid>
-
           <h1>{pageTitle}</h1>
-
           <Form>
             <FormGroup>
               <Row>
@@ -141,26 +138,19 @@ class TodoCreateList extends React.Component {
                                onChange={e => this.setState({listTitle: e.target.value})}/>
                 </Col>
               </Row>
-
               <br />
-
-
               <Row className="todo-create-list-add-item-container">
-
                 <Col xs={12}>
-
                   <FormControl value={this.state.itemTitle}
                                type="text"
                                placeholder="Item title"
                                onChange={e => this.setState({itemTitle: e.target.value})}
                   />
-
                   <Button className="todo-create-list-add-item-button"
                           disabled={!this.state.itemTitle}
                           onClick={() => this.handleAddItemButton(this.state.itemTitle)}>
                     <Glyphicon glyph="plus"/>
                   </Button>
-
                 </Col>
               </Row>
               {items.length > 0 ?
@@ -178,12 +168,11 @@ class TodoCreateList extends React.Component {
                           disabled={this.saveDisabled()}>
 
                     <Glyphicon glyph="save"/> Save</Button>
-                  <TodoModalShareList />
+                  <ShareList />
                 </Col>
               </Row>
             </FormGroup>
           </Form>
-
         </Grid>
       </div>
     );
@@ -196,4 +185,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(TodoCreateList);
+export default connect(mapStateToProps)(CreateList);

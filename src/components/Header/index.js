@@ -1,7 +1,7 @@
 import React from 'react';
 import {Glyphicon, Dropdown, MenuItem} from 'react-bootstrap';
 
-export default class TodoHeaderMenu extends React.Component {
+export default class Header extends React.Component {
 
   constructor(props) {
     super(props);

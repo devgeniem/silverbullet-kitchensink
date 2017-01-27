@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { FormControl, FormGroup, Button, Form, Row, Col, Alert } from 'react-bootstrap';
-import Actions from '../../actions/Creators';
+import Actions from '../../../actions/Creators';
 
 @connect()
 @withRouter

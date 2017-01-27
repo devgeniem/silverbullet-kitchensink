@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
-import TodoHeaderMenu from './TodoHeaderMenu';
-import TodoLangSwitcher from './TodoLangSwitcher';
-import Actions from '../actions/Creators';
+import Header from '../../components/Header';
+import LangSwitcher from '../../components/LangSwitcher';
+import Actions from '../../actions/Creators';
 
-class TodoLayout extends React.Component {
+class App extends React.Component {
 
   static propTypes = {
     dispatch: React.PropTypes.func,
@@ -61,9 +61,9 @@ class TodoLayout extends React.Component {
                alt="Logo" />
         </div>
         <div>
-          <TodoLangSwitcher />
+          <LangSwitcher />
           { user.isLoggedIn ?
-            <TodoHeaderMenu items={menuItems} /> : null
+            <Header items={menuItems} /> : null
           }
         </div>
       </header>
@@ -78,4 +78,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(translate(['common'])(TodoLayout));
+export default connect(mapStateToProps)(translate(['common'])(App));
