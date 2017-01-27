@@ -66,7 +66,6 @@ module.exports = {
 
   modifyList: function (req, res) {
     const params = req.params.all();
-    console.log("modifylist: ", params);
     var items = JSON.parse(params.items).map(item =>
       ({ title: item.title, completed: false }));
     TodoList.update({id: params.id}, {title: params.title, items})
