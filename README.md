@@ -38,14 +38,10 @@ This is a starter boilerplate app using [Sails](http://sailsjs.org) and [React](
 ## Install
 
 ### Requirements:
-- mongodb
-- redis
-- run `npm install` on project folder
-
+- Node 4.x ->
 
 ## Running the application
 - Edit config/env/development.js and config/env/production.js to hold your email config (or use config/local.js).
-- start redis and mongodb daemons
 - Run `npm install`
 - `npm start` will start the sails server and webpack watcher,
   after this the react application can be developed without restarting the sails server
@@ -61,7 +57,7 @@ We are currently using dust templates, for more options and information, read [t
 
 ## Serverside redux store (socket.io)
 
-Redux store is completely synced to serverside session. See example react application how to connect and use it.
+Relevant parts of redux store which is needed by serverside rendering is synced to serverside session. See example react application how to connect and use it.
 
 ## Sails routes and views still work as expected
 
