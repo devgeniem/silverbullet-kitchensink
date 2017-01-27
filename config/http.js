@@ -28,15 +28,14 @@ function reactView(req, res, next) {
   var state = (req.session && req.session.state) ? req.session.state : {};
   var routes = reactRoutes(true);
 
-  match({ routes, location: req.url }, function(error, redirectLocation, renderProps) {
+  match({ routes, location: req.url }, (error, redirectLocation, renderProps) => {
     // couldnt match request url to react path
     if (error) {
       // 500
+      return res.error();
     } else if (renderProps) {
       // 200
-      console.log(req.session);
       var reactHtml = ReactDOMServer.renderToString(reactApp({ req: req, state: state }));
-      //TODO some smarter way to find if there react route?
       iso = new Iso();
       iso.add(reactHtml, state);
       viewData = {
@@ -45,16 +44,11 @@ function reactView(req, res, next) {
       };
       if (!res.view) {
         if (!req.options) req.options = {}; // add options to req otherwise addResView fails
-        addResView(req, res, () => {
-          res.view('react', viewData);
-        });
-      } else {
-        res.view('react', viewData);
+        return addResView(req, res, () => res.view('react', viewData));
       }
-      // end of 200
-    } else {
-      return next();
+      return res.view('react', viewData);
     }
+    return next();
   });
 }
 

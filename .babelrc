@@ -9,8 +9,5 @@
     "transform-export-extensions",
     "add-module-exports",
     "transform-decorators-legacy"
-  ],
-  "ignore": [
-    "./src/assets/js/*"
   ]
 }

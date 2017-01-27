@@ -14,8 +14,7 @@ var users = [{
   role: 'admin',
   name: 'Admin',
   password: 'password',
-},
-];
+}];
 
 
 function ensureUser(user) {
@@ -23,41 +22,47 @@ function ensureUser(user) {
   delete user.password;
 
   return new Promise((resolve, reject) => {
-    User.findOne({ email: user.email })
+    return User.findOne({ email: user.email })
     .then((found) => {
       if (!found) {
-        User.create(user)
+        return User.create(user)
         .then((created) => {
           created.newPassword = password;
-          return created.save();
+          return created.save(() => reject('Error saving user'));
         })
-        .then(saved => {
+        .then(() => {
           sails.log.info(`User ${user.name} <${user.email}> created`);
-          resolve();
+          return resolve();
         })
-        .catch(err => {
+        .catch((err) => {
           sails.log.warn(err);
-          reject(err);
+          return reject(err);
         });
-      } else {
-        resolve();
       }
+      return resolve();
     })
-    .catch(err => {
+    .catch((err) => {
       sails.log.warn(err);
-      reject(err);
+      return reject(err);
     });
   });
 }
 
 
 module.exports.bootstrap = function (cb) {
-
   // It's very important to trigger this callback method when you are finished
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
-
   var requests = users.map(user => ensureUser(user));
   return Promise.all(requests)
-    .then(() => cb())
+    .then(() => {
+      sails.log.info('**************************************************');
+      sails.log.info('* DEFAULT LOGIN (created @ /config/bootstrap.js) *')
+      sails.log.info('* ---------------------------------------------- *')
+      sails.log.info('* Email    : admin@example.com                   *')
+      sails.log.info('* Password : password                            *')
+      sails.log.info('**************************************************');
+      sails.log.debug(sails.config.views);
+      return cb();
+    })
     .catch(cb);
 };
