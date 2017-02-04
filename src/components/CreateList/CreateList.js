@@ -8,8 +8,7 @@ import R from 'ramda';
 import _ from 'lodash';
 
 import { ListActions } from '../../actions';
-import ListItem from '../../components/ListItem';
-import ShareList from '../../components/ShareList';
+import { ListItem, ShareList } from '../../components';
 
 function mapStateToProps(state) {
   return {

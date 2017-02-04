@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
-import Header from '../../components/Header';
-import LangSwitcher from '../../components/LangSwitcher';
+import { Header, LangSwitcher } from '../../components';
 import { UserActions } from '../../actions';
 
 const mapStateToProps = state => ({
@@ -11,7 +10,7 @@ const mapStateToProps = state => ({
 
 @connect(mapStateToProps)
 @translate(['common'])
-export default class App extends React.Component {
+export default class Main extends React.Component {
 
   static propTypes = {
     t: React.PropTypes.func.isRequired,

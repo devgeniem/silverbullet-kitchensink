@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Grid } from 'react-bootstrap';
 import { translate } from 'react-i18next';
-import LoginForm from '../forms/LoginForm';
+import { LoginForm } from '../forms';
 
 const mapStateToProps = state => ({
   user: state.user,

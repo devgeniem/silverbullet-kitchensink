@@ -2,9 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import { Button, Glyphicon, Row, Col, Grid, ListGroup } from 'react-bootstrap';
-import ListItem from '../../components/ListItem';
+import { ListItem } from '../../components';
 import { ListActions } from '../../actions';
-
 
 const mapStateToProps = state => ({
   lists: state.todo.lists,

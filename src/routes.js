@@ -1,9 +1,7 @@
-import Main from './containers/Main';
-import Todo from './containers/Todo';
-import CreateList from './components/CreateList';
-import Login from './components/Login';
-import Register from './components/Register';
-
+import { Main, Todo } from './containers';
+import { CreateList,
+         Login,
+         Register } from './components';
 
 /*
 This is the router configuration file for the

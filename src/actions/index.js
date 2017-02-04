@@ -1,3 +1,3 @@
-export { default as LangActions } from './LangActions';
-export { default as ListActions } from './ListActions';
-export { default as UserActions } from './UserActions';
+export LangActions from './LangActions';
+export ListActions from './ListActions';
+export UserActions from './UserActions';
