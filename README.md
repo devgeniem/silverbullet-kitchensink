@@ -13,13 +13,13 @@ This is a starter boilerplate app using [Sails](http://sailsjs.org) and [React](
 - Use Redux and React Router along with Sails routing
 
 ## Work in progress
-- finish login-rework branch
-  - activation screen for entering activation code
-  - finish registration page
-  - generate user login on successful auth and save to session
+- activation screen for entering activation code
+- finish registration page
+- generate user login on successful auth and save to session
 - tie todoItems - model to user
 - set policies to require authentication everywhere
 - documentation and code review
+- facebook / google / twitter etc login/register
 
 ## Technologies used
 - Sails
@@ -57,7 +57,7 @@ We are currently using dust templates, for more options and information, read [t
 
 ## Serverside redux store (socket.io)
 
-Relevant parts of redux store which is needed by serverside rendering is synced to serverside session. See example react application how to connect and use it.
+The parts of the redux store, that are needed by server side rendering, are synced to sails session using socket.io. In the example, user and lang are synced. The parts that are synced are marked with { sync: true } flag.
 
 ## Sails routes and views still work as expected
 
