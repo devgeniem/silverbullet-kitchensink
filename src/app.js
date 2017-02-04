@@ -75,7 +75,7 @@ export default class App extends React.Component {
         if (syncData) {
           io.socket.post('/api/session', { state: syncData }, (body, JWR) => {
             if (JWR.statusCode !== 200) {
-              console.error('Failed to save session state: ', JWR.statusCode);
+              // console.error('Failed to save session state: ', JWR.statusCode);
             }
           });
         }

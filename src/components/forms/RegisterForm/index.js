@@ -4,6 +4,10 @@ import { UserActions } from '../../../actions';
 
 export default class RegisterForm extends React.Component {
 
+  static propTypes = {
+    dispatch: React.PropTypes.func.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {

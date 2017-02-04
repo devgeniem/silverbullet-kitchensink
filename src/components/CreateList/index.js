@@ -18,6 +18,19 @@ class CreateList extends React.Component {
     router: React.PropTypes.object,
   };
 
+  static propTypes = {
+    dispatch: React.PropTypes.func.isRequired,
+    params: React.PropTypes.objectOf({
+      listId: React.PropTypes.string,
+    }),
+    todos: React.PropTypes.array,
+  };
+
+  static defaultProps = {
+    params: {},
+    todos: [],
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +40,6 @@ class CreateList extends React.Component {
       existingItem: false,
     };
   }
-
 
   saveDisabled() {
     return !(this.state.listTitle &&
@@ -115,8 +127,8 @@ class CreateList extends React.Component {
   }
 
   render() {
-    var items = this.state.items;
-    var pageTitle = this.props.params.listId ? 'Edit list ' + (this.state.listTitle || '') : 'Create a new list';
+    const { items, listTitle } = this.state;
+    const pageTitle = this.props.params.listId ? 'Edit list ' + (listTitle || '') : 'Create a new list';
 
     return (
       <div className="todo-create-list-container">

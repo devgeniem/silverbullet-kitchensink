@@ -8,6 +8,11 @@ import { UserActions } from '../../../actions';
 @withRouter
 export default class LoginForm extends React.Component {
 
+  static propTypes = {
+    dispatch: React.PropTypes.func.isRequired,
+    location: React.PropTypes.object.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -35,7 +40,7 @@ export default class LoginForm extends React.Component {
             error: err.text,
           });
         } else {
-          console.error('LOGIN ERROR', err);
+          // console.error('LOGIN ERROR', err);
         }
       });
   }

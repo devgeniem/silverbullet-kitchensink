@@ -13,6 +13,7 @@ class ListItem extends React.Component {
     date: React.PropTypes.string,
     children: React.PropTypes.node,
     removeFn: React.PropTypes.func,
+    allowNavigation: React.PropTypes.bool,
   };
 
   static contextTypes = {
@@ -20,6 +21,10 @@ class ListItem extends React.Component {
   };
 
   static defaultProps = {
+    href: '',
+    date: null,
+    children: null,
+    removeFn: () => {},
     allowNavigation: false,
   };
 
@@ -60,7 +65,7 @@ class ListItem extends React.Component {
     if (this.props.removeFn) {
       this.props.removeFn();
     } else {
-      console.warn('TodoListItem: Callback function has not been set');
+      // console.warn('TodoListItem: Callback function has not been set');
     }
   }
 

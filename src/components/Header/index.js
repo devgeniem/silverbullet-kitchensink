@@ -3,6 +3,10 @@ import { Glyphicon, Dropdown, MenuItem } from 'react-bootstrap';
 
 export default class Header extends React.Component {
 
+  static propTypes = {
+    items: React.PropTypes.array.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {};
@@ -12,8 +16,7 @@ export default class Header extends React.Component {
     e.preventDefault();
   }
 
-  defaultItemCb(item) {
-    console.warn('TodoHeaderMenu: No callback provided for menu item', item.title);
+  defaultItemCb() {
   }
 
   render() {
