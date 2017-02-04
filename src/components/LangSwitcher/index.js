@@ -5,19 +5,17 @@ import { connect } from 'react-redux';
 import { Glyphicon, Dropdown, MenuItem } from 'react-bootstrap';
 import { LangActions } from '../../actions';
 
-function mapStateToProps(state) {
-  return {
-    lang: state.lang.lang,
-  };
-}
+const mapStateToProps = state => ({
+  lang: state.lang.lang,
+});
 
 @connect(mapStateToProps)
 @translate(['common'])
 export default class LangSwitcher extends React.Component {
 
   static propTypes = {
-    dispatch: React.PropTypes.func.isRequired,
     t: React.PropTypes.func.isRequired,
+    dispatch: React.PropTypes.func.isRequired,
   };
 
   onSelectLanguage(lang) {
@@ -28,24 +26,20 @@ export default class LangSwitcher extends React.Component {
 
   getLanguages() {
     const { t } = this.props;
-
-    return (
-    [
-        { code: 'fi', name: t('finnish') },
-        { code: 'en', name: t('english') },
-    ]
-    );
+    return [
+      { code: 'fi', name: t('finnish') },
+      { code: 'en', name: t('english') },
+    ];
   }
+
   render() {
     const items = this.getLanguages();
     const { t } = this.props;
-
     return (
       <Dropdown
         id="todo-header-bar-menu"
         pullRight
       >
-
         <Dropdown.Toggle className="todo-header-bar-menu-button" bsRole="toggle" noCaret>
           {t('language')}
         </Dropdown.Toggle>

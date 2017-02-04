@@ -1,8 +1,6 @@
 import request from 'superagent';
 
-function getApiPath(path) {
-  return '/api'+path;
-}
+const getApiPath = path => '/api' + path;
 
 export default {
   login(credentials) {
@@ -14,10 +12,9 @@ export default {
           password: credentials.password,
         })
         .end((err, res) => {
-          var response = (res.type === 'application/json') ? JSON.parse(res.text) : res;
+          const response = (res.type === 'application/json') ? JSON.parse(res.text) : res;
           if (err) {
             reject(response);
-            console.warn(response);
           } else {
             resolve(response);
           }
@@ -26,16 +23,15 @@ export default {
   },
   get(path, options={}) {
     return new Promise((resolve, reject) => {
-      var token = options.token;
-      var req = request.get(getApiPath(path));
+      const token = options.token;
+      const req = request.get(getApiPath(path));
       if (token) {
         req.set('Authorization', 'Bearer '+token);
       }
       req.end((err, res) => {
-        var response = (res && res.type === 'application/json') ? JSON.parse(res.text) : res;
+        const response = (res && res.type === 'application/json') ? JSON.parse(res.text) : res;
         if (err) {
           reject(response);
-          console.warn(err);
         } else {
           resolve(response);
         }
@@ -44,8 +40,8 @@ export default {
   },
   post(path, data={}, options={}) {
     return new Promise((resolve, reject) => {
-      var token = options.token;
-      var req = request.post(getApiPath(path));
+      const token = options.token;
+      const req = request.post(getApiPath(path));
       if (token) {
         req.set('Authorization', 'Bearer '+token);
       }
@@ -58,10 +54,9 @@ export default {
         req.send(data);
       }
       req.end((err, res) => {
-        var response = (res.type === 'application/json') ? JSON.parse(res.text) : res;
+        const response = (res.type === 'application/json') ? JSON.parse(res.text) : res;
         if (err) {
           reject(response);
-          console.warn(err);
         } else {
           resolve(response);
         }
@@ -70,16 +65,15 @@ export default {
   },
   put(path, data={}, options={}) {
     return new Promise((resolve, reject) => {
-      var token = options.token;
-      var req = request.put(getApiPath(path));
+      const token = options.token;
+      const req = request.put(getApiPath(path));
       if (token) {
         req.set('Authorization', 'Bearer '+token);
       }
       req.send(data).end((err, res) => {
-        var response = (res.type === 'application/json') ? JSON.parse(res.text) : res;
+        const response = (res.type === 'application/json') ? JSON.parse(res.text) : res;
         if (err) {
           reject(response);
-          console.warn(err);
         } else {
           resolve(response);
         }
@@ -88,16 +82,15 @@ export default {
   },
   del(path, options={}) {
     return new Promise((resolve, reject) => {
-      var token = options.token;
-      var req = request.del(getApiPath(path));
+      const token = options.token;
+      const req = request.del(getApiPath(path));
       if (token) {
         req.set('Authorization', 'Bearer '+token);
       }
       req.end((err, res) => {
-        var response = (res.type === 'application/json') ? JSON.parse(res.text) : res;
+        const response = (res.type === 'application/json') ? JSON.parse(res.text) : res;
         if (err) {
           reject(response);
-          console.warn(err);
         } else {
           resolve(response);
         }

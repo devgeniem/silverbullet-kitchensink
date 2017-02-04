@@ -7,18 +7,6 @@ export default class Header extends React.Component {
     items: React.PropTypes.array.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  handleClick(e) {
-    e.preventDefault();
-  }
-
-  defaultItemCb() {
-  }
-
   render() {
     var { items } = this.props;
     return (
@@ -41,7 +29,7 @@ export default class Header extends React.Component {
         <Dropdown.Menu bsRole="menu">
           {items.map((item) => {
             var glyphicon = item.glyphicon ? <Glyphicon glyph={item.glyphicon} /> : null;
-            var callback = item.callback ? item.callback : this.defaultItemCb;
+            var callback = item.callback ? item.callback : () => {};
 
             return (<MenuItem
               key={item.title}

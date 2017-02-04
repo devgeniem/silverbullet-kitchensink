@@ -5,7 +5,14 @@ import { Button, Glyphicon, Row, Col, Grid, ListGroup } from 'react-bootstrap';
 import ListItem from '../../components/ListItem';
 import { ListActions } from '../../actions';
 
-class Todo extends React.Component {
+
+const mapStateToProps = state => ({
+  lists: state.todo.lists,
+});
+
+@connect(mapStateToProps)
+@translate('todo')
+export default class Todo extends React.Component {
 
   constructor(props) {
     super(props);
@@ -14,14 +21,18 @@ class Todo extends React.Component {
     };
   }
 
-
   static propTypes = {
+    t: React.PropTypes.func.isRequired,
     dispatch: React.PropTypes.func.isRequired,
     lists: React.PropTypes.array,
   };
 
   static contextTypes = {
     router: React.PropTypes.object,
+  };
+
+  static defaultProps = {
+    lists: [],
   };
 
   componentWillMount() {
@@ -43,12 +54,9 @@ class Todo extends React.Component {
   render() {
     const { lists, t } = this.props;
     const listPath = '/create-list';
+    const headerClass = (lists.length > 0) ? 'todo-button list-header' : 'todo-button';
 
-    var headerClass = (lists.length > 0) ? 'todo-button list-header' : 'todo-button';
-
-    var AddNewButton = (
-
-
+    const AddNewButton = (
       <Button
         href={listPath}
         className={headerClass}
@@ -57,6 +65,7 @@ class Todo extends React.Component {
         <Glyphicon glyph="plus" /> {t('add_new_list')}
       </Button>
     );
+
     return (
       <Grid className="todo-main-container">
         <Row>
@@ -68,7 +77,7 @@ class Todo extends React.Component {
               {
                 lists && lists.map ?
                   lists.map(list => this.renderTodoListItem(list)) :
-                  "You haven't got any lists, man"
+                  t('no_lists')
               }
             </ListGroup>
           </Col>
@@ -92,11 +101,3 @@ class Todo extends React.Component {
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    lists: state.todo.lists,
-  };
-}
-
-export default connect(mapStateToProps)(translate(['todo'])(Todo));

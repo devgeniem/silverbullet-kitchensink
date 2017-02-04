@@ -2,7 +2,7 @@ import React from 'react';
 import uuid from 'uuid';
 import { connect } from 'react-redux';
 import { Form, Grid, FormControl, Button, Glyphicon, Row, Col, FormGroup } from 'react-bootstrap';
-
+import { translate } from 'react-i18next';
 // FIXME: we should maybe pick one? :)
 import R from 'ramda';
 import _ from 'lodash';
@@ -11,16 +11,24 @@ import { ListActions } from '../../actions';
 import ListItem from '../../components/ListItem';
 import ShareList from '../../components/ShareList';
 
+function mapStateToProps(state) {
+  return {
+    todos: state.todo.lists,
+  };
+}
 
-class CreateList extends React.Component {
+@translate(['common', 'todo'])
+@connect(mapStateToProps)
+export default class CreateList extends React.Component {
 
   static contextTypes = {
     router: React.PropTypes.object,
   };
 
   static propTypes = {
+    t: React.PropTypes.func.isRequired,
     dispatch: React.PropTypes.func.isRequired,
-    params: React.PropTypes.objectOf({
+    params: React.PropTypes.shape({
       listId: React.PropTypes.string,
     }),
     todos: React.PropTypes.array,
@@ -127,8 +135,9 @@ class CreateList extends React.Component {
   }
 
   render() {
+    const { t, params } = this.props;
     const { items, listTitle } = this.state;
-    const pageTitle = this.props.params.listId ? 'Edit list ' + (listTitle || '') : 'Create a new list';
+    const pageTitle = params.listId ? t('edit_list') + (listTitle || '') : t('add_new_list');
 
     return (
       <div className="todo-create-list-container">
@@ -141,7 +150,7 @@ class CreateList extends React.Component {
                   <FormControl
                     value={this.getListTitle()}
                     type="text"
-                    placeholder="Enter title"
+                    placeholder={t('enter_title')}
                     onChange={e => this.setState({ listTitle: e.target.value })}
                   />
                 </Col>
@@ -152,7 +161,7 @@ class CreateList extends React.Component {
                   <FormControl
                     value={this.state.itemTitle}
                     type="text"
-                    placeholder="Item title"
+                    placeholder={t('item_title')}
                     onChange={e => this.setState({ itemTitle: e.target.value })}
                   />
                   <Button
@@ -180,7 +189,7 @@ class CreateList extends React.Component {
                     disabled={this.saveDisabled()}
                   >
 
-                    <Glyphicon glyph="save" /> Save</Button>
+                    <Glyphicon glyph="save" />{t('save')}</Button>
                   <ShareList />
                 </Col>
               </Row>
@@ -191,11 +200,3 @@ class CreateList extends React.Component {
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    todos: state.todo.lists,
-  };
-}
-
-export default connect(mapStateToProps)(CreateList);

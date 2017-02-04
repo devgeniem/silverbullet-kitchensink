@@ -16,11 +16,11 @@ export default class ShareList extends React.Component {
     };
   }
 
-  close() {
+  close = () => {
     this.setState({ showModal: false });
   }
 
-  open() {
+  open = () => {
     this.setState({ showModal: true });
   }
 
@@ -30,7 +30,7 @@ export default class ShareList extends React.Component {
       <div>
         <Button
           className="todo-button"
-          onClick={() => this.open()}
+          onClick={this.open}
         >
           <Glyphicon glyph="share" /> {t('share_list')}</Button>
 
@@ -42,7 +42,7 @@ export default class ShareList extends React.Component {
             adasdsa
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={() => this.close()}>{t('close')}</Button>
+            <Button onClick={this.close}>{t('close')}</Button>
           </Modal.Footer>
         </Modal>
       </div>

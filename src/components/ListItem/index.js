@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
-
-// BOOTSTRAP
 import { ListGroupItem, Glyphicon } from 'react-bootstrap';
 
+const mapStateToProps = state => ({
+  items: state.TodoListItem ? state.TodoListItem.items : [],
+});
 
-class ListItem extends React.Component {
+@connect(mapStateToProps, {})
+export default class ListItem extends React.Component {
 
   static propTypes = {
     href: React.PropTypes.string,
@@ -28,42 +30,37 @@ class ListItem extends React.Component {
     allowNavigation: false,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  navigateTo(e, url) {
-    if (this.props.allowNavigation) {
+  navigateTo = (e) => {
+    const { allowNavigation, href } = this.props;
+    if (allowNavigation) {
       e.preventDefault();
       e.stopPropagation();
-      this.context.router.push(url);
+      this.context.router.push(href);
     }
   }
 
-  getPrettyDate() {
+  getPrettyDate = () => {
     const { date } = this.props;
     if (date) {
       return moment(date).format('DD.M.YYYY ');
     }
-
     return null;
   }
 
-  getPrettyTime() {
+  getPrettyTime = () => {
     const { date } = this.props;
     if (date) {
       return moment(date).format('HH:mm');
     }
-
     return null;
   }
 
-  handleRemove(e) {
+  handleRemove = (e) => {
+    const { removeFn } = this.props;
     e.preventDefault();
     e.stopPropagation();
-    if (this.props.removeFn) {
-      this.props.removeFn();
+    if (removeFn) {
+      removeFn();
     } else {
       // console.warn('TodoListItem: Callback function has not been set');
     }
@@ -73,7 +70,7 @@ class ListItem extends React.Component {
     var { children } = this.props;
 
     return (
-      <ListGroupItem className="todo-list-item" onClick={e => this.navigateTo(e, this.props.href)}>
+      <ListGroupItem className="todo-list-item" onClick={this.navigateTo}>
         <div className="todo-list-item-title">
           <span>{children}</span>
           <span>
@@ -91,17 +88,9 @@ class ListItem extends React.Component {
         <Glyphicon
           glyph="remove"
           className="todo-list-item-remove-item"
-          onClick={e => this.handleRemove(e)}
+          onClick={this.handleRemove}
         />
       </ListGroupItem>
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    items: state.TodoListItem ? state.TodoListItem.items : [],
-  };
-}
-
-export default connect(mapStateToProps, {})(ListItem);

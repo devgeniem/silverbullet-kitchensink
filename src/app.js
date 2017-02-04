@@ -1,4 +1,3 @@
-
 /*
   Here is the main react application used in react-based views.
   This is used in urls defined by routes.js and initialized in
@@ -15,10 +14,8 @@ import { Provider } from 'react-redux';
 import socketIOClient from 'socket.io-client';
 import sailsIOClient from 'sails.io.js';
 import Iso from 'iso';
-
 import { I18nextProvider } from 'react-i18next';
 import getI18n from './services/i18n';
-
 import routes from './routes';
 import reducers from './reducers';
 

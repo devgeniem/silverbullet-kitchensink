@@ -5,12 +5,19 @@ import Header from '../../components/Header';
 import LangSwitcher from '../../components/LangSwitcher';
 import { UserActions } from '../../actions';
 
-class App extends React.Component {
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+@connect(mapStateToProps)
+@translate(['common'])
+export default class App extends React.Component {
 
   static propTypes = {
-    dispatch: React.PropTypes.func,
-    children: React.PropTypes.node,
-    user: React.PropTypes.object,
+    t: React.PropTypes.func.isRequired,
+    dispatch: React.PropTypes.func.isRequired,
+    children: React.PropTypes.node.isRequired,
+    user: React.PropTypes.object.isRequired,
   };
 
   static contextTypes = {
@@ -56,7 +63,7 @@ class App extends React.Component {
     return (<div className="todo-wrapper">
       <header className="todo-header-bar">
         <div>
-          <a href="/">
+          <a href="/" onClick={e => this.navigateTo(e, '/')}>
             <img src="../images/logo.svg" alt="Logo" />
           </a>
         </div>
@@ -71,11 +78,3 @@ class App extends React.Component {
     </div>);
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    user: state.user,
-  };
-}
-
-export default connect(mapStateToProps)(translate(['common'])(App));
