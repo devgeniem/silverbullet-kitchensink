@@ -2,9 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  debug: true,
-  //Webpack displays all the files it is bundling
-  noInfo: true,
   devtool: 'eval',
   entry: {
     app: path.join(__dirname, 'src', 'app.js'),
@@ -22,25 +19,12 @@ module.exports = {
     }),
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /.js?$/,
-        //exclude: /(node_modules|bower_components)/,
         include: [path.resolve(__dirname, 'src')],
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'react', 'stage-0'],
-          plugins: [
-            'syntax-export-extensions',
-            'transform-export-extensions',
-            'add-module-exports',
-            'transform-decorators-legacy',
-          ],
-        },
-      },
-      {
-        test: /\.json$/,
-        loader: "json"
+        exclude: /node_modules/,
+        use: 'babel-loader',
       },
     ],
   },

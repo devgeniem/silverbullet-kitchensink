@@ -39,6 +39,7 @@ This is a starter boilerplate app using [Sails](http://sailsjs.org) and [React](
 
 ### Requirements:
 - Node 4.x ->
+- For production build, npm package `pm2` globally installed
 
 ## Running the application
 - Edit config/env/development.js and config/env/production.js to hold your email config (or use config/local.js).

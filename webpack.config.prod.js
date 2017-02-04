@@ -2,9 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  debug: false,
-  //Webpack displays all the files it is bundling
-  noInfo: true,
   devtool: 'cheap-module-source-map',
   entry: {
     app: path.join(__dirname, 'src', 'app.js'),
@@ -16,7 +13,6 @@ module.exports = {
   },
   plugins: [
     //new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.bundle.[hash].js'),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
@@ -33,20 +29,13 @@ module.exports = {
     }),
   ],
   module: {
-    loaders: [
+    rules: [
       {
         test: /.js?$/,
-        //exclude: /(node_modules|bower_components)/,
         include: [path.resolve(__dirname, 'src')],
-        loader: 'babel',
-        query: {
-          presets: ['es2015', 'react', 'stage-0'],
-        },
+        exclude: /node_modules/,
+        use: 'babel-loader',
       },
-      {
-        test: /\.json$/,
-        loader: "json"
-      },      
     ],
   },
 };
