@@ -83,7 +83,6 @@ export default class CreateList extends React.Component {
     var title = this.state.listTitle;
     var { dispatch } = this.props;
     var data = { title, items };
-    let promise;
 
     if (this.state.existingItem) {
       const id = this.state.existingItem.id;
@@ -115,8 +114,7 @@ export default class CreateList extends React.Component {
   handleItemRemoval(item) {
     var tempItems = this.state.items;
 
-    _.remove(tempItems, tempItem => tempItem.id === item.id);
-
+    _.remove(tempItems, tempItem => tempItem.id === item.id || item);
     this.setState({
       items: tempItems,
     });
