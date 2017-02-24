@@ -68,6 +68,10 @@ export default class LoginForm extends React.Component {
           <Col xs={12}>
             <Button type="submit" className="todo-button">{t('login')}</Button>
           </Col>
+          <Col xs={12}>
+            <br/>
+            <p className="text-center">{t('no_account')} <a href="/register">{t('register')}</a></p>
+          </Col>
         </Row>
       </Form>
     );

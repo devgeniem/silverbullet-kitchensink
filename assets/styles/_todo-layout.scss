@@ -1,6 +1,7 @@
 .todo-wrapper {
 
   font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
   .todo-header-bar {
 
     .todo-header-bar-user-icon  {
@@ -17,13 +18,15 @@
 
         li {
           a {
+
             font-size: $med-font-size;
             padding: $default-margin;
-
+            
             .glyphicon {
               margin-right: 5px;
               color: $red;
             }
+
           }
         }
       }

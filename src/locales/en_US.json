@@ -25,6 +25,7 @@
         "name": "Name",
         "login_heading": "Sign in, mate!",
         "register": "Sign up",
-        "register_heading": "Plz, sign up!"
+        "register_heading": "Plz, sign up!",
+        "no_account": "No account yet?"
     }
 }

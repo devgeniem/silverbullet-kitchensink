@@ -25,6 +25,8 @@
         "name": "Nimi",
         "login_heading": "Kirjautuminen",
         "register": "Rekisteröidy",
-        "register_heading": "Rekisteröityminen"
+        "register_heading": "Rekisteröityminen",
+        "no_account": "Ei tiliä vielä?"
+
     }
 }

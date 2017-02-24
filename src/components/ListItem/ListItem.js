@@ -55,6 +55,9 @@ export default class ListItem extends React.Component {
     return null;
   }
 
+  getTime = () => {
+    
+  }
   handleRemove = (e) => {
     const { removeFn } = this.props;
     e.preventDefault();
@@ -72,18 +75,22 @@ export default class ListItem extends React.Component {
     return (
       <ListGroupItem className="todo-list-item" onClick={this.navigateTo}>
         <div className="todo-list-item-title">
-          <span>{children}</span>
-          <span>
-            <Glyphicon
-              className="time"
-              glyph="calendar"
-            /> {this.getPrettyDate()}
+          <span className="title">{children}</span>
 
-            <Glyphicon
-              className="time"
-              glyph="time"
-            /> {this.getPrettyTime()}
-          </span>
+          {this.getPrettyDate() && this.getPrettyTime() ? (
+            <span>
+              <Glyphicon
+                className="time"
+                glyph="calendar"
+              /> {this.getPrettyDate()}
+
+              <Glyphicon
+                className="time"
+                glyph="time"
+              /> {this.getPrettyTime()}
+            </span>
+          ) : null }
+
         </div>
         <Glyphicon
           glyph="remove"

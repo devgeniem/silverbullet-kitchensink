@@ -23,12 +23,12 @@
 
       > span {
         //main title
-        &:first-of-type {
+        &.title {
           font-weight: 600;
           font-size: $med-font-size;
         }
         // subtitle
-        &:last-of-type {
+        &:not(.title) {
 
           color: $grey-font-color;
           font-size: $small-font-size;
