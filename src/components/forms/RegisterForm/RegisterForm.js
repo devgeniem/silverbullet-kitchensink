@@ -1,6 +1,6 @@
 import React from 'react';
 import { translate } from 'react-i18next';
-import { FormControl, FormGroup, Button, Form, Row, Col } from 'react-bootstrap';
+import { FormControl, Alert, FormGroup, Button, Form, Row, Col } from 'react-bootstrap';
 import { UserActions } from '../../../actions';
 
 @translate('login_register', 'common')
@@ -22,7 +22,19 @@ export default class RegisterForm extends React.Component {
 
   submitForm = () => {
     const { dispatch } = this.props;
-    UserActions(dispatch).registerUser(this.state);
+    UserActions(dispatch).registerUser(this.state)
+    .then(() => {
+      window.location.replace('/');
+    })
+    .catch((err) => {
+        if (err.text) {
+          this.setState({
+            error: err.text,
+          });
+        } else {
+          // console.error('LOGIN ERROR', err);
+        }
+    });
   }
 
   handleDataChange(data) {
@@ -36,6 +48,8 @@ export default class RegisterForm extends React.Component {
 
     return (
       <Form>
+                { this.state.error && <Alert bsStyle="danger">{this.state.error}</Alert> }
+
         <FormGroup>
           <FormControl name="name" type="text" placeholder={t('name')} onChange={e => this.handleDataChange(e.target)} />
           <FormControl name="email" type="email" placeholder={t('email')} onChange={e => this.handleDataChange(e.target)} />
