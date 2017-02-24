@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import { FormControl, Alert, FormGroup, Button, Form, Row, Col } from 'react-bootstrap';
 import { UserActions } from '../../../actions';
 
+@connect()
 @translate('login_register', 'common')
 export default class RegisterForm extends React.Component {
 
@@ -32,7 +34,7 @@ export default class RegisterForm extends React.Component {
             error: err.text,
           });
         } else {
-          // console.error('LOGIN ERROR', err);
+          // console.error('REGISTRATION ERROR', err);
         }
     });
   }
