@@ -69,7 +69,7 @@ export default class LoginForm extends React.Component {
             <Button type="submit" className="todo-button">{t('login')}</Button>
           </Col>
           <Col xs={12}>
-            <br/>
+            <br />
             <p className="text-center">{t('no_account')} <a href="/register">{t('register')}</a></p>
           </Col>
         </Row>

@@ -136,7 +136,7 @@ export default class CreateList extends React.Component {
   render() {
     const { t, params } = this.props;
     const { items, listTitle } = this.state;
-    const pageTitle = params.listId ? t('edit_list') + (listTitle || '') : t('add_new_list');
+    const pageTitle = params.listId ? t('edit_list') + ' ' + (listTitle || '') : t('add_new_list');
 
     return (
       <div className="todo-create-list-container">

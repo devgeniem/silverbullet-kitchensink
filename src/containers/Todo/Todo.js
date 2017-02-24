@@ -67,6 +67,7 @@ export default class Todo extends React.Component {
 
     return (
       <Grid className="todo-main-container">
+        {lists.length === 0 ? <h2 className="text-center">{t('no_lists')}</h2> : null}
         <Row>
           <Col xs={12}> { AddNewButton }</Col>
         </Row>
