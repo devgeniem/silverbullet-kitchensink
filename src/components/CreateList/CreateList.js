@@ -87,14 +87,14 @@ export default class CreateList extends React.Component {
 
     if (this.state.existingItem) {
       const id = this.state.existingItem.id;
-      promise = ListActions(dispatch).modifyList(id, data);
+      ListActions(dispatch).modifyList(id, data).then(() => {
+        this.navigateTo('/');
+      });
     } else {
-      promise = ListActions(dispatch).createList(data);
+      ListActions(dispatch).createList(data).then(() => {
+        this.navigateTo('/');
+      });
     }
-    console.log(promise);
-    promise.then(() => {
-      this.navigateTo('/');
-    });
   }
 
   handleAddItemButton(title) {

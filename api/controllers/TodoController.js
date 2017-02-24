@@ -17,10 +17,11 @@ module.exports = {
    * Get todo lists
    */
   findLists: function (req, res) {
-    TodoList.find({}).populate("items").sort('createdAt DESC')
+    return TodoList.find({}).populate('items').sort('createdAt DESC')
       .then(res.ok)
       .catch(res.serverError);
   },
+
 
   /**
    * @api {delete} /todo-list/:id remove todo list
@@ -36,7 +37,7 @@ module.exports = {
    */
   destroyList: function (req, res) {
     var params = req.params.all();
-    TodoList.destroy({ id: params.id })
+    return TodoList.destroy({ id: params.id })
       .then(() => {
         res.ok(true);
       })
@@ -59,7 +60,7 @@ module.exports = {
   createList: function (req, res) {
     const params = req.params.all();
     var items = JSON.parse(params.items).map(item => ({ title: item.title, completed: false }));
-    TodoList.create({ title: params.title, items: items })
+    return TodoList.create({ title: params.title, items: items })
       .then(res.ok)
       .catch(res.serverError);
   },
@@ -68,9 +69,9 @@ module.exports = {
     const params = req.params.all();
     var items = JSON.parse(params.items).map(item =>
       ({ title: item.title, completed: false }));
-    TodoList.update({id: params.id}, {title: params.title, items})
+    return TodoList.update({ id: params.id }, { title: params.title, items })
       .then(res.ok)
-      .catch(res.serverError)
+      .catch(res.serverError);
   },
 
   /**
@@ -87,7 +88,7 @@ module.exports = {
    */
   destroyItem: function (req, res) {
     var params = req.params.all();
-    TodoItem.destroy({ id: params.id })
+    return TodoItem.destroy({ id: params.id })
       .then(() => {
         res.ok(true);
       })
@@ -108,7 +109,7 @@ module.exports = {
    */
   createItem: function (req, res) {
     const params = req.params.all();
-    TodoItem.create({ title: params.title, completed: false })
+    return TodoItem.create({ title: params.title, completed: false })
       .then(res.ok)
       .catch(res.serverError);
   },
@@ -134,7 +135,7 @@ module.exports = {
     var data = {};
     if (params.title) data.title = params.title;
     if (params.completed) data.completed = params.completed;
-    TodoItem.update({ id: params.id }, data)
+    return TodoItem.update({ id: params.id }, data)
       .then(() => {
         res.ok(data);
       })

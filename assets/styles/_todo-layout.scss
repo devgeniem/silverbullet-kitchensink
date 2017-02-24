@@ -33,6 +33,7 @@
 
       .todo-header-bar-menu-button {
         @include roundButton($white, $red);
+        
         margin-right:10px;
         .todo-header-bar-user-icon {
           font-size: 25px;
