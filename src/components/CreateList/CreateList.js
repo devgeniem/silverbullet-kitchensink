@@ -10,11 +10,12 @@ import _ from 'lodash';
 import { ListActions } from '../../actions';
 import { ListItem, ShareList } from '../../components';
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return {
     todos: state.todo.lists,
   };
-}
+};
+
 
 @translate(['common', 'todo'])
 @connect(mapStateToProps)
@@ -54,9 +55,10 @@ export default class CreateList extends React.Component {
   }
 
   componentDidMount() {
+
     if (this.props.params) {
-      var itemId = this.props.params.listId;
-      var existingItem = R.find(obj=> obj.id === itemId, this.props.todos);
+      const itemId = this.props.params.listId;
+      const existingItem = R.find(obj=> String(obj.id) === itemId, this.props.todos);
       if (!existingItem) return;
       this.setState({
         listTitle: existingItem.title,
@@ -89,6 +91,7 @@ export default class CreateList extends React.Component {
     } else {
       promise = ListActions(dispatch).createList(data);
     }
+    console.log(promise);
     promise.then(() => {
       this.navigateTo('/');
     });
