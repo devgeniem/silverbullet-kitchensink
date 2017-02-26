@@ -55,9 +55,6 @@ export default class ListItem extends React.Component {
     return null;
   }
 
-  getTime = () => {
-    
-  }
   handleRemove = (e) => {
     const { removeFn } = this.props;
     e.preventDefault();

@@ -55,7 +55,6 @@ export default class CreateList extends React.Component {
   }
 
   componentDidMount() {
-
     if (this.props.params) {
       const itemId = this.props.params.listId;
       const existingItem = R.find(obj=> String(obj.id) === itemId, this.props.todos);
@@ -111,10 +110,10 @@ export default class CreateList extends React.Component {
   }
 
 
-  handleItemRemoval(item) {
-    var tempItems = this.state.items;
+  handleItemRemoval(itemId) {
+    const tempItems = this.state.items;
+    _.remove(tempItems, tempItem => tempItem.id === itemId);
 
-    _.remove(tempItems, tempItem => tempItem.id === item.id || item);
     this.setState({
       items: tempItems,
     });
