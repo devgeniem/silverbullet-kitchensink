@@ -78,21 +78,22 @@ export default class CreateList extends React.Component {
   }
 
   handleSaveButton() {
-    var items = this.state.items;
-    var title = this.state.listTitle;
-    var { dispatch } = this.props;
-    var data = { title, items };
+    const items = this.state.items;
+    const title = this.state.listTitle;
+    const { dispatch } = this.props;
+    const data = { title, items };
+    let promise = null;
 
     if (this.state.existingItem) {
       const id = this.state.existingItem.id;
-      ListActions(dispatch).modifyList(id, data).then(() => {
-        this.navigateTo('/');
-      });
+      promise = ListActions(dispatch).modifyList(id, data);
     } else {
-      ListActions(dispatch).createList(data).then(() => {
+      promise = ListActions(dispatch).createList(data);
+    }
+
+    promise.then(() => {
         this.navigateTo('/');
       });
-    }
   }
 
   handleAddItemButton(title) {
