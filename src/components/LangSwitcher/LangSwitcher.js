@@ -27,8 +27,8 @@ export default class LangSwitcher extends React.Component {
   getLanguages() {
     const { t } = this.props;
     return [
-      { code: 'fi', name: t('finnish') },
       { code: 'en', name: t('english') },
+      { code: 'fi', name: t('finnish') },
     ];
   }
 
