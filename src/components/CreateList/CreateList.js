@@ -8,7 +8,7 @@ import R from 'ramda';
 import _ from 'lodash';
 
 import { ListActions } from '../../actions';
-import { ListItem, ShareList } from '../../components';
+import { ListItem } from '../../components';
 
 const mapStateToProps = (state) => {
   return {
@@ -92,8 +92,8 @@ export default class CreateList extends React.Component {
     }
 
     promise.then(() => {
-        this.navigateTo('/');
-      });
+      this.navigateTo('/');
+    });
   }
 
   handleAddItemButton(title) {
@@ -190,7 +190,6 @@ export default class CreateList extends React.Component {
                   >
 
                     <Glyphicon glyph="save" />{t('save')}</Button>
-                  <ShareList />
                 </Col>
               </Row>
             </FormGroup>
