@@ -9,10 +9,11 @@ export const INITIAL_STATE = {
   profile: {},
   token: null,
   isLoggedIn: false,
+  error: null,
 };
 
 const loginUser = (state, action) =>
-  Object.assign(R.clone(state), { profile: action.response.user, token: action.response.token, isLoggedIn: true });
+  Object.assign(R.clone(state), { profile: action.response.user, token: action.response.token, isLoggedIn: true, error: action.error });
 
 const logoutUser = () => INITIAL_STATE;
 

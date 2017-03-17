@@ -6,10 +6,11 @@ import { Types } from '../actions/LangActions';
 export const INITIAL_STATE = {
   sync: true, // this state will be synced to server for serverside rendering
   lang: 'en',
+  error: null,
 };
 
 const setLanguage = (state, action) =>
-R.merge(state, { lang: action.lang });
+R.merge(state, { lang: action.lang, error: action.error });
 
 // map our types to our handlers
 const ACTION_HANDLERS = {

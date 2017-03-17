@@ -1,7 +1,7 @@
 import React from 'react';
 import uuid from 'uuid';
 import { connect } from 'react-redux';
-import { Form, Grid, FormControl, Button, Glyphicon, Row, Col, FormGroup } from 'react-bootstrap';
+import { Form, Grid, FormControl, Button, Glyphicon, Row, Col, FormGroup, Alert } from 'react-bootstrap';
 import { translate } from 'react-i18next';
 // FIXME: we should maybe pick one? :)
 import R from 'ramda';
@@ -13,6 +13,7 @@ import { ListItem } from '../../components';
 const mapStateToProps = (state) => {
   return {
     todos: state.todo.lists,
+    error: state.todo.error,
   };
 };
 
@@ -46,6 +47,7 @@ export default class CreateList extends React.Component {
       itemTitle: '',
       items: [],
       existingItem: false,
+      error: null,
     };
   }
 
@@ -91,8 +93,11 @@ export default class CreateList extends React.Component {
       promise = ListActions(dispatch).createList(data);
     }
 
-    promise.then(() => {
-      this.navigateTo('/');
+    promise.then((response) => {
+      if (!response.error) {
+        this.navigateTo('/');
+      }
+      this.setState({ error: response.error });
     });
   }
 
@@ -136,9 +141,8 @@ export default class CreateList extends React.Component {
 
   render() {
     const { t, params } = this.props;
-    const { items, listTitle } = this.state;
+    const { items, listTitle, error } = this.state;
     const pageTitle = params.listId ? t('edit_list') + ' ' + (listTitle || '') : t('add_new_list');
-
     return (
       <div className="todo-create-list-container">
         <Grid>
@@ -194,6 +198,15 @@ export default class CreateList extends React.Component {
               </Row>
             </FormGroup>
           </Form>
+          {error &&
+            <Row>
+              <Col>
+                <Alert bsStyle="danger">
+                  <strong>{error.code}</strong>: {error.reason}
+                </Alert>
+              </Col>
+            </Row>
+          }
         </Grid>
       </div>
     );
