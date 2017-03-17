@@ -1,8 +1,4 @@
-.todo-wrapper {
-
-  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
-  .todo-header-bar {
+ .todo-header-bar {
 
     .todo-header-bar-user-icon  {
       @include roundButton($darker-red, $white);
@@ -71,8 +67,3 @@
     }
 
   }
-
-  .todo-main-content {
-    padding: $default-margin 0;
-  }
-}

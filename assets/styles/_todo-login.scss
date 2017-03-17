@@ -1,21 +1,23 @@
 .todo-login-container {
-  > .container {
-    > h1, input {
+  .container {
+
+    h1 {
       text-align: center;
     }
+    
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    width: 400px;
+
     .todo-login-box {
-      max-width: 350px;
-      margin: auto;
-      padding: 45px 15px;
-      input {
-        margin-bottom: $default-margin;
+      button {
+        width:100%;
       }
     }
-    a {
-      color:$red;
-    }
-    .todo-button {
-      width: 100%;
+    
+    input {
+      text-align:center;
     }
   }
 }

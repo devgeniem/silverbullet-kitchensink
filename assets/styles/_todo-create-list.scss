@@ -7,7 +7,6 @@
     .todo-create-list-add-item-button {
       @include roundButton($red, $white, true);
     }
-
   }
 
   .todo-create-list-items-container {
@@ -16,11 +15,6 @@
     padding: $default-margin;
     margin-top: $default-margin;
     border-radius: 3px;
-
-    .todo-list-item {
-      border: none;
-      margin-bottom: 1px;
-    }
   }
 
   .todo-create-list-control-buttons {

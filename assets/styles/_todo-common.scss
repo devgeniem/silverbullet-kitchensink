@@ -1,7 +1,17 @@
+
+$red: #ed4747;
+$dark-red: #333;
+$darker-red: #b31414;
+$white: #fff;
+$grey-bg: #f7f7f7;
+$grey-font-color: #999;
+$grey-border: #ddd;
+$header-orange: #f45c43;
 $med-font-size: 1.3em;
 $small-font-size: 0.75em;
 $large-font-size: 1.5em;
 $default-margin: 15px;
+$gradient: linear-gradient(90deg, $red 10%, $header-orange 100%);
 
 @mixin roundButton($bg: $red, $color: $white, $small: false) {
 
@@ -31,7 +41,7 @@ $default-margin: 15px;
 
 }
 
-.todo-button {
+a.todo-button, .todo-button {
 
   @mixin hoverColors() {
     &:hover, &:active, &:focus, &:active:hover {
@@ -75,7 +85,49 @@ $default-margin: 15px;
   &[disabled] {
     @include hoverColors();
     box-shadow: 0 3px 0 0 $darker-red;
-
   }
 
+}
+
+
+body {
+
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  a {
+    color:$red;
+  }
+
+
+
+
+  input[type=text],
+  input[type=password],
+  input[type=email] {
+    &.form-control {
+      border: none;
+      box-shadow: none;
+      border-bottom: 1px solid $red;
+      border-radius: 0;
+      padding: 0;
+      font-size: $med-font-size;
+      height: calc(3 * #{$default-margin});
+    }
+  }
+
+  label {
+    font-size: $small-font-size;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+  h1, h2, h3, h4, h5 {
+    margin-bottom: 20px;
+  }
+
+
+  .todo-main-content {
+    margin-top:24px;
+  }
 }

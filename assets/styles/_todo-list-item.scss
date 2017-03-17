@@ -10,7 +10,9 @@
     display: flex;
     align-items: center;
     transition: background 150ms linear;
-
+    border: none;
+    margin-bottom: 1px;
+    
     &:hover {
       background: darken($white, 2%);
     }
