@@ -52,7 +52,7 @@ export default class CreateList extends React.Component {
   }
 
   saveDisabled() {
-    return !(this.state.listTitle &&
+    return !(this.state.listTitle && this.state.listTitle.length < 256 &&
     this.state.items.length !== 0);
   }
 
@@ -170,7 +170,7 @@ export default class CreateList extends React.Component {
                   />
                   <Button
                     className="todo-create-list-add-item-button"
-                    disabled={!this.state.itemTitle}
+                    disabled={!this.state.itemTitle || this.state.itemTitle.length > 256}
                     onClick={() => this.handleAddItemButton(this.state.itemTitle)}
                   >
                     <Glyphicon glyph="plus" />
