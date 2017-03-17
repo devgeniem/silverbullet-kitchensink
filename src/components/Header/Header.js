@@ -5,10 +5,11 @@ export default class Header extends React.Component {
 
   static propTypes = {
     items: React.PropTypes.array.isRequired,
+    user: React.PropTypes.object.isRequired,
   };
 
   render() {
-    var { items } = this.props;
+    var { items, user } = this.props;
     return (
       <Dropdown
         id="todo-header-bar-menu"
@@ -27,6 +28,7 @@ export default class Header extends React.Component {
           /></Dropdown.Toggle>
 
         <Dropdown.Menu bsRole="menu">
+          {user.profile.name && <MenuItem header>{user.profile.name}</MenuItem>}
           {items.map((item) => {
             var glyphicon = item.glyphicon ? <Glyphicon glyph={item.glyphicon} /> : null;
             var callback = item.callback ? item.callback : () => {};

@@ -28,15 +28,6 @@ export default class Main extends React.Component {
     if (user.isLoggedIn) {
       return [
         {
-          title: user.profile.name ? user.profile.name : 'no name',
-        },
-        {
-          title: t('menuitem_1'),
-        },
-        {
-          title: t('menuitem_2'),
-        },
-        {
           title: t('logout'),
           glyphicon: 'log-out',
           callback: function () {
@@ -58,7 +49,6 @@ export default class Main extends React.Component {
   render() {
     const menuItems = this.getMenuItems();
     const { children, user } = this.props;
-
     return (<div className="todo-wrapper">
       <header className="todo-header-bar">
         <div>
@@ -69,7 +59,7 @@ export default class Main extends React.Component {
         <div>
           <LangSwitcher />
           { user.isLoggedIn ?
-            <Header items={menuItems} /> : null
+            <Header user={user} items={menuItems} /> : null
           }
         </div>
       </header>
