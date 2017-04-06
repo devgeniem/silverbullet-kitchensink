@@ -5,7 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Policies
  */
 
-export default function (req, res, next) {
+module.exports = function(req, res, next) {
   if (req.user && req.user.role && req.user.role === 'admin') {
     return next();
   }

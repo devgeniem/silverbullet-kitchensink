@@ -1,15 +1,15 @@
-# Silver bullet - The ultimate Sails/React boilerplate
+# Silverbullet - Sailsjs v1.0 React Kitchensink
 
-A [Sails](http://sailsjs.org) application
+A [Sails](http://sailsjs.org) kitchensink with React and Webpack.
 
 ## About
 
-This is a starter boilerplate app using [Sails](http://sailsjs.org) and [React](https://facebook.github.io/react/).
+This is a starter kitchensink app using [Sails](http://sailsjs.org) and [React](https://facebook.github.io/react/).
 
 ## Goals
 - ~~Isomorphic~~ [Universal](https://medium.com/@mjackson/universal-javascript-4761051b7ae9) react redux application in sails environment
 - Sails remains usable for API and static pages
-- Proper development and production builds
+- Proper development and production builds with webpack
 - Use Redux and React Router along with Sails routing
 
 ## Work in progress
@@ -22,9 +22,10 @@ This is a starter boilerplate app using [Sails](http://sailsjs.org) and [React](
 - facebook / google / twitter etc login/register
 
 ## Technologies used
-- Sails
+- [Sails](http://sailsjs.org)
 - [React](https://github.com/facebook/react)
 - [Redux](https://github.com/rackt/redux)
+- [Immutable] (https://facebook.github.io/immutable-js)
 - [React Router](https://github.com/rackt/react-router)
 - [React Router Redux](https://github.com/reactjs/react-router-redux)
 - [Webpack](http://webpack.github.io)
@@ -39,22 +40,18 @@ This is a starter boilerplate app using [Sails](http://sailsjs.org) and [React](
 
 ### Requirements:
 - Node 4.x ->
-- For production build, npm package `pm2` globally installed
 
 ## Running the application
 - Edit config/env/development.js and config/env/production.js to hold your email config (or use config/local.js).
 - Run `npm install`
 - `npm start` will start the sails server and webpack watcher,
   after this the react application can be developed without restarting the sails server
-- Nodemon is also available, via `npm run-script nodemon`, restarting the sails
-  server as files are changed while also rebuilding jsx resources in src folder using the dev configuration.
-- Production build is started with `npm run pm2-start` which runs the app with pm2. Stop the server with `npm run pm2-stop`.
 - Build uses `NODE_ENV` environment variable to choose how to build the application. Use `development` for dev build and `production` for build optimized for production.
 
 ## Views
 
 Sails - views are still enabled and will take precedence over the react routing.
-We are currently using dust templates, for more options and information, read [the sails documentation on views](http://sailsjs.org/documentation/concepts/views)
+Template engine is currently dust, for more options and information, read [the sails documentation on views](http://sailsjs.org/documentation/concepts/views)
 
 ## Serverside redux store (socket.io)
 

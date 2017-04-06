@@ -1,5 +1,3 @@
-import jwToken from '../services/jwToken';
-
 /**
  * isAuthorized
  *
@@ -7,7 +5,7 @@ import jwToken from '../services/jwToken';
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Policies
  */
 
-export default function (req, res, next) {
+module.exports = function(req, res, next) {
   var token;
 
   if (req.headers && req.headers.authorization) {
@@ -30,7 +28,7 @@ export default function (req, res, next) {
     return res.json(401, { key: 'not_logged', text: 'No Authorization header was found' });
   }
 
-  return jwToken.verify(token, (err, extractedData) => {
+  return TokenService.verify(token, (err, extractedData) => {
     if (err) return res.json(401, { key: 'not_logged', text: 'Invalid Token!' });
     if (extractedData.role !== 'superadmin' && !extractedData.organizationId) {
       return res.json(401, { key: 'no_organization', text: 'User has no organization' });

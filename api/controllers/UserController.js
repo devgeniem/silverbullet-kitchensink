@@ -1,5 +1,3 @@
-import mailer from '../services/mailer';
-
 export default {
 
   /**
@@ -62,7 +60,7 @@ export default {
 
     User.create(data)
     .then((createdUser) => {
-      mailer.sendUserActivationMail(createdUser);
+      EmailService.sendUserActivationMail(createdUser);
       res.ok(createdUser);
     })
     .catch((err) => {

@@ -1,7 +1,0 @@
-{> "./layout" /}
-
-{<content}
-
-<h1> 403 forbidden </h1>
-
-{/content}

@@ -1,5 +1,3 @@
-import jwToken from '../services/jwToken';
-
 /**
  * AuthController
  *
@@ -30,10 +28,10 @@ export default {
         return res.json(401, { key: 'invalid_credentials', text: 'Invalid email or password' });
       }
 
-      if (user.comparePassword(params.password)) {
+      if (UserService.comparePassword(user.id, params.password)) {
         return res.json({
-          user: user,
-          token: jwToken.issue({
+          user,
+          token: TokenService.issue({
             id: user.id,
             role: user.role,
           }),
