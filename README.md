@@ -21,7 +21,7 @@ This is a starter kitchensink app using [Sails](http://sailsjs.org) and [React](
 
 ## Backend features
 - User register / activate / login
-- Token service, [JWT] (https://jwt.io)
+- Token service, [JWT](https://jwt.io)
 - Email service
 - Sessions
 - React app server side rendering with styles and initialized redux state
@@ -41,7 +41,7 @@ This is a starter kitchensink app using [Sails](http://sailsjs.org) and [React](
 - [Sails](http://sailsjs.org)
 - [React](https://github.com/facebook/react)
 - [Redux](https://github.com/rackt/redux)
-- [ImmutableJS] (https://facebook.github.io/immutable-js)
+- [ImmutableJS](https://facebook.github.io/immutable-js)
 - [React Router](https://github.com/rackt/react-router)
 - [React Router Redux](https://github.com/reactjs/react-router-redux)
 - [Webpack](http://webpack.github.io)
