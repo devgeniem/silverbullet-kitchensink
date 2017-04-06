@@ -1,4 +1,4 @@
-# Silverbullet - Sailsjs v1.0 React Kitchensink
+# Silverbullet - Sails v1.0 React Kitchensink
 
 A [Sails](http://sailsjs.org) kitchensink with React and Webpack.
 
@@ -12,20 +12,36 @@ This is a starter kitchensink app using [Sails](http://sailsjs.org) and [React](
 - Proper development and production builds with webpack
 - Use Redux and React Router along with Sails routing
 
+## Frontend features
+- React App along side with SailsJS
+- Redux with Immutable state
+- React Router
+- Sync relevant parts of Redux state to server with Socket.io
+- Webpack as build tool (no Grunt)
+
+## Backend features
+- User register / activate / login
+- Token service, [JWT] (https://jwt.io)
+- Email service
+- Sessions
+- React app server side rendering with styles and initialized redux state
+
 ## Work in progress
-- activation screen for entering activation code
-- finish registration page
-- generate user login on successful auth and save to session
-- tie todoItems - model to user
-- set policies to require authentication everywhere
-- documentation and code review
-- facebook / google / twitter etc login/register
+- Sails code upgrade to v1.0
+- Validate token on server side
+- Secure API endpoints with policies
+- Clean and update code (also sails) with eslint rules
+- Refactor React app with Redux/Immutable best practises
+- Facebook / Google / Twitter etc login/register
+- Test with MySQL
+- Documentation and code review
+- Automated tests
 
 ## Technologies used
 - [Sails](http://sailsjs.org)
 - [React](https://github.com/facebook/react)
 - [Redux](https://github.com/rackt/redux)
-- [Immutable] (https://facebook.github.io/immutable-js)
+- [ImmutableJS] (https://facebook.github.io/immutable-js)
 - [React Router](https://github.com/rackt/react-router)
 - [React Router Redux](https://github.com/reactjs/react-router-redux)
 - [Webpack](http://webpack.github.io)
