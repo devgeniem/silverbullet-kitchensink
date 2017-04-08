@@ -1,19 +1,20 @@
 import Hashids from 'hashids';
 import bcrypt from 'bcrypt-nodejs';
 
-var hashids = new Hashids('TODO', 6, '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+const hashids = new Hashids('TODO', 6, '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
 export default {
   schema: true,
   attributes: {
     role: {
       type: 'string',
-      enum: ['admin', 'user'],
+      isIn: ['admin', 'user'],
     },
     email: {
-      type: 'email',
+      type: 'string',
       unique: true,
       required: true,
+      isEmail: true,
     },
     name: {
       type: 'string',
@@ -28,21 +29,13 @@ export default {
     activationCode: {
       type: 'string',
     },
-    comparePassword: function (password) {
-      return bcrypt.compareSync(password, this.encryptedPassword);
-    },
-    newActivationCode: function () {
-      this.activationCode = hashids.encode(new Date().getTime(), Math.round(Math.random() * 1024));
-      this.save();
-      return this.activationCode;
-    },
     // We don't wan't to send back encrypted password
-    toJSON: function () {
+/*    toJSON: function () {
       var obj = this.toObject();
       delete obj.encryptedPassword;
       //delete obj.activationCode;
       return obj;
-    },
+    },*/
   },
   beforeCreate: function (user, next) {
     //user is not active by default

@@ -19,11 +19,11 @@ export default {
    * Save session state to server
    */
   session: function (req, res) {
-    var params = req.params.all();
-    if (!params.state) {
+    const state = req.body.state;
+    if (!state) {
       return res.badRequest({ key: 'required_fields_missing', text: 'Parameter state required' });
     }
-    req.session.state = params.state;
-    return res.ok(params.state);
+    req.session.state = state;
+    return res.ok(state);
   },
 };
