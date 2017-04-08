@@ -39,19 +39,18 @@ export default {
   },
   beforeCreate: function (user, next) {
     //user is not active by default
-    user.active = false;
+    user.active = true;
     //give person activation code
     user.activationCode = hashids.encode(new Date().getTime(), Math.round(Math.random() * 1024));
     // Encrypt new password
-    user.encryptedPassword = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
+    // user.encryptedPassword = UserService.generatePasswordHash(user.password);
     next();
   },
   beforeUpdate: function (newUserData, next) {
     //user id has to be in update request body, see policies.js
-
     // Encrypt new password
     if (newUserData.hasOwnProperty('id') && newUserData.hasOwnProperty('newPassword')) {
-      newUserData.encryptedPassword = bcrypt.hashSync(newUserData.newPassword, bcrypt.genSaltSync(10));
+      newUserData.encryptedPassword = UserService.generatePasswordHash(user.password);
     }
 
     next();
