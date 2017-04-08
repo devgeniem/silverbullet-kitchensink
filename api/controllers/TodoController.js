@@ -36,7 +36,7 @@ module.exports = {
    * Remove todo list
    */
   destroyList: function (req, res) {
-    var params = req.params.all();
+    var params = req.allParams();
     return TodoList.destroy({ id: params.id })
       .then(() => {
         res.ok(true);
@@ -58,7 +58,7 @@ module.exports = {
    * Create new todo list
    */
   createList: function (req, res) {
-    const params = req.params.all();
+    const params = req.allParams();
     var items = JSON.parse(params.items).map(item => ({ title: item.title, completed: false }));
     return TodoList.create({ title: params.title, items: items })
       .then(res.ok)
@@ -66,7 +66,7 @@ module.exports = {
   },
 
   modifyList: function (req, res) {
-    const params = req.params.all();
+    const params = req.allParams();
     var items = JSON.parse(params.items).map(item =>
       ({ title: item.title, completed: false }));
     return TodoList.update({ id: params.id }, { title: params.title, items })
@@ -87,7 +87,7 @@ module.exports = {
    * Remove todo item
    */
   destroyItem: function (req, res) {
-    var params = req.params.all();
+    var params = req.allParams();
     return TodoItem.destroy({ id: params.id })
       .then(() => {
         res.ok(true);
@@ -108,7 +108,7 @@ module.exports = {
    * Create new todo item
    */
   createItem: function (req, res) {
-    const params = req.params.all();
+    const params = req.allParams();
     return TodoItem.create({ title: params.title, completed: false })
       .then(res.ok)
       .catch(res.serverError);
@@ -131,7 +131,7 @@ module.exports = {
    * Update todo item by id
    */
   updateItem: function (req, res) {
-    const params = req.params.all();
+    const params = req.allParams();
     var data = {};
     if (params.title) data.title = params.title;
     if (params.completed) data.completed = params.completed;

@@ -30,7 +30,7 @@ export default {
   * Get user profile
   */
   findOne: function (req, res) {
-    var params = req.params.all();
+    var params = req.allParams();
     User.findOne({ id: params.id })
     .then(res.ok)
     .catch(res.serverError);
@@ -51,7 +51,7 @@ export default {
   * Create new user
   */
   create: function (req, res) {
-    var params = req.params.all();
+    var params = req.allParams();
 
     var data = { role: 'user' };
     if (params.name) data.name = params.name;
@@ -91,7 +91,7 @@ export default {
   * Update user profile by id, requires admin/superadmin privileges
   */
   update: function (req, res) {
-    var params = req.params.all();
+    var params = req.allParams();
 
     var data = {};
     if (params.role) data.role = params.role;
@@ -118,7 +118,7 @@ export default {
   * Remove user, requires admin/superadmin privileges
   */
   destroy: function (req, res) {
-    var params = req.params.all();
+    var params = req.allParams();
     User.destroy({ id: params.id })
     .then(() => {
       res.ok(true);
@@ -137,7 +137,7 @@ export default {
   * Redirects user to root application
   */
   handleActivation: function (req, res) {
-    var params = req.params.all();
+    var params = req.allParams();
 
 
     User.findOne({ id: params.id })
@@ -179,7 +179,7 @@ export default {
   * Activate user and save password
   */
   activate: function (req, res) {
-    var params = req.params.all();
+    var params = req.allParams();
 
     return User.findOne({ id: params.id })
     .then((User) => {
