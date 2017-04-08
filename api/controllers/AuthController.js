@@ -29,7 +29,7 @@ export default {
       }
 
       if (UserService.comparePassword(user.password, params.password)) {
-        return res.status().json({
+        return res.status(200).json({
           user,
           token: TokenService.issue({
             id: user.id,
