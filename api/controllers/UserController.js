@@ -1,3 +1,5 @@
+import mailer from '../services/mailer';
+
 export default {
 
   /**
@@ -30,7 +32,7 @@ export default {
   * Get user profile
   */
   findOne: function (req, res) {
-    var params = req.allParams();
+    var params = req.params.all();
     User.findOne({ id: params.id })
     .then(res.ok)
     .catch(res.serverError);
@@ -51,7 +53,7 @@ export default {
   * Create new user
   */
   create: function (req, res) {
-    var params = req.allParams();
+    var params = req.params.all();
 
     var data = { role: 'user' };
     if (params.name) data.name = params.name;
@@ -60,7 +62,7 @@ export default {
 
     User.create(data)
     .then((createdUser) => {
-      EmailService.sendUserActivationMail(createdUser);
+      mailer.sendUserActivationMail(createdUser);
       res.ok(createdUser);
     })
     .catch((err) => {
@@ -91,7 +93,7 @@ export default {
   * Update user profile by id, requires admin/superadmin privileges
   */
   update: function (req, res) {
-    var params = req.allParams();
+    var params = req.params.all();
 
     var data = {};
     if (params.role) data.role = params.role;
@@ -118,7 +120,7 @@ export default {
   * Remove user, requires admin/superadmin privileges
   */
   destroy: function (req, res) {
-    var params = req.allParams();
+    var params = req.params.all();
     User.destroy({ id: params.id })
     .then(() => {
       res.ok(true);
@@ -137,7 +139,7 @@ export default {
   * Redirects user to root application
   */
   handleActivation: function (req, res) {
-    var params = req.allParams();
+    var params = req.params.all();
 
 
     User.findOne({ id: params.id })
@@ -179,7 +181,7 @@ export default {
   * Activate user and save password
   */
   activate: function (req, res) {
-    var params = req.allParams();
+    var params = req.params.all();
 
     return User.findOne({ id: params.id })
     .then((User) => {

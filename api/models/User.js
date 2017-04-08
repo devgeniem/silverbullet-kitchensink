@@ -1,27 +1,24 @@
-/* eslint-disable no-param-reassign */
 import Hashids from 'hashids';
+import bcrypt from 'bcrypt-nodejs';
 
-const hashids = new Hashids('TODO', 6, '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+var hashids = new Hashids('TODO', 6, '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
 export default {
   schema: true,
   attributes: {
-    // id: { type: 'number', autoIncrement: true }, // <-- for SQL databases
-    // id: { type: 'string', columnName: '_id' }, // <-- for MongoDB
     role: {
       type: 'string',
-      isIn: ['admin', 'user'],
+      enum: ['admin', 'user'],
     },
     email: {
-      type: 'string',
+      type: 'email',
       unique: true,
       required: true,
-      isEmail: true,
     },
     name: {
       type: 'string',
     },
-    password: {
+    encryptedPassword: {
       type: 'string',
     },
     active: {
@@ -31,14 +28,39 @@ export default {
     activationCode: {
       type: 'string',
     },
+    comparePassword: function (password) {
+      return bcrypt.compareSync(password, this.encryptedPassword);
+    },
+    newActivationCode: function () {
+      this.activationCode = hashids.encode(new Date().getTime(), Math.round(Math.random() * 1024));
+      this.save();
+      return this.activationCode;
+    },
+    // We don't wan't to send back encrypted password
+    toJSON: function () {
+      var obj = this.toObject();
+      delete obj.encryptedPassword;
+      //delete obj.activationCode;
+      return obj;
+    },
   },
-  beforeCreate(user, next) {
-    // user is not active by default
-    user.active = true;
-    // give person activation code
+  beforeCreate: function (user, next) {
+    //user is not active by default
+    user.active = false;
+    //give person activation code
     user.activationCode = hashids.encode(new Date().getTime(), Math.round(Math.random() * 1024));
     // Encrypt new password
-    user.password = UserService.generatePasswordHash(user.password);
+    user.encryptedPassword = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10));
+    next();
+  },
+  beforeUpdate: function (newUserData, next) {
+    //user id has to be in update request body, see policies.js
+
+    // Encrypt new password
+    if (newUserData.hasOwnProperty('id') && newUserData.hasOwnProperty('newPassword')) {
+      newUserData.encryptedPassword = bcrypt.hashSync(newUserData.newPassword, bcrypt.genSaltSync(10));
+    }
+
     next();
   },
 };

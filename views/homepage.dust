@@ -1,0 +1,8 @@
+{> "./layout" /}
+{<content}
+<!-- Default home page -->
+<div>
+  <p> TODO: informative front page  </p>
+  <a href="/"> React app </a>
+</div>
+{/content}

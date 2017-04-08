@@ -5,12 +5,10 @@
  * @docs        :: <EMPTY>
  */
 
-export default {
+module.exports = {
 
   attributes: {
-    // id: { type: 'number', autoIncrement: true }, // <-- for SQL databases
-    // id: { type: 'string', columnName: '_id' }, // <-- for MongoDB
-    /* user: {
+    /*user: {
       model: 'user',
     },*/
     title: {

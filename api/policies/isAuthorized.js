@@ -1,3 +1,5 @@
+import jwToken from '../services/jwToken';
+
 /**
  * isAuthorized
  *
@@ -5,14 +7,14 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Policies
  */
 
-export default (req, res, next) => {
-  let token;
+export default function (req, res, next) {
+  var token;
 
   if (req.headers && req.headers.authorization) {
-    const parts = req.headers.authorization.split(' ');
+    var parts = req.headers.authorization.split(' ');
     if (parts.length === 2) {
-      const scheme = parts[0];
-      const credentials = parts[1];
+      var scheme = parts[0];
+      var credentials = parts[1];
 
       if (/^Bearer$/i.test(scheme)) {
         token = credentials;
@@ -28,7 +30,7 @@ export default (req, res, next) => {
     return res.json(401, { key: 'not_logged', text: 'No Authorization header was found' });
   }
 
-  return TokenService.verify(token, (err, extractedData) => {
+  return jwToken.verify(token, (err, extractedData) => {
     if (err) return res.json(401, { key: 'not_logged', text: 'Invalid Token!' });
     if (extractedData.role !== 'superadmin' && !extractedData.organizationId) {
       return res.json(401, { key: 'no_organization', text: 'User has no organization' });
@@ -36,4 +38,4 @@ export default (req, res, next) => {
     req.user = extractedData; // Decrypted token payload (issued at AuthController)
     return next();
   });
-};
+}
