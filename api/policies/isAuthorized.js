@@ -5,14 +5,14 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Policies
  */
 
-module.exports = function(req, res, next) {
-  var token;
+export default (req, res, next) => {
+  let token;
 
   if (req.headers && req.headers.authorization) {
-    var parts = req.headers.authorization.split(' ');
+    const parts = req.headers.authorization.split(' ');
     if (parts.length === 2) {
-      var scheme = parts[0];
-      var credentials = parts[1];
+      const scheme = parts[0];
+      const credentials = parts[1];
 
       if (/^Bearer$/i.test(scheme)) {
         token = credentials;
@@ -36,4 +36,4 @@ module.exports = function(req, res, next) {
     req.user = extractedData; // Decrypted token payload (issued at AuthController)
     return next();
   });
-}
+};

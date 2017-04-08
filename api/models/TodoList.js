@@ -5,7 +5,7 @@
  * @docs        :: <EMPTY>
  */
 
-module.exports = {
+export default {
 
   attributes: {
     // id: { type: 'number', autoIncrement: true }, // <-- for SQL databases

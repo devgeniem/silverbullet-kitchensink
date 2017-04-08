@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import nodemailer from 'nodemailer';
 
 const smtpTransport = nodemailer.createTransport(sails.config.smtp);

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import Hashids from 'hashids';
 
 const hashids = new Hashids('TODO', 6, '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ');
@@ -31,10 +32,10 @@ export default {
       type: 'string',
     },
   },
-  beforeCreate: function (user, next) {
-    //user is not active by default
+  beforeCreate(user, next) {
+    // user is not active by default
     user.active = true;
-    //give person activation code
+    // give person activation code
     user.activationCode = hashids.encode(new Date().getTime(), Math.round(Math.random() * 1024));
     // Encrypt new password
     user.password = UserService.generatePasswordHash(user.password);
