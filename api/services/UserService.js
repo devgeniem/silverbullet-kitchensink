@@ -4,10 +4,10 @@ import bcrypt from 'bcrypt-nodejs';
 const hashids = new Hashids('TODO', 6, '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
 export default {
-  comparePassword(userId, password) {
-    const user = User.findOne({ id: userId });
+  comparePassword(user, password) {
     return bcrypt.compareSync(password, user.encryptedPassword);
   },
+
   newActivationCode(userId) {
     const activationCode = hashids.encode(
       new Date().getTime(),
@@ -19,4 +19,5 @@ export default {
     );
     return activationCode;
   },
+  
 };
