@@ -20,16 +20,16 @@ export default {
     var params = req.allParams();
 
     if (!params.email || !params.password) {
-      return res.json(401, { key: 'required_fields_missing', text: 'Email and password required' });
+      return res.status(401).json({ key: 'required_fields_missing', text: 'Email and password required' });
     }
 
     return User.findOne({ email: params.email }).exec((err, user) => {
       if (!user) {
-        return res.json(401, { key: 'invalid_credentials', text: 'Invalid email or password' });
+        return res.status(401).json({ key: 'invalid_credentials', text: 'Invalid email or password' });
       }
 
-      if (UserService.comparePassword(user.id, params.password)) {
-        return res.json({
+      if (UserService.comparePassword(user, params.password)) {
+        return res.status().json({
           user,
           token: TokenService.issue({
             id: user.id,
@@ -37,7 +37,7 @@ export default {
           }),
         });
       }
-      return res.json(401, { key: 'invalid_credentials', text: 'Invalid email or password' });
+      return res.status(401).json({ key: 'invalid_credentials', text: 'Invalid email or password' });
     });
   },
 
