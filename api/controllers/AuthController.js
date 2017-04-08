@@ -17,7 +17,7 @@ export default {
    * Authenticate user and get access_token
    */
   user: function (req, res) {
-    var params = req.params.all();
+    var params = req.allParams();
 
     if (!params.email || !params.password) {
       return res.json(401, { key: 'required_fields_missing', text: 'Email and password required' });
