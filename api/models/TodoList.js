@@ -8,7 +8,9 @@
 module.exports = {
 
   attributes: {
-    /*user: {
+    // id: { type: 'number', autoIncrement: true }, // <-- for SQL databases
+    // id: { type: 'string', columnName: '_id' }, // <-- for MongoDB
+    /* user: {
       model: 'user',
     },*/
     title: {

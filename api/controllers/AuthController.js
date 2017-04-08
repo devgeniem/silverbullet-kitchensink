@@ -28,7 +28,7 @@ export default {
         return res.status(401).json({ key: 'invalid_credentials', text: 'Invalid email or password' });
       }
 
-      if (UserService.comparePassword(user, params.password)) {
+      if (UserService.comparePassword(user.password, params.password)) {
         return res.status().json({
           user,
           token: TokenService.issue({

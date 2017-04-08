@@ -1,11 +1,12 @@
 import Hashids from 'hashids';
-import bcrypt from 'bcrypt-nodejs';
 
 const hashids = new Hashids('TODO', 6, '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 
 export default {
   schema: true,
   attributes: {
+    // id: { type: 'number', autoIncrement: true }, // <-- for SQL databases
+    // id: { type: 'string', columnName: '_id' }, // <-- for MongoDB
     role: {
       type: 'string',
       isIn: ['admin', 'user'],
@@ -19,7 +20,7 @@ export default {
     name: {
       type: 'string',
     },
-    encryptedPassword: {
+    password: {
       type: 'string',
     },
     active: {
@@ -29,13 +30,6 @@ export default {
     activationCode: {
       type: 'string',
     },
-    // We don't wan't to send back encrypted password
-/*    toJSON: function () {
-      var obj = this.toObject();
-      delete obj.encryptedPassword;
-      //delete obj.activationCode;
-      return obj;
-    },*/
   },
   beforeCreate: function (user, next) {
     //user is not active by default
@@ -43,16 +37,7 @@ export default {
     //give person activation code
     user.activationCode = hashids.encode(new Date().getTime(), Math.round(Math.random() * 1024));
     // Encrypt new password
-    // user.encryptedPassword = UserService.generatePasswordHash(user.password);
-    next();
-  },
-  beforeUpdate: function (newUserData, next) {
-    //user id has to be in update request body, see policies.js
-    // Encrypt new password
-    if (newUserData.hasOwnProperty('id') && newUserData.hasOwnProperty('newPassword')) {
-      newUserData.encryptedPassword = UserService.generatePasswordHash(user.password);
-    }
-
+    user.password = UserService.generatePasswordHash(user.password);
     next();
   },
 };

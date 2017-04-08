@@ -18,17 +18,11 @@ var users = [{
 
 
 function ensureUser(user) {
-  var password = user.password;
-  delete user.password;
-
   return new Promise((resolve, reject) => {
     return User.findOne({ email: user.email })
     .then((found) => {
       if (!found) {
         return User.create(user).meta({fetch: true})
-        .then((created) => {
-          return User.update({ id: created.id }, { newPassword: password });
-        })
         .then(() => {
           sails.log.info(`User ${user.name} <${user.email}> created`);
           return resolve();
