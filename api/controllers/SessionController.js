@@ -18,7 +18,7 @@ export default {
    * @apiDescription
    * Save session state to server
    */
-  session: function (req, res) {
+  session: (req, res) => {
     const state = req.body.state;
     if (!state) {
       return res.badRequest({ key: 'required_fields_missing', text: 'Parameter state required' });

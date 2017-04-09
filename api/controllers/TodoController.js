@@ -16,14 +16,12 @@ module.exports = {
    * @apiDescription
    * Get todo lists
    */
-  findLists: function (req, res) {
-    return TodoList
-      .find({})
-      .populate('items')
-      .sort('createdAt DESC')
-      .then(res.ok)
-      .catch(res.serverError);
-  },
+  findLists: (req, res) => TodoList
+    .find({})
+    .populate('items')
+    .sort('createdAt DESC')
+    .then(res.ok)
+    .catch(res.serverError),
 
   /**
    * @api {delete} /todo-list/:id remove todo list
@@ -37,10 +35,11 @@ module.exports = {
    * @apiDescription
    * Remove todo list
    */
-  destroyList: function (req, res) {
-    var params = req.allParams();
+  destroyList: (req, res) => {
+    const params = req.allParams();
+
     return TodoList
-      .destroy({id: params.id})
+      .destroy({ id: params.id })
       .then(() => {
         res.ok(true);
       })
@@ -64,10 +63,9 @@ module.exports = {
     const params = req.allParams();
     const items = JSON
       .parse(params.items)
-      .map(item => ({title: item.title, completed: false}));
+      .map(item => ({ title: item.title, completed: false }));
 
-    let todoListResponse;  
-    let itemsResponse;
+    let todoListResponse;
 
     TodoList
       .create({ title: params.title })
@@ -78,36 +76,37 @@ module.exports = {
           .createEach(items)
           .meta({ fetch: true });
       })
-      .then((response) => {
-        itemsResponse = response;
-        return TodoList
-          .replaceCollection(todoListResponse.id, 'items')
-          .members(itemsResponse.map(i => i.id));
-      })
-      .then(() => {
-        return TodoList
-          .findOne({ id: todoListResponse.id })
-      })
-      .then((r) => {
-        console.log(r);
-        return res.ok();
-      })
-      .catch(() => {
-        return res.error();
-      });
+      .then(itemsResponse => TodoList
+        .replaceCollection(todoListResponse.id, 'items')
+        .members(itemsResponse.map(i => i.id)),
+      )
+      .then(() => TodoList.findOne({ id: todoListResponse.id }))
+      .then(res.ok)
+      .catch(res.serverError);
   },
 
-  modifyList: function (req, res) {
+  modifyList: (req, res) => {
     const params = req.allParams();
-    var items = JSON
+    const items = JSON
       .parse(params.items)
-      .map(item => ({title: item.title, completed: false}));
-    return TodoList.update({
-      id: params.id
-    }, {
-      title: params.title,
-      items
-    }).catch(res.serverError);
+      .map(item => ({ title: item.title, completed: false }));
+
+    return TodoList
+      .update({ id: params.id }, { title: params.title })
+      .then(() => TodoItem
+        .destroy({ owner: params.id }),
+      )
+      .then(() => TodoItem
+        .createEach(items)
+        .meta({ fetch: true }),
+      )
+      .then(itemsResponse => TodoList
+        .replaceCollection(params.id, 'items')
+        .members(itemsResponse.map(i => i.id)),
+      )
+      .then(() => TodoList.findOne({ id: params.id }))
+      .then(res.ok)
+      .catch(res.serverError);
   },
 
   /**
@@ -122,13 +121,12 @@ module.exports = {
    * @apiDescription
    * Remove todo item
    */
-  destroyItem: function (req, res) {
-    var params = req.allParams();
+  destroyItem: (req, res) => {
+    const params = req.allParams();
+
     return TodoItem
-      .destroy({id: params.id})
-      .then(() => {
-        res.ok(true);
-      })
+      .destroy({ id: params.id })
+      .then(res.ok)
       .catch(res.serverError);
   },
 
@@ -144,10 +142,11 @@ module.exports = {
    * @apiDescription
    * Create new todo item
    */
-  createItem: function (req, res) {
+  createItem: (req, res) => {
     const params = req.allParams();
+
     return TodoItem
-      .create({title: params.title, completed: false})
+      .create({ title: params.title, completed: false })
       .then(res.ok)
       .catch(res.serverError);
   },
@@ -166,17 +165,16 @@ module.exports = {
    * @apiDescription
    * Update todo item by id
    */
-  updateItem: function (req, res) {
+  updateItem: (req, res) => {
     const params = req.allParams();
-    var data = {};
-    if (params.title) 
-      data.title = params.title;
-    if (params.completed) 
-      data.completed = params.completed;
-    return TodoItem.update({
-      id: params.id
-    }, data).then(() => {
-      res.ok(data);
-    }).catch(res.serverError);
-  }
+    const data = {};
+
+    if (params.title) data.title = params.title;
+    if (params.completed) data.completed = params.completed;
+
+    return TodoItem.update({ id: params.id }, data)
+      .then(res.ok)
+      .catch(res.serverError);
+  },
+
 };

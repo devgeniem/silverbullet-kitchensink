@@ -1,7 +1,7 @@
 {> "./layout" /}
 
 {<content}
-  <link rel="stylesheet" href="styles/reactapp.{?webpackHash}{webpackHash}.{/webpackHash}bundle.css" />
+  <link rel="stylesheet" href="/styles/reactapp.{?webpackHash}{webpackHash}.{/webpackHash}bundle.css" />
   <!-- REACT -->
   <div id="app">{reactHtml|s}</div>
   <script type="text/javascript" src="/js/reactapp.{?webpackHash}{webpackHash}.{/webpackHash}bundle.js"></script>

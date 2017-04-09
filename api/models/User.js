@@ -6,8 +6,6 @@ const hashids = new Hashids('TODO', 6, '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ');
 export default {
   schema: true,
   attributes: {
-    // id: { type: 'number', autoIncrement: true }, // <-- for SQL databases
-    // id: { type: 'string', columnName: '_id' }, // <-- for MongoDB
     role: {
       type: 'string',
       isIn: ['admin', 'user'],

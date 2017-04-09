@@ -10,8 +10,9 @@ export default {
   * @apiDescription
   * Get organization user list
   */
-  find: function (req, res) {
-    var criterias = {};
+  find: (req, res) => {
+    const criterias = {};
+
     User.find(criterias)
     .then(res.ok)
     .catch(res.serverError);
@@ -29,11 +30,12 @@ export default {
   * @apiDescription
   * Get user profile
   */
-  findOne: function (req, res) {
-    var params = req.allParams();
+  findOne: (req, res) => {
+    const params = req.allParams();
+
     User.findOne({ id: params.id })
-    .then(res.ok)
-    .catch(res.serverError);
+      .then(res.ok)
+      .catch(res.serverError);
   },
 
   /**
@@ -50,29 +52,29 @@ export default {
   * @apiDescription
   * Create new user
   */
-  create: function (req, res) {
-    var params = req.allParams();
+  create: (req, res) => {
+    const params = req.allParams();
+    const data = { role: 'user' };
 
-    var data = { role: 'user' };
     if (params.name) data.name = params.name;
     if (params.email) data.email = params.email;
     if (params.password) data.password = params.password;
 
     User.create(data)
-    .then((createdUser) => {
-      EmailService.sendUserActivationMail(createdUser);
-      res.ok(createdUser);
-    })
-    .catch((err) => {
-      if (/already\sexists/m.test(err)) {
-        res.json(403, {
-          key: 'already_exists',
-          text: 'User with that email already exists',
-        });
-      } else {
-        res.serverError(err);
-      }
-    });
+      .then((createdUser) => {
+        EmailService.sendUserActivationMail(createdUser);
+        res.ok(createdUser);
+      })
+      .catch((err) => {
+        if (/already\sexists/m.test(err)) {
+          res.json(403, {
+            key: 'already_exists',
+            text: 'User with that email already exists',
+          });
+        } else {
+          res.serverError(err);
+        }
+      });
   },
 
   /**
@@ -90,19 +92,19 @@ export default {
   * @apiDescription
   * Update user profile by id, requires admin/superadmin privileges
   */
-  update: function (req, res) {
-    var params = req.allParams();
+  update: (req, res) => {
+    const params = req.allParams();
+    const data = {};
 
-    var data = {};
     if (params.role) data.role = params.role;
     if (params.email) data.email = params.email;
     if (params.name) data.name = params.name;
 
     User.update({ id: params.id }, data)
-    .then((updated) => {
-      res.ok(updated[0]);
-    })
-    .catch(res.serverError);
+      .then((updated) => {
+        res.ok(updated[0]);
+      })
+      .catch(res.serverError);
   },
 
   /**
@@ -117,13 +119,14 @@ export default {
   * @apiDescription
   * Remove user, requires admin/superadmin privileges
   */
-  destroy: function (req, res) {
-    var params = req.allParams();
+  destroy: (req, res) => {
+    const params = req.allParams();
+
     User.destroy({ id: params.id })
-    .then(() => {
-      res.ok(true);
-    })
-    .catch(res.serverError);
+      .then(() => {
+        res.ok(true);
+      })
+      .catch(res.serverError);
   },
 
   /**
@@ -136,32 +139,29 @@ export default {
   * @apiDescription
   * Redirects user to root application
   */
-  handleActivation: function (req, res) {
-    var params = req.allParams();
-
+  handleActivation: (req, res) => {
+    const params = req.allParams();
 
     User.findOne({ id: params.id })
-    .then((User) => {
-      if (User) {
-        if (!User.active && User.activationCode === params.activationCode) {
-          User.active = true;
-          req.session.user = params.id;
-          return User.save()
-          .then(() => res.redirect('/'))
-          .catch(res.serverError);
+      .then((User) => {
+        if (User) {
+          if (!User.active && User.activationCode === params.activationCode) {
+            req.session.user = params.id;
+            return User.update(User, { active: true })
+              .then(() => res.redirect('/'))
+              .catch(res.serverError);
+          }
+          return res.forbidden({
+            key: 'invalid_code_or_activation',
+            text: 'User is already activated or activation code is invalid',
+          });
         }
-        return res.forbidden({
-          key: 'invalid_code_or_activation',
-          text: 'User is already activated or activation code is invalid',
+        return res.notFound({
+          key: 'not_found',
+          text: 'User not found',
         });
-      }
-      return res.notFound({
-        key: 'not_found',
-        text: 'User not found',
-      });
-    })
-
-    .catch(res.serverError);
+      })
+      .catch(res.serverError);
   },
 
 
@@ -176,31 +176,30 @@ export default {
   * @apiSuccess {Boolean} Activation successful
   *
   * @apiDescription
-  * Activate user and save password
+  * Activate user
   */
-  activate: function (req, res) {
-    var params = req.allParams();
+  activate: (req, res) => {
+    const params = req.allParams();
 
     return User.findOne({ id: params.id })
-    .then((User) => {
-      if (User) {
-        if (!User.active && User.activationCode === params.activationCode) {
-          User.active = true;
-          return User.save()
-          .then(() => res.ok(true))
-          .catch(res.serverError);
+      .then((User) => {
+        if (User) {
+          if (!User.active && User.activationCode === params.activationCode) {
+            return User.update(User, { active: true })
+              .then(res.ok)
+              .catch(res.serverError);
+          }
+          return res.forbidden({
+            key: 'invalid_code_or_activation',
+            text: 'User is already activated or activation code is invalid',
+          });
         }
-        return res.forbidden({
-          key: 'invalid_code_or_activation',
-          text: 'User is already activated or activation code is invalid',
+        return res.notFound({
+          key: 'not_found',
+          text: 'User not found',
         });
-      }
-      return res.notFound({
-        key: 'not_found',
-        text: 'User not found',
-      });
-    })
-    .catch(res.serverError);
+      })
+      .catch(res.serverError);
   },
 
 };
