@@ -9,5 +9,5 @@ export default (req, res, next) => {
   if (req.user && req.user.role && req.user.role === 'admin') {
     return next();
   }
-  return res.json(401, { key: 'not_admin', text: 'User must be admin or superadmin to perform this action' });
+  return res.status(401).json({ key: 'not_admin', text: 'User must be admin or superadmin to perform this action' });
 };

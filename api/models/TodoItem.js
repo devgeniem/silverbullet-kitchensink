@@ -8,6 +8,10 @@
 export default {
   schema: true,
   attributes: {
+/*    owner: {
+      model: 'user',
+      required: true,
+    },*/
     title: {
       type: 'string',
       required: true,
@@ -18,7 +22,7 @@ export default {
       type: 'boolean',
       required: true,
     },
-    owner: {
+    todolist: {
       model: 'todolist',
     },
   },

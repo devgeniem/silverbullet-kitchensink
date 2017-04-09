@@ -16,16 +16,27 @@
 
 module.exports.policies = {
 
-  /***************************************************************************
+  /* *************************************************************************
   *                                                                          *
   * Default policy for all controllers and actions (`true` allows public     *
   * access)                                                                  *
   *                                                                          *
   ***************************************************************************/
 
+  // TODO: Add access token to react app requests
+  // '*': ['checkAccessToken', 'isLoggedIn'],
   '*': true,
 
-  /***************************************************************************
+  AuthController: {
+    '*': true,
+  },
+
+  UserController: {
+    handleActivation: true,
+    activate: true,
+  },
+
+  /* *************************************************************************
   *                                                                          *
   * Here's an example of mapping some policies to run before a controller    *
   * and its actions                                                          *

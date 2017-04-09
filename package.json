@@ -59,6 +59,7 @@
     "webpack-notifier": "^1.5.0"
   },
   "devDependencies": {
+    "apidoc": "^0.17.5",
     "babel-cli": "^6.24.0",
     "babel-eslint": "^7.2.1",
     "babel-loader": "^6.4.1",
@@ -92,7 +93,8 @@
     "start": "node app.js",
     "lint": "eslint src",
     "pm2-start": "webpack; pm2 start app.js -i 1 --name silverbullet",
-    "pm2-stop": "pm2 stop all; pm2 delete all"
+    "pm2-stop": "pm2 stop all; pm2 delete all",
+    "apidoc": "apidoc -i ./api/controllers/ -o ./apidoc/"
   },
   "main": "app.js",
   "repository": {

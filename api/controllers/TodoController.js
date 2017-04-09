@@ -94,7 +94,7 @@ module.exports = {
     return TodoList
       .update({ id: params.id }, { title: params.title })
       .then(() => TodoItem
-        .destroy({ owner: params.id }),
+        .destroy({ todolist: params.id }),
       )
       .then(() => TodoItem
         .createEach(items)

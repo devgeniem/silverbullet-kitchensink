@@ -8,8 +8,9 @@
 export default {
   schema: true,
   attributes: {
-    /* user: {
+/*    owner: {
       model: 'user',
+      required: true,
     },*/
     title: {
       type: 'string',

@@ -1,0 +1,10 @@
+{
+    "name": "Silverbullet",
+    "version": "0.2.0",
+    "description": "Silverbullet api",
+    "title": "Silverbullet Api Doc",
+    "url": "http://localhost:1337",
+    "header": {
+        "filename": "./README.md"
+    }
+}

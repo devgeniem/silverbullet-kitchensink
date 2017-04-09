@@ -1,5 +1,5 @@
 /**
- * isAuthorized
+ * checkAccessToken
  *
  * @description :: Policy to check if user is authorized with JSON web token
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Policies
@@ -18,21 +18,18 @@ export default (req, res, next) => {
         token = credentials;
       }
     } else {
-      return res.json(401, { key: 'not_logged', text: 'Format is Authorization: Bearer [token]' });
+      return res.status(401).json({ key: 'not_logged', text: 'Format is Authorization: Bearer [token]' });
     }
   } else if (req.param('token')) {
     token = req.param('token');
     // We delete the token from param to not mess with blueprints
     delete req.query.token;
   } else {
-    return res.json(401, { key: 'not_logged', text: 'No Authorization header was found' });
+    return res.status(401).json({ key: 'not_logged', text: 'No Authorization header was found' });
   }
 
   return TokenService.verify(token, (err, extractedData) => {
-    if (err) return res.json(401, { key: 'not_logged', text: 'Invalid Token!' });
-    if (extractedData.role !== 'superadmin' && !extractedData.organizationId) {
-      return res.json(401, { key: 'no_organization', text: 'User has no organization' });
-    }
+    if (err) return res.status(401).json({ key: 'not_logged', text: 'Invalid Token!' });
     req.user = extractedData; // Decrypted token payload (issued at AuthController)
     return next();
   });
