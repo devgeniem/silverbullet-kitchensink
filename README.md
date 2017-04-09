@@ -27,10 +27,8 @@ This is a starter kitchensink app using [Sails](http://sailsjs.org) and [React](
 - React app server side rendering with styles and initialized redux state
 
 ## Work in progress
-- Sails code upgrade to v1.0
 - Validate token on server side
 - Secure API endpoints with policies
-- Clean and update code (also sails) with eslint rules
 - Refactor React app with Redux/Immutable best practises
 - Facebook / Google / Twitter etc login/register
 - Test with MySQL
@@ -38,7 +36,7 @@ This is a starter kitchensink app using [Sails](http://sailsjs.org) and [React](
 - Automated tests
 
 ## Technologies used
-- [Sails](http://sailsjs.org)
+- [Sails](http://sailsjs.org) v1.0
 - [React](https://github.com/facebook/react)
 - [Redux](https://github.com/rackt/redux)
 - [ImmutableJS](https://facebook.github.io/immutable-js)
