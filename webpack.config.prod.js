@@ -8,7 +8,7 @@ module.exports = {
   },
   target: 'web',
   output: {
-    path: path.join(__dirname, 'dev'),
+    path: path.join(__dirname, 'dist'),
     filename: '[name].js',
   },
   plugins: [
