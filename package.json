@@ -15,14 +15,14 @@
     "babel-polyfill": "^6.13.0",
     "bcrypt-nodejs": "0.0.3",
     "bootstrap-sass": "^3.3.7",
-    "dustjs-linkedin": "^2.7.4",
+    "dustjs-linkedin": "^3.0.1",
     "hashids": "^1.1.1",
     "i18next": "^6.1.2",
     "iso": "^5.2.0",
-    "jsonwebtoken": "^7.1.9",
+    "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.4",
     "moment": "^2.15.0",
-    "nodemailer": "^2.6.4",
+    "nodemailer": "^6.9.14",
     "ramda": "^0.23.0",
     "rc": "1.1.6",
     "react": "^15.3.1",
@@ -35,7 +35,7 @@
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "reduxsauce": "^0.4.1",
-    "sails": "~0.12.4",
+    "sails": "~1.5.11",
     "sails-disk": "~0.10.10",
     "sails.io.js": "^1.1.4",
     "socket.io-client": "^1.4.8",
@@ -78,7 +78,7 @@
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
     "express": "^4.14.0",
-    "grunt": "1.0.1",
+    "grunt": "1.5.3",
     "grunt-contrib-clean": "1.0.0",
     "grunt-contrib-coffee": "1.0.0",
     "grunt-contrib-concat": "1.0.1",
@@ -95,6 +95,6 @@
     "json-loader": "^0.5.4",
     "nodemon": "^1.10.2",
     "npm-run-all": "^4.0.1",
-    "webpack": "^2.2.1"
+    "webpack": "^5.94.0"
   }
 }
